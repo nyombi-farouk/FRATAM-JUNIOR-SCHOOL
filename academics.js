@@ -1,123 +1,333 @@
-/*=========================================
-FRATAM JUNIOR SCHOOL
-CONTACT PAGE JAVASCRIPT
-=========================================*/
+/*====================================================
+    FRATAM JUNIOR SCHOOL
+    GLOBAL WEBSITE JAVASCRIPT
+=====================================================*/
 
 
-// =============================
+// =====================================
 // MOBILE MENU TOGGLE
-// =============================
+// =====================================
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.querySelector(".nav-links");
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
 
-if(menuToggle && navLinks){
 
-menuToggle.addEventListener("click", ()=>{
+if(menuBtn && navMenu){
 
-    navLinks.classList.toggle("active");
 
-    menuToggle.classList.toggle("open");
+    menuBtn.addEventListener("click",()=>{
 
-});
+
+        navMenu.classList.toggle("show");
+
+
+        menuBtn.classList.toggle("open");
+
+
+    });
+
 
 }
 
 
-// =============================
-// CLOSE MENU AFTER CLICK
-// =============================
 
-document.querySelectorAll(".nav-links a").forEach(link=>{
 
-link.addEventListener("click", ()=>{
+// =====================================
+// CLOSE MOBILE MENU WHEN LINK CLICKED
+// =====================================
 
-    navLinks.classList.remove("active");
-    menuToggle.classList.remove("open");
+
+const navItems = document.querySelectorAll("#navMenu a");
+
+
+navItems.forEach(link=>{
+
+
+    link.addEventListener("click",()=>{
+
+
+        if(navMenu){
+
+            navMenu.classList.remove("show");
+
+        }
+
+
+        if(menuBtn){
+
+            menuBtn.classList.remove("open");
+
+        }
+
+
+    });
+
 
 });
 
-});
 
 
-// =============================
-// STICKY HEADER EFFECT
-// =============================
+
+// =====================================
+// STICKY HEADER
+// =====================================
+
 
 const header = document.querySelector("header");
 
+
+if(header){
+
+
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY > 50){
 
-    header.classList.add("sticky");
+    if(window.scrollY > 60){
+
+
+        header.classList.add("sticky");
+
+
+    }
+
+    else{
+
+
+        header.classList.remove("sticky");
+
+
+    }
+
+
+});
+
+
+}
+
+
+
+
+// =====================================
+// CONTACT FORM VALIDATION
+// =====================================
+
+
+const contactForm = document.getElementById("contactForm");
+
+
+if(contactForm){
+
+
+contactForm.addEventListener("submit",(event)=>{
+
+
+event.preventDefault();
+
+
+
+let name = document.getElementById("name")?.value.trim();
+
+let email = document.getElementById("email")?.value.trim();
+
+let message = document.getElementById("message")?.value.trim();
+
+
+
+
+if(name==="" || email==="" || message===""){
+
+
+alert("Please fill in all required fields.");
+
+return;
+
+
+}
+
+
+
+
+alert(
+"Thank you "+name+"! FRATAM Junior School will contact you soon."
+);
+
+
+
+contactForm.reset();
+
+
+
+});
+
+
+}
+
+
+
+
+// =====================================
+// BACK TO TOP BUTTON
+// =====================================
+
+
+const backTop = document.createElement("button");
+
+
+backTop.innerHTML="↑";
+
+
+backTop.id="topBtn";
+
+
+document.body.appendChild(backTop);
+
+
+
+window.addEventListener("scroll",()=>{
+
+
+if(window.scrollY > 400){
+
+
+    backTop.classList.add("show");
+
 
 }
 
 else{
 
-    header.classList.remove("sticky");
 
-}
+    backTop.classList.remove("show");
 
-});
-
-
-// =============================
-// CONTACT FORM
-// =============================
-
-const form = document.getElementById("contactForm");
-
-if(form){
-
-form.addEventListener("submit",(e)=>{
-
-e.preventDefault();
-
-alert("Thank you for contacting FRATAM Junior School. We shall get back to you soon.");
-
-form.reset();
-
-});
 
 }
 
 
-// =============================
-// BACK TO TOP BUTTON
-// =============================
-
-const topBtn = document.createElement("button");
-
-topBtn.innerHTML = "↑";
-
-topBtn.id = "topBtn";
-
-document.body.appendChild(topBtn);
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY > 400){
-
-topBtn.classList.add("show");
-
-}else{
-
-topBtn.classList.remove("show");
-
-}
-
 });
 
-topBtn.addEventListener("click",()=>{
+
+
+
+backTop.addEventListener("click",()=>{
+
 
 window.scrollTo({
 
-top:0,
+    top:0,
+
+    behavior:"smooth"
+
+});
+
+
+});
+
+
+
+
+// =====================================
+// SMOOTH SCROLL LINKS
+// =====================================
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+
+
+anchor.addEventListener("click",function(e){
+
+
+let target=document.querySelector(this.getAttribute("href"));
+
+
+if(target){
+
+
+e.preventDefault();
+
+
+target.scrollIntoView({
 
 behavior:"smooth"
 
 });
 
+
+}
+
+
 });
+
+
+});
+
+
+
+
+
+// =====================================
+// SCROLL REVEAL ANIMATION
+// =====================================
+
+
+const revealElements=document.querySelectorAll(
+".stat-box, .philosophy-card, .level-card, .subject, .approach-box div"
+);
+
+
+
+function reveal(){
+
+
+revealElements.forEach(element=>{
+
+
+let position=element.getBoundingClientRect().top;
+
+
+let screenHeight=window.innerHeight;
+
+
+
+if(position < screenHeight - 100){
+
+
+element.classList.add("active");
+
+
+}
+
+
+
+});
+
+
+}
+
+
+
+window.addEventListener("scroll",reveal);
+
+
+reveal();
+
+
+
+
+
+// =====================================
+// YEAR AUTO UPDATE FOOTER
+// =====================================
+
+
+const year=document.querySelector(".copyright");
+
+
+if(year){
+
+
+year.innerHTML =
+"© "+new Date().getFullYear()+
+" FRATAM Junior School. All Rights Reserved.";
+
+
+}
