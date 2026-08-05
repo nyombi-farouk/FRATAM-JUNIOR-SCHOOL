@@ -1,8 +1,265 @@
 <!doc type html>
 <title>FRATAM JUNIOR SCHOOL</title>
-<style>
-   
-</style>
+ <style>
+        /* CSS RESET & BRAND VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-navy: #0F2C59;
+            --secondary-gold: #C5A059;
+            --accent-blue: #00A8E8;
+            --light-bg: #F8FAFC;
+            --dark-text: #1E293B;
+            --white: #FFFFFF;
+        }
+
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 11px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.6rem 2rem;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-icon {
+            height: 45px;
+            width: auto;
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 200;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
+
+        .brand-name span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--secondary-gold);
+            letter-spacing: 1px;
+            font-weight: 200;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark-text);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .btn-enroll {
+            background-color: var(--primary-navy);
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            border: 2px solid var(--secondary-gold);
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-enroll:hover {
+            background-color: var(--secondary-gold);
+            color: var(--primary-navy) !important;
+        }
+
+        /* HERO SLIDER SECTION WITH BACKGROUND IMAGES */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 15s infinite ease-in-out;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        /* HERO BACKGROUND IMAGES */
+        /* Slide 1 uses your uploaded students picture */
+        .slide-1 { 
+            background-image: url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png'); 
+        }
+        /* Slide 2 & 3 use high-res educational activity images */
+        .slide-2 { 
+            background-image: url('ChatGPT Image Aug 2, 2026, 08_37_15 AM.png'); 
+        }
+        .slide-3 { 
+            background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80'); 
+        }
+
+        .slide-content {
+            z-index: 2;
+            max-width: 850px;
+            padding: 0 2rem;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            height: 120px;
+            width: 85;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+        }
+
+        .slide-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-gold);
+            color: var(--primary-navy);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover { background-color: #d4af66; }
+        .btn-secondary:hover { background-color: var(--white); color: var(--primary-navy); }
+
+        /* KEYFRAME SLIDE ANIMATION */
+@keyframes slideAnimation {
+            0%, 28% { transform: translateX(0%); }
+            33%, 61% { transform: translateX(-100vw); }
+            66%, 94% { transform: translateX(-200vw); }
+            100% { transform: translateX(3%); }
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--secondary-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover { transform: translateY(-8px); }
+        .feature-card h3 { color: var(--primary-navy); margin-bottom: 0.8rem; font-size: 1.25rem; }
+
+        /* ABOUT SECTION */
+        .about { background-color: var(--light-bg); padding: 5rem 2rem; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .about-text h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 1rem; }
+        .about-text p { margin-bottom: 1.2rem; color: #4A5568; }
+
+        /* FOOTER */
+        footer { background-color: var(--primary-navy); color: var(--white); padding: 4rem 2rem 1.5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: var(--secondary-gold); margin-bottom: 1.2rem; font-size: 1.1rem; }
+        .footer-col p, .footer-col li { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.6rem; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .hero { height: 70vh; }
+            .slide-content h1 { font-size: 2rem; }
+            .hero-badge { height: 80px; }
+            .about-container { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+        }
+h1{
+font-family:jokerman;
+color:red;
+}
+    </style>   
 <div class="logo">
 <img src="ChatGPT Image Aug 2, 2026, 08_37_15 AM.png">
    <sub title>Fratam Junior School</sub>
