@@ -1,802 +1,83 @@
-Fratam-Junior-School/
-│
-├── academics.html
-├── academics.css
-├── academics.js
-│
-└── images/
-     ├── logo.png
-     ├── academics-hero.jpg
-     ├── classroom.jpg
-     ├── library.jpg
-     └── laboratory.jpg/*==================================================
-    FRATAM JUNIOR SCHOOL
-    ACADEMICS PAGE
-    PART 1
-    Variables | Reset | Typography | Header
-    Navigation | Buttons
-===================================================*/
-
-
-/*=============================
-ROOT VARIABLES
-=============================*/
-
-:root{
-
---primary:#0056D2;
---primary-light:#2E7DFF;
---secondary:#FFD43B;
---accent:#00B894;
-
---dark:#0B1220;
---dark-light:#1E293B;
-
---white:#ffffff;
---light:#F8FAFC;
---gray:#64748B;
---border:#E5E7EB;
-
---success:#22C55E;
---danger:#EF4444;
-
---shadow-sm:0 5px 15px rgba(0,0,0,.08);
---shadow:0 15px 35px rgba(0,0,0,.12);
---shadow-lg:0 25px 60px rgba(0,0,0,.18);
-
---radius:18px;
---radius-lg:30px;
-
---transition:.35s ease;
-
---container:1280px;
-
-}
-
-
-
-/*=============================
-RESET
-=============================*/
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
-}
-
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-
-body{
-
-font-family:'Poppins',sans-serif;
-
-background:var(--light);
-
-color:var(--dark);
-
-line-height:1.7;
-
-overflow-x:hidden;
-
-}
-
-
-img{
-
-max-width:100%;
-display:block;
-
-}
-
-
-a{
-
-text-decoration:none;
-
-color:inherit;
-
-}
-
-
-ul{
-
-list-style:none;
-
-}
-
-
-button{
-
-border:none;
-
-outline:none;
-
-cursor:pointer;
-
-font-family:'Poppins',sans-serif;
-
-}
-
-
-input,
-textarea{
-
-font-family:'Poppins',sans-serif;
-
-outline:none;
-
-}
-
-
-/*=============================
-CUSTOM SCROLLBAR
-=============================*/
-
-::-webkit-scrollbar{
-
-width:10px;
-
-}
-
-::-webkit-scrollbar-track{
-
-background:#EDF2F7;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:var(--primary);
-
-border-radius:50px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-background:var(--primary-light);
-
-}
-
-
-
-/*=============================
-TYPOGRAPHY
-=============================*/
-
-h1{
-
-font-size:clamp(2.8rem,6vw,5rem);
-
-font-weight:800;
-
-line-height:1.1;
-
-}
-
-
-h2{
-
-font-size:clamp(2rem,4vw,3.2rem);
-
-font-weight:700;
-
-}
-
-
-h3{
-
-font-size:1.5rem;
-
-font-weight:700;
-
-}
-
-
-h4{
-
-font-size:1.2rem;
-
-font-weight:600;
-
-}
-
-
-p{
-
-font-size:1rem;
-
-color:var(--gray);
-
-}
-
-
-.section-title{
-
-font-size:clamp(2rem,4vw,3rem);
-
-font-weight:800;
-
-color:var(--dark);
-
-margin-bottom:15px;
-
-}
-
-
-.section-subtitle{
-
-color:var(--primary);
-
-font-weight:700;
-
-text-transform:uppercase;
-
-letter-spacing:2px;
-
-margin-bottom:12px;
-
-display:inline-block;
-
-}
-
-
-.section-text{
-
-max-width:750px;
-
-margin:auto;
-
-font-size:1.05rem;
-
-color:var(--gray);
-
-}
-
-
-
-/*=============================
-CONTAINER
-=============================*/
-
-.container{
-
-width:90%;
-
-max-width:var(--container);
-
-margin:auto;
-
-}
-
-
-
-/*=============================
-TOP BAR
-=============================*/
-
-.top-bar{
-
-background:linear-gradient(90deg,#003A99,#0056D2);
-
-color:#fff;
-
-padding:10px 0;
-
-font-size:.92rem;
-
-}
-
-
-.top-bar .container{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:20px;
-
-}
-
-
-.top-left{
-
-display:flex;
-
-gap:25px;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-}
-
-
-.top-left span{
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-}
-
-
-.top-right{
-
-display:flex;
-
-gap:15px;
-
-}
-
-
-.top-right a{
-
-width:38px;
-
-height:38px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-border-radius:50%;
-
-background:rgba(255,255,255,.15);
-
-transition:var(--transition);
-
-}
-
-
-.top-right a:hover{
-
-background:var(--secondary);
-
-color:var(--dark);
-
-transform:translateY(-5px);
-
-}
-
-
-
-/*=============================
-HEADER
-=============================*/
-
-.header{
-
-position:sticky;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-background:rgba(255,255,255,.92);
-
-backdrop-filter:blur(15px);
-
-z-index:999;
-
-box-shadow:var(--shadow-sm);
-
-transition:.4s;
-
-}
-
-
-.header .container{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:18px 0;
-
-}
-
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-
-.logo img{
-
-width:70px;
-
-height:70px;
-
-border-radius:50%;
-
-object-fit:cover;
-
-box-shadow:var(--shadow);
-
-}
-
-
-.logo h2{
-
-font-size:1.5rem;
-
-color:var(--primary);
-
-font-weight:800;
-
-}
-
-
-.logo p{
-
-font-size:.9rem;
-
-margin-top:-4px;
-
-}
-
-
-
-/*=============================
-NAVIGATION
-=============================*/
-
-.nav-links{
-
-display:flex;
-
-align-items:center;
-
-gap:30px;
-
-}
-
-
-.nav-links li{
-
-position:relative;
-
-}
-
-
-.nav-links a{
-
-font-weight:600;
-
-transition:var(--transition);
-
-position:relative;
-
-padding:8px 0;
-
-}
-
-
-.nav-links a::after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-bottom:-5px;
-
-width:0;
-
-height:3px;
-
-background:var(--secondary);
-
-border-radius:30px;
-
-transition:.4s;
-
-}
-
-
-.nav-links a:hover{
-
-color:var(--primary);
-
-}
-
-
-.nav-links a:hover::after{
-
-width:100%;
-
-}
-
-
-.nav-links .active{
-
-color:var(--primary);
-
-}
-
-
-.nav-links .active::after{
-
-width:100%;
-
-}
-
-
-.menu-btn{
-
-display:none;
-
-font-size:1.7rem;
-
-cursor:pointer;
-
-color:var(--primary);
-
-}
-
-
-
-/*=============================
-BUTTONS
-=============================*/
-
-.btn{
-
-display:inline-flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:10px;
-
-padding:16px 34px;
-
-border-radius:50px;
-
-font-weight:700;
-
-transition:var(--transition);
-
-cursor:pointer;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-
-.btn-primary{
-
-background:linear-gradient(135deg,#0056D2,#2E7DFF);
-
-color:#fff;
-
-box-shadow:0 15px 35px rgba(0,86,210,.35);
-
-}
-
-
-.btn-primary:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 25px 45px rgba(0,86,210,.45);
-
-}
-
-
-.btn-secondary{
-
-background:#fff;
-
-color:var(--primary);
-
-border:2px solid var(--primary);
-
-}
-
-
-.btn-secondary:hover{
-
-background:var(--primary);
-
-color:#fff;
-
-transform:translateY(-6px);
-
-}
-
-
-.btn i{
-
-transition:.3s;
-
-}
-
-
-.btn:hover i{
-
-transform:translateX(5px);
-
-}
-
-
-
-/*=============================
-SECTION SPACING
-=============================*/
-
-section{
-
-padding:100px 0;
-
-}
-
-
-
-/*=============================
-UTILITY CLASSES
-=============================*/
-
-.text-center{
-
-text-align:center;
-
-}
-
-
-.mt-2{
-
-margin-top:20px;
-
-}
-
-
-.mt-3{
-
-margin-top:35px;
-
-}
-
-
-.mb-2{
-
-margin-bottom:20px;
-
-}
-
-
-.mb-3{
-
-margin-bottom:40px;
-
-}
-
-
-.shadow{
-
-box-shadow:var(--shadow);
-
-}
-
-
-.rounded{
-
-border-radius:var(--radius);
-
-}
-
-
-.bg-primary{
-
-background:var(--primary);
-
-color:#fff;
-
-}
-
-
-.bg-light{
-
-background:var(--light);
-
-}
-
-
-.text-primary{
-
-color:var(--primary);
-
-}
-
-
-.text-white{
-
-color:#fff;
-
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Academics | Fratam Junior School</title>
+<title>
+Academics | Fratam Junior School
+</title>
 
-<meta name="description" content="Discover the academic excellence at Fratam Junior School. We provide quality education from Nursery to Primary Seven in a nurturing and inspiring environment.">
+
+<meta name="description" content="
+Fratam Junior School Academics - Quality education from Nursery to Primary Seven.
+">
+
+
+<!-- GOOGLE FONT -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="
+https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+href="
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<!-- CSS -->
 
 <link rel="stylesheet" href="academics.css">
 
+
 </head>
+
+
 
 <body>
 
-<!-- ========================= -->
-<!-- TOP BAR -->
-<!-- ========================= -->
+
+<!-- ==========================
+TOP BAR
+========================== -->
 
 <div class="top-bar">
 
 <div class="container">
 
-<div class="top-left">
+
+<div class="contact-info">
 
 <span>
-<i class="fas fa-phone"></i>
-+256 XXX XXX XXX
+<i class="fa fa-phone"></i>
++256 700 000000
 </span>
 
+
 <span>
-<i class="fas fa-envelope"></i>
+<i class="fa fa-envelope"></i>
 info@fratamjuniorschool.com
 </span>
 
+
 </div>
 
-<div class="top-right">
+
+
+<div class="social-icons">
 
 <a href="#">
-<i class="fab fa-facebook-f"></i>
+<i class="fab fa-facebook"></i>
 </a>
 
 <a href="#">
@@ -807,532 +88,643 @@ info@fratamjuniorschool.com
 <i class="fab fa-youtube"></i>
 </a>
 
+
 </div>
+
 
 </div>
 
 </div>
 
-<!-- ========================= -->
-<!-- HEADER -->
-<!-- ========================= -->
+
+
+
+
+<!-- ==========================
+HEADER
+========================== -->
+
 
 <header class="header">
 
+
 <div class="container">
+
 
 <a href="index.html" class="logo">
 
-<img src="images/logo.png" alt="Fratam Junior School Logo">
+
+<img src="images/logo.png"
+alt="Fratam Junior School Logo">
+
 
 <div>
 
-<h2>Fratam Junior School</h2>
+<h2>
+Fratam Junior School
+</h2>
 
-<p>Learn • Grow • Excel</p>
+
+<p>
+Learn • Grow • Excel
+</p>
+
 
 </div>
 
+
 </a>
+
+
+
 
 <nav>
 
+
 <ul class="nav-links">
 
-<li><a href="index.html">Home</a></li>
 
-<li><a href="about.html">About</a></li>
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
 
-<li><a class="active" href="academics.html">Academics</a></li>
 
-<li><a href="admissions.html">Admissions</a></li>
+<li>
+<a href="about.html">
+About
+</a>
+</li>
 
-<li><a href="gallery.html">Gallery</a></li>
 
-<li><a href="contact.html">Contact</a></li>
+
+<li>
+<a class="active" href="academics.html">
+Academics
+</a>
+</li>
+
+
+
+<li>
+<a href="admissions.html">
+Admissions
+</a>
+</li>
+
+
+
+<li>
+<a href="gallery.html">
+Gallery
+</a>
+</li>
+
+
+
+<li>
+<a href="contact.html">
+Contact
+</a>
+</li>
+
+
 
 </ul>
 
+
 </nav>
+
+
+
 
 <div class="menu-btn">
 
-<i class="fas fa-bars"></i>
+<i class="fa fa-bars"></i>
 
 </div>
 
+
+
 </div>
+
 
 </header>
 
-<!-- ========================= -->
-<!-- HERO SECTION -->
-<!-- ========================= -->
+
+
+
+
+
+
+<!-- ==========================
+HERO SECTION
+========================== -->
+
 
 <section class="hero">
 
+
 <div class="hero-overlay"></div>
+
+
 
 <div class="container hero-content">
 
+
+
 <div class="hero-text">
 
-<span class="hero-badge">
 
-<i class="fas fa-graduation-cap"></i>
+<span class="badge">
 
-Academic Excellence Since Our Beginning
+<i class="fa fa-graduation-cap"></i>
+
+Academic Excellence
 
 </span>
 
+
+
 <h1>
 
-Building Bright Minds for a Better Future
+Building Bright Minds
+For A Better Future
 
 </h1>
 
+
+
 <p>
 
-At Fratam Junior School, we nurture learners from Nursery to Primary Seven through quality education, modern teaching methods, Christian values, and a caring environment that prepares every child for lifelong success.
+
+At Fratam Junior School, we provide quality,
+learner-centered education that develops
+confidence, creativity, discipline and academic
+excellence.
+
 
 </p>
 
+
+
 <div class="hero-buttons">
 
-<a href="#curriculum" class="btn btn-primary">
 
-Explore Curriculum
+<a href="#academics"
+class="btn btn-primary">
 
-<i class="fas fa-arrow-right"></i>
+Explore Academics
+
+<i class="fa fa-arrow-right"></i>
 
 </a>
 
-<a href="admissions.html" class="btn btn-secondary">
+
+
+<a href="admissions.html"
+class="btn btn-secondary">
 
 Apply Now
 
 </a>
 
+
 </div>
+
+
+
 
 <div class="hero-stats">
 
-<div class="stat-card">
 
-<h2>500+</h2>
+<div class="stat">
 
-<p>Happy Learners</p>
+<h3>
+500+
+</h3>
 
-</div>
-
-<div class="stat-card">
-
-<h2>25+</h2>
-
-<p>Qualified Teachers</p>
+<p>
+Learners
+</p>
 
 </div>
 
-<div class="stat-card">
 
-<h2>100%</h2>
 
-<p>Curriculum Coverage</p>
 
-</div>
+<div class="stat">
 
-<div class="stat-card">
+<h3>
+25+
+</h3>
 
-<h2>98%</h2>
-
-<p>PLE Success Rate</p>
-
-</div>
+<p>
+Teachers
+</p>
 
 </div>
 
+
+
+
+
+<div class="stat">
+
+<h3>
+98%
+</h3>
+
+<p>
+PLE Success
+</p>
+
 </div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
 
 <div class="hero-image">
 
-<img src="images/academics-hero.png"
-alt="Fratam Junior School Pupils">
 
-<div class="floating-card card-one">
+<img src="images/academics-hero.jpg"
+alt="Students learning">
 
-<i class="fas fa-book-open"></i>
 
-<div>
 
-<h4>Quality Learning</h4>
+<div class="floating-card">
 
-<p>Modern Curriculum</p>
 
-</div>
+<i class="fa fa-book"></i>
 
-</div>
-
-<div class="floating-card card-two">
-
-<i class="fas fa-award"></i>
 
 <div>
 
-<h4>Academic Excellence</h4>
+<h4>
+Quality Learning
+</h4>
 
-<p>Outstanding Performance</p>
-
-</div>
-
-</div>
-
-<div class="floating-card card-three">
-
-<i class="fas fa-laptop"></i>
-
-<div>
-
-<h4>ICT Lessons</h4>
-
-<p>Digital Skills</p>
+<p>
+Modern Curriculum
+</p>
 
 </div>
 
-</div>
 
 </div>
 
-</div>
 
-<div class="wave">
-
-<svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 1440 320">
-
-<path fill="#ffffff"
-fill-opacity="1"
-d="M0,96L60,101.3C120,107,240,117,360,138.7C480,160,600,192,720,192C840,192,960,160,1080,149.3C1200,139,1320,149,1380,154.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
-
-</path>
-
-</svg>
 
 </div>
+
+
+
+</div>
+
 
 </section>
 
-<!-- ========================= -->
-<!-- NEXT SECTION -->
-<!-- Academic Philosophy -->
-<!-- Continue in Chunk 2 -->
-<!-- ========================= --><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRATAM Junior School | Excelling is Our Goal</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS RESET & BRAND VARIABLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
 
-        :root {
-            --primary-navy: #0F2C59;
-            --secondary-gold: #C5A059;
-            --accent-blue: #00A8E8;
-            --light-bg: #F8FAFC;
-            --dark-text: #1E293B;
-            --white: #FFFFFF;
-        }
 
-        body {
-            color: var(--dark-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
 
-        /* HEADER & NAVIGATION */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.6rem 2rem;
-        }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
 
-        .badge-icon {
-            height: 55px;
-            width: auto;
-        }
 
-        .brand-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            line-height: 1.2;
-        }
+<!-- ==========================
+ACADEMIC INTRODUCTION
+========================== -->
 
-        .brand-name span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--secondary-gold);
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
+<section class="academic-intro"
+id="academics">
 
-        .nav-links a {
-            font-weight: 500;
-            color: var(--dark-text);
-            transition: color 0.3s;
-        }
 
-        .nav-links a:hover {
-            color: var(--secondary-gold);
-        }
+<div class="container">
 
-        .btn-enroll {
-            background-color: var(--primary-navy);
-            color: var(--white) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 25px;
-            border: 2px solid var(--secondary-gold);
-            font-weight: 600 !important;
-            transition: all 0.3s ease;
-        }
 
-        .btn-enroll:hover {
-            background-color: var(--secondary-gold);
-            color: var(--primary-navy) !important;
-        }
+<div class="section-header">
 
-        /* HERO SLIDER SECTION WITH BACKGROUND IMAGES */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            overflow: hidden;
-            background-color: var(--primary-navy);
-        }
 
-        .slider {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            animation: slideAnimation 15s infinite ease-in-out;
-        }
+<span>
+OUR ACADEMICS
+</span>
 
-        .slide {
-            width: 100vw;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
 
-        /* Dark overlay over hero images to make text pop */
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(15, 44, 89, 0.65), rgba(15, 44, 89, 0.85));
-            z-index: 1;
-        }
+<h2>
 
-        /* HERO BACKGROUND IMAGES */
-        /* Slide 1 uses your uploaded students picture */
-        .slide-1 { 
-            background-image: url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png'); 
-        }
-        /* Slide 2 & 3 use high-res educational activity images */
-        .slide-2 { 
-            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80'); 
-        }
-        .slide-3 { 
-            background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80'); 
-        }
+Learning With Purpose
 
-        .slide-content {
-            z-index: 2;
-            max-width: 850px;
-            padding: 0 2rem;
-            color: var(--white);
-        }
+</h2>
 
-        .hero-badge {
-            height: 120px;
-            width: auto;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-        }
 
-        .slide-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
+<p>
 
-        .slide-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
+We provide a balanced education that prepares
+learners academically, socially and morally.
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
+</p>
 
-        .btn-primary {
-            background-color: var(--secondary-gold);
-            color: var(--primary-navy);
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: 0.3s;
-        }
 
-        .btn-secondary {
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+</div>
 
-        .btn-primary:hover { background-color: #d4af66; }
-        .btn-secondary:hover { background-color: var(--white); color: var(--primary-navy); }
 
-        /* KEYFRAME SLIDE ANIMATION */
-        @keyframes slideAnimation {
-            0%, 28% { transform: translateX(0%); }
-            33%, 61% { transform: translateX(-100vw); }
-            66%, 94% { transform: translateX(-200vw); }
-            100% { transform: translateX(0%); }
-        }
 
-        /* FEATURES SECTION */
-        .features {
-            max-width: 1200px;
-            margin: -4rem auto 4rem;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 10;
-        }
 
-        .feature-card {
-            background-color: var(--white);
-            padding: 2.5rem 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-bottom: 4px solid var(--secondary-gold);
-            transition: transform 0.3s ease;
-        }
 
-        .feature-card:hover { transform: translateY(-8px); }
-        .feature-card h3 { color: var(--primary-navy); margin-bottom: 0.8rem; font-size: 1.25rem; }
+<div class="intro-grid">
 
-        /* ABOUT SECTION */
-        .about { background-color: var(--light-bg); padding: 5rem 2rem; }
-        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .about-text h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 1rem; }
-        .about-text p { margin-bottom: 1.2rem; color: #4A5568; }
 
-        /* FOOTER */
-        footer { background-color: var(--primary-navy); color: var(--white); padding: 4rem 2rem 1.5rem; }
-        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-col h4 { color: var(--secondary-gold); margin-bottom: 1.2rem; font-size: 1.1rem; }
-        .footer-col p, .footer-col li { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.6rem; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7; }
+<div class="intro-image">
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 1rem; }
-            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-            .hero { height: 70vh; }
-            .slide-content h1 { font-size: 2rem; }
-            .hero-badge { height: 80px; }
-            .about-container { grid-template-columns: 1fr; }
-            .hero-buttons { flex-direction: column; }
-        }
-    </style>
-</head>
-<body>
 
-    <!-- NAVIGATION BAR -->
-    <header>
-        <nav class="navbar">
-            <div class="brand-logo">
-                <!-- SVG Badge -->
-                <svg class="badge-icon" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="12"/>
-                    <path d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z" fill="#FFFFFF"/>
-                    <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="160" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <rect x="75" y="255" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <path d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="4"/>
-                    <text x="200" y="375" font-family="'Poppins', sans-serif" font-weight="bold" font-size="22" fill="#FFFFFF" text-anchor="middle">Excelling is our goal</text>
-                    <text x="200" y="105" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" fill="#0F2C59" text-anchor="middle">FRATAM</text>
-                    <text x="200" y="135" font-family="'Poppins', sans-serif" font-weight="600" font-size="18" fill="#0F2C59" text-anchor="middle" letter-spacing="3">JUNIOR SCHOOL</text>
-                </svg>
-                <div class="brand-name">
-                    FRATAM
-                    <span>JUNIOR SCHOOL</span>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="HOME PAGE.html">Home</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="Academics.html">Academics</a></li>
-                <li><a href="Contact">Contact</a></li>
-                <li><a href="Apply.html" class="btn-enroll">Enroll Now</a></li>
-            </ul>
-        </nav>
-    </header>
+<img src="images/classroom.jpg"
+alt="Classroom learning">
+
+
+</div>
+
+
+
+
+
+<div class="intro-content">
+
+
+<h3>
+
+A Strong Foundation For Success
+
+</h3>
+
+
+
+<p>
+
+
+Our academic programme follows the Uganda
+National Curriculum while encouraging
+creativity, problem solving and practical learning.
+
+
+</p>
+
+
+
+
+<ul>
+
+
+<li>
+
+<i class="fa fa-check"></i>
+
+Qualified and caring teachers
+
+</li>
+
+
+
+<li>
+
+<i class="fa fa-check"></i>
+
+Modern teaching methods
+
+</li>
+
+
+
+<li>
+
+<i class="fa fa-check"></i>
+
+ICT integrated learning
+
+</li>
+
+
+
+<li>
+
+<i class="fa fa-check"></i>
+
+Continuous assessment
+
+</li>
+
+
+</ul>
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+WHY CHOOSE US
+========================== -->
+
+
+<section class="why-us">
+
+
+<div class="container">
+
+
+
+<div class="section-header">
+
+
+<span>
+WHY CHOOSE US
+</span>
+
+
+<h2>
+
+Excellent Academic Environment
+
+</h2>
+
+
+<p>
+
+We create an environment where every learner
+can discover their full potential.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="features-grid">
+
+
+
+<div class="feature-card">
+
+
+<i class="fa fa-book-open"></i>
+
+
+<h3>
+
+Quality Curriculum
+
+</h3>
+
+
+<p>
+
+Following the national curriculum with enriched
+learning experiences.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa fa-user-graduate"></i>
+
+
+<h3>
+
+Experienced Teachers
+
+</h3>
+
+
+<p>
+
+Dedicated teachers who guide learners to success.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa fa-computer"></i>
+
+
+<h3>
+
+ICT Learning
+
+</h3>
+
+
+<p>
+
+Preparing learners with modern digital skills.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="feature-card">
+
+
+<i class="fa fa-flask"></i>
+
+
+<h3>
+
+Practical Learning
+
+</h3>
+
+
+<p>
+
+Encouraging experiments, projects and creativity.
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- MORE SECTIONS CONTINUE IN PART 2 -->
+
+
 
 </body>
+
 </html>
