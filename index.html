@@ -1,5 +1,815 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FRATAM Junior School | Gallery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+
+:root{
+
+--navy:#0F2C59;
+--gold:#C5A059;
+--blue:#00A8E8;
+--white:#fff;
+--light:#F8FAFC;
+
+}
+
+
+body{
+
+background:var(--light);
+color:#1E293B;
+
+}
+
+
+a{
+
+text-decoration:none;
+color:inherit;
+
+}
+
+
+/* HEADER */
+
+header{
+
+background:white;
+position:sticky;
+top:0;
+z-index:100;
+box-shadow:0 3px 15px rgba(0,0,0,.1);
+
+}
+
+
+.navbar{
+
+max-width:1200px;
+margin:auto;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+
+.logo{
+
+font-size:28px;
+font-weight:800;
+color:var(--navy);
+
+}
+
+
+.logo span{
+
+display:block;
+font-size:12px;
+letter-spacing:2px;
+color:var(--gold);
+
+}
+
+
+
+.nav-links{
+
+display:flex;
+gap:25px;
+
+}
+
+
+
+.nav-links a{
+
+font-weight:500;
+
+}
+
+
+
+.nav-links a:hover{
+
+color:var(--gold);
+
+}
+
+
+
+
+
+/* HERO */
+
+
+.hero{
+
+
+height:450px;
+
+background:
+
+linear-gradient(
+rgba(15,44,89,.75),
+rgba(15,44,89,.75)
+),
+
+url("gallery-bg.jpg");
+
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+
+
+}
+
+
+
+.hero h1{
+
+font-size:55px;
+font-weight:800;
+
+}
+
+
+
+.hero p{
+
+font-size:20px;
+margin-top:15px;
+
+}
+
+
+
+/* STATS */
+
+
+.stats{
+
+max-width:1100px;
+margin:-50px auto 60px;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+padding:20px;
+
+}
+
+
+.stat{
+
+background:white;
+padding:30px;
+text-align:center;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+
+
+.stat h2{
+
+color:var(--gold);
+font-size:40px;
+
+}
+
+
+
+.stat p{
+
+color:var(--navy);
+font-weight:600;
+
+}
+
+
+
+
+
+/* FILTER BUTTONS */
+
+
+.gallery-section{
+
+padding:50px 8%;
+
+}
+
+
+.title{
+
+text-align:center;
+margin-bottom:35px;
+
+}
+
+
+.title h2{
+
+font-size:40px;
+color:var(--navy);
+
+}
+
+
+
+.filters{
+
+text-align:center;
+margin-bottom:40px;
+
+}
+
+
+
+.filters button{
+
+padding:12px 25px;
+margin:5px;
+
+border:none;
+background:var(--navy);
+color:white;
+
+border-radius:30px;
+cursor:pointer;
+
+}
+
+
+
+.filters button:hover{
+
+background:var(--gold);
+color:var(--navy);
+
+}
+
+
+
+
+
+/* GALLERY */
+
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+
+}
+
+
+
+.item{
+
+position:relative;
+overflow:hidden;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+
+
+.item img,
+.item video{
+
+width:100%;
+height:260px;
+object-fit:cover;
+
+transition:.5s;
+
+}
+
+
+
+.item:hover img{
+
+transform:scale(1.1);
+
+}
+
+
+
+.overlay{
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+padding:25px;
+
+background:
+
+linear-gradient(
+transparent,
+rgba(0,0,0,.8)
+);
+
+color:white;
+
+}
+
+
+
+
+/* VIDEO AREA */
+
+
+.video-area{
+
+background:white;
+
+padding:60px 8%;
+
+}
+
+
+
+.video-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+}
+
+
+
+.video-grid video{
+
+width:100%;
+border-radius:15px;
+
+}
+
+
+
+
+
+/* FOOTER */
+
+
+footer{
+
+background:var(--navy);
+color:white;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+
+
+@media(max-width:700px){
+
+
+.navbar{
+
+flex-direction:column;
+
+}
+
+
+.hero h1{
+
+font-size:35px;
+
+}
+
+
+.nav-links{
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<header>
+
+
+<div class="navbar">
+
+
+<div class="logo">
+
+FRATAM
+
+<span>JUNIOR SCHOOL</span>
+
+</div>
+
+
+
+<div class="nav-links">
+
+
+<a href="index.html">
+Home
+</a>
+
+
+<a href="About.html">
+About
+</a>
+
+
+<a href="Academics.html">
+Academics
+</a>
+
+
+<a href="Gallery.html">
+Gallery
+</a>
+
+
+<a href="Contact.html">
+Contact
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</header>
+
+
+
+
+
+<section class="hero">
+
+
+<div>
+
+<h1>
+Our School Gallery
+</h1>
+
+<p>
+Discover moments of excellence, creativity and achievement
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="stats">
+
+
+<div class="stat">
+
+<h2>
+500+
+</h2>
+
+<p>
+Happy Learners
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<h2>
+30+
+</h2>
+
+<p>
+School Events
+</p>
+
+</div>
+
+
+
+<div class="stat">
+
+<h2>
+20+
+</h2>
+
+<p>
+Qualified Teachers
+</p>
+
+</div>
+
+
+
+<div class="stat">
+
+<h2>
+10+
+</h2>
+
+<p>
+Years Excellence
+</p>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="gallery-section">
+
+
+<div class="title">
+
+<h2>
+School Memories
+</h2>
+
+</div>
+
+
+
+<div class="filters">
+
+<button>
+All
+</button>
+
+<button>
+Academics
+</button>
+
+<button>
+Sports
+</button>
+
+<button>
+Events
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="gallery">
+
+
+
+<div class="item">
+
+<img src="students.jpg">
+
+<div class="overlay">
+
+<h3>
+Students Learning
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="item">
+
+<img src="classroom.jpg">
+
+<div class="overlay">
+
+<h3>
+Modern Classrooms
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="item">
+
+<img src="sports.jpg">
+
+<div class="overlay">
+
+<h3>
+Sports Activities
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="item">
+
+<img src="science.jpg">
+
+<div class="overlay">
+
+<h3>
+Science Practical
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="item">
+
+<img src="graduation.jpg">
+
+<div class="overlay">
+
+<h3>
+Graduation Ceremony
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+<div class="item">
+
+<img src="teachers.jpg">
+
+<div class="overlay">
+
+<h3>
+Our Teachers
+</h3>
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="video-area">
+
+
+<div class="title">
+
+<h2>
+School Videos
+</h2>
+
+</div>
+
+
+
+<div class="video-grid">
+
+
+<video controls>
+
+<source src="school-tour.mp4">
+
+</video>
+
+
+
+<video controls>
+
+<source src="event.mp4">
+
+</video>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<footer>
+
+© 2026 FRATAM Junior School | Excelling is Our Goal
+
+</footer>
+
+
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
