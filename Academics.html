@@ -1,4 +1,135 @@
-<!DOCTYPE html>
+import React, { useState } from 'react';
+import { BookOpen, Award, Users, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
+
+export default function AcademicPage() {
+  const [activeTab, setActiveTab] = useState('primary');
+
+  const levels = {
+    nursery: {
+      title: 'Nursery & Pre-Primary',
+      ages: 'Ages 3 - 5',
+      description: 'Foundational play-based learning focused on social skills, language development, basic motor skills, and early literacy.',
+      subjects: ['Early Reading & Phonics', 'Basic Numeracy', 'Creative Arts & Craft', 'Physical Development', 'Environmental Awareness']
+    },
+    lowerPrimary: {
+      title: 'Lower Primary (P1 - P3)',
+      ages: 'Ages 6 - 8',
+      description: 'Building strong literacy and numeracy foundations alongside social studies and science basics.',
+      subjects: ['English Literacy', 'Mathematics', 'Integrated Science', 'Social Studies', 'Local Language & Culture', 'Physical Education']
+    },
+    primary: {
+      title: 'Upper Primary (P4 - P7)',
+      ages: 'Ages 9 - 13',
+      description: 'Rigorous academic preparation aligning with the UNEB primary syllabus, emphasizing analytical thinking and exam readiness.',
+      subjects: ['English Language', 'Mathematics', 'Basic Science', 'Social Studies & Religious Education', 'ICT & Digital Skills']
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      {/* 1. HERO SECTION */}
+      <section className="bg-blue-900 text-white py-16 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <span className="bg-blue-700 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+            Academic Excellence
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-4">
+            Empowering Minds, Shaping Futures
+          </h1>
+          <p className="text-blue-100 text-lg max-w-2xl mx-auto">
+            At Fratam Junior School, we offer a comprehensive curriculum designed to build academic excellence, moral integrity, and practical life skills.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. ACADEMIC HIGHLIGHTS / STATS */}
+      <section className="max-w-6xl mx-auto -mt-8 px-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-600 flex items-center space-x-4">
+          <BookOpen className="w-10 h-10 text-blue-600" />
+          <div>
+            <h3 className="font-bold text-gray-900">National Curriculum</h3>
+            <p className="text-sm text-gray-600">Aligned with primary education standards</p>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500 flex items-center space-x-4">
+          <Users className="w-10 h-10 text-yellow-500" />
+          <div>
+            <h3 className="font-bold text-gray-900">Small Class Sizes</h3>
+            <p className="text-sm text-gray-600">Personalized teacher attention</p>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-xl shadow-md border-t-4 border-green-600 flex items-center space-x-4">
+          <Award className="w-10 h-10 text-green-600" />
+          <div>
+            <h3 className="font-bold text-gray-900">Holistic Growth</h3>
+            <p className="text-sm text-gray-600">Academics, sports & moral guidance</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CURRICULUM LEVELS TAB SYSTEM */}
+      <section className="max-w-6xl mx-auto py-16 px-6">
+        <h2 className="text-3xl font-bold text-center mb-8">Academic Programs</h2>
+        
+        {/* Tabs */}
+        <div className="flex justify-center space-x-2 border-b border-gray-200 mb-8">
+          {Object.keys(levels).map((key) => (
+            <button
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`py-3 px-6 font-semibold border-b-2 transition-all ${
+                activeTab === key
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              {levels[key].title.split(' ')[0]}
+            </button>
+          ))}
+        </div>
+
+        {/* Tab Content */}
+        <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 grid md:grid-cols-2 gap-8">
+          <div>
+            <span className="text-sm font-semibold text-blue-600">{levels[activeTab].ages}</span>
+            <h3 className="text-2xl font-bold text-gray-900 mt-1 mb-4">{levels[activeTab].title}</h3>
+            <p className="text-gray-600 mb-6 leading-relaxed">{levels[activeTab].description}</p>
+            <a href="/admissions" className="inline-flex items-center text-blue-600 font-semibold hover:underline">
+              Enroll in this level <ArrowRight className="w-4 h-4 ml-1" />
+            </a>
+          </div>
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-4">Key Learning Areas:</h4>
+            <ul className="space-y-3">
+              {levels[activeTab].subjects.map((subj, idx) => (
+                <li key={idx} className="flex items-center text-gray-700">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                  {subj}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. CALL TO ACTION */}
+      <section className="bg-blue-600 text-white py-12 px-6 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Join Fratam Junior School?</h2>
+        <p className="mb-6 text-blue-100 max-w-xl mx-auto">
+          Contact our admissions office today or download the syllabus to learn more.
+        </p>
+        <div className="flex justify-center gap-4">
+          <a href="/admissions" className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">
+            Apply Now
+          </a>
+          <a href="/contact" className="border border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700">
+            Contact Us
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}<!DOCTYPE html>
 <html lang="en">
 
 <head>
