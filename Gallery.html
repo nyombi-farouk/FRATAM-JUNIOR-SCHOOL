@@ -1,1 +1,289 @@
-Gallery.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | FRATAM JUNIOR SCHOOL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+:root{
+--primary:#0b57d0;
+--yellow:#ffb703;
+}
+
+body{
+background:#f8fafc;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:white;
+padding:15px 0;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 5px 20px #ddd;
+}
+
+header .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+color:#111;
+}
+
+.logo img{
+width:60px;
+}
+
+.logo h2{
+color:var(--primary);
+}
+
+nav{
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+nav a.active{
+color:var(--primary);
+}
+
+#menuBtn{
+display:none;
+font-size:25px;
+background:none;
+border:none;
+}
+
+/* HERO */
+
+.hero{
+height:300px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+background:linear-gradient(rgba(11,87,208,.75),rgba(11,87,208,.75)),
+url("images/school.jpg");
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:45px;
+}
+
+.hero p{
+margin-top:15px;
+font-size:18px;
+}
+
+/* GALLERY */
+
+.gallery{
+padding:70px 5%;
+}
+
+.gallery h2{
+text-align:center;
+color:var(--primary);
+margin-bottom:40px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.gallery-grid img{
+width:100%;
+height:230px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+transition:.3s;
+cursor:pointer;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:60px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+#menuBtn{
+display:block;
+}
+
+nav{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:white;
+display:none;
+flex-direction:column;
+padding:20px;
+}
+
+nav.show{
+display:flex;
+}
+
+.hero h1{
+font-size:32px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container">
+
+<a href="index.html" class="logo">
+
+<img src="ChatGPT Image Aug 2, 2026, 08_37_15 AM.png">
+
+<div>
+<h2>FRATAM</h2>
+<span>JUNIOR SCHOOL</span>
+</div>
+
+</a>
+
+<button id="menuBtn">
+<i class="fas fa-bars"></i>
+</button>
+
+<nav id="navMenu">
+
+<a href="index.html">Home</a>
+
+<a href="About.html">About</a>
+
+<a href="Academics.html">Academics</a>
+
+<a href="Gallery.html" class="active">Gallery</a>
+
+<a href="Contact.html">Contact</a>
+
+<a href="Apply.html">Apply Now</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<h1>School Gallery</h1>
+
+<p>Explore moments from learning, sports, music, and school events.</p>
+
+</div>
+
+</section>
+
+<section class="gallery">
+
+<h2>Our School Memories</h2>
+
+<div class="gallery-grid">
+
+<img src="images/gallery1.jpg" alt="Gallery Image 1">
+
+<img src="images/gallery2.jpg" alt="Gallery Image 2">
+
+<img src="images/gallery3.jpg" alt="Gallery Image 3">
+
+<img src="images/gallery4.jpg" alt="Gallery Image 4">
+
+<img src="images/gallery5.jpg" alt="Gallery Image 5">
+
+<img src="images/gallery6.jpg" alt="Gallery Image 6">
+
+<img src="images/gallery7.jpg" alt="Gallery Image 7">
+
+<img src="images/gallery8.jpg" alt="Gallery Image 8">
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 FRATAM JUNIOR SCHOOL. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+const menuBtn=document.getElementById("menuBtn");
+const navMenu=document.getElementById("navMenu");
+
+menuBtn.onclick=()=>{
+navMenu.classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>
