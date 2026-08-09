@@ -182,81 +182,7 @@
 
 
         /* =========================================
-           MODERN MOBILE TOGGLE
-        ========================================= */
-
-        .mobile-toggle {
-            display: none;
-
-            width: 48px;
-            height: 48px;
-
-            border: 1px solid rgba(15, 44, 89, 0.12);
-
-            background: var(--primary-navy);
-
-            border-radius: 12px;
-
-            cursor: pointer;
-
-            padding: 0;
-
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            gap: 5px;
-
-            position: relative;
-
-            box-shadow:
-                0 5px 15px rgba(15, 44, 89, 0.18);
-
-            transition:
-                background 0.3s ease,
-                transform 0.25s ease,
-                box-shadow 0.3s ease;
-
-            z-index: 1101;
-        }
-
-        .mobile-toggle:hover {
-            background: var(--secondary-gold);
-
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 8px 20px rgba(15, 44, 89, 0.25);
-        }
-
-        .mobile-toggle:active {
-            transform: scale(0.94);
-        }
-
-        .mobile-toggle:focus-visible {
-            outline: 3px solid var(--accent-blue);
-            outline-offset: 3px;
-        }
-
-        .mobile-toggle span {
-            display: block;
-
-            width: 25px;
-            height: 3px;
-
-            background: var(--white);
-
-            border-radius: 10px;
-
-            transform-origin: center;
-
-            transition:
-                transform 0.35s ease,
-                opacity 0.25s ease,
-                width 0.3s ease;
-        }
-
-
+        
         /* =========================================
            HERO SECTION
         ========================================= */
@@ -270,26 +196,7 @@
             background-color: var(--primary-navy);
         }
 
-        .slider {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            animation: slideAnimation 15s infinite ease-in-out;
-        }
-
-        .slide {
-            width: 100vw;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-
-            background-size: cover;
-            background-position: center;
-        }
-
+        
 
         /* =========================================
            HERO OVERLAY
@@ -324,17 +231,6 @@
             background-image:
                 url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png');
         }
-
-        .slide-2 {
-            background-image:
-                url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80');
-        }
-
-        .slide-3 {
-            background-image:
-                url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80');
-        }
-
 
         /* =========================================
            HERO CONTENT
