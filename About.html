@@ -1378,83 +1378,454 @@ Our mission is to help every learner learn, grow, create, and excel.
     </div>
 
 <div>
-<h2>Core values</h2>
-      <h2>Excellence: </h2>
-We strive for high standards in academics, character, talents, and every area of school life.
-<h2>Discipline: </h2>
-We encourage self-control, responsibility, respect, and positive behavior.
+```css
+/* =========================================================
+   FRATAM JUNIOR SCHOOL
+   CORE VALUES & WHY CHOOSE US
+   ========================================================= */
 
-      <h2>Integrity:</h2>
-We promote honesty, truthfulness, fairness, and doing the right thing even when no one is watching.
+/* ---------- SECTION CONTAINER ---------- */
 
-      <h2>Respect:</h2>
-We value every learner, teacher, parent, and member of our community.
+.values-section,
+.why-choose-section {
+    width: 100%;
+    padding: 80px 7%;
+    background: #f8fafc;
+}
 
-      <h2>Creativity & Innovation:
-      </h2>
-We encourage learners to think critically, explore new ideas, solve problems, and express their talents.
+.values-section {
+    background: #ffffff;
+}
 
-      <h2>Responsibility:
-      </h2>
-We teach learners to take ownership of their actions, studies, relationships, and environment.
+.values-section .container,
+.why-choose-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-      <h2>Confidence:
-      </h2>
-We nurture learners who believe in themselves and have the courage to participate, lead, and overcome challenges.
 
-      <h2>Teamwork:
-      </h2>
-We encourage cooperation, sharing, communication, and working together toward common goals.
+/* ---------- SECTION HEADINGS ---------- */
 
-      <h2>Hard Work & Perseverance: 
-      </h2>
-We believe that determination, commitment, and consistent effort are essential to achieving success.
+.values-section > h1,
+.why-choose-section > h1,
+.values-section .section-title,
+.why-choose-section .section-title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 800;
+    color: #123b6d;
+    margin-bottom: 15px;
+    position: relative;
+}
 
-      <h2>Compassion & Kindness:
-      </h2>
-We encourage learners to care for others, support one another, and contribute positively to society.</p>
-      <h2>Why choose</h2>
-<p>At FRATAM Junior School, we believe that every child has unique potential. Our goal is to provide a strong foundation that enables learners to excel academically, develop good character, discover their talents, and confidently prepare for the future.
+.values-section > h1::after,
+.why-choose-section > h1::after,
+.values-section .section-title::after,
+.why-choose-section .section-title::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin: 14px auto 45px;
+    background: #f5b400;
+    border-radius: 20px;
+}
 
-<h2>Quality Education</h2>
 
-We provide quality, learner-centered education that builds strong academic foundations and encourages curiosity, critical thinking, and a love for learning.
+/* =========================================================
+   CORE VALUES
+   ========================================================= */
 
-<h2>Dedicated & Supportive Teachers</h2>
+.core-values,
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
 
-Our teachers are committed to understanding each learner's needs and providing guidance, encouragement, and support throughout their learning journey.
 
-<h2>Safe & Caring Environment</h2>
+/* VALUE CARD */
 
-We provide a secure, welcoming, and supportive environment where learners feel valued, respected, confident, and ready to learn.
+.value-card {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 16px;
+    border: 1px solid #e8edf3;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
 
-<h2>Discipline & Good Character</h2>
+.value-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #f5b400;
+}
 
-We emphasize discipline, integrity, respect, responsibility, and good manners to help learners become responsible and trustworthy members of society.
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
 
-<h2>Creativity & Talent Development</h2>
 
-We encourage learners to explore their talents and creativity through sports, music, art, clubs, leadership, and other co-curricular activities.
+/* VALUE TITLE */
 
-<h2>Confidence & Leadership</h2>
+.value-card h2,
+.core-values h2 {
+    font-size: 21px;
+    font-weight: 750;
+    color: #123b6d;
+    margin: 10px 0 14px;
+}
 
-We give learners opportunities to participate, communicate, lead, make decisions, and develop the confidence needed to face challenges.
 
-<h2>Strong Parent-School Partnership</h2>
+/* VALUE DESCRIPTION */
 
-We believe that children achieve more when parents, teachers, and the school work together. We encourage open communication and active parental involvement.
+.value-card p,
+.core-values p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #5f6b78;
+    margin: 0;
+}
 
-<h2>Holistic Child Development</h2>
 
-We focus not only on academic performance but also on social, emotional, physical, moral, and creative development.
+/* =========================================================
+   YOUR EXISTING CORE VALUE HTML
+   Supports h2 + text even without cards
+   ========================================================= */
 
-<h2>Our Promise</h2>
+.values-section h2 {
+    color: #123b6d;
+    font-size: 22px;
+    font-weight: 750;
+    margin-top: 30px;
+    margin-bottom: 8px;
+}
 
-At FRATAM Junior School, we don't just prepare learners for examinations—we prepare them for life.
+.values-section h2::before {
+    content: "✓";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #123b6d;
+    color: #ffffff;
+    font-size: 15px;
+}
 
-FRATAM JUNIOR SCHOOL — Excelling is Our Goal.</p>
+.values-section p {
+    color: #5f6b78;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   WHY CHOOSE US
+   ========================================================= */
+
+.why-choose-section {
+    background: linear-gradient(
+        135deg,
+        #f8fafc 0%,
+        #eef5fb 100%
+    );
+}
+
+
+/* WHY CHOOSE GRID */
+
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+
+/* WHY CHOOSE CARD */
+
+.why-card {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 18px;
+    border: 1px solid #e7edf4;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.why-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+
+/* CARD TOP LINE */
+
+.why-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: #f5b400;
+    border-radius: 18px 0 0 18px;
+}
+
+
+/* WHY CARD TITLE */
+
+.why-card h2,
+.why-card h3 {
+    color: #123b6d;
+    font-size: 20px;
+    font-weight: 750;
+    margin-bottom: 12px;
+}
+
+
+/* WHY CARD TEXT */
+
+.why-card p {
+    color: #5f6b78;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0;
+}
+
+
+/* =========================================================
+   WHY CHOOSE US - PLAIN TEXT VERSION
+   If your HTML does not use cards
+   ========================================================= */
+
+.why-choose-section > p {
+    max-width: 850px;
+    margin: 0 auto 25px;
+    color: #5f6b78;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   OUR PROMISE
+   ========================================================= */
+
+.our-promise {
+    max-width: 950px;
+    margin: 60px auto 0;
+    padding: 45px 40px;
+    text-align: center;
+    background: #123b6d;
+    color: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 15px 40px rgba(18, 59, 109, 0.2);
+}
+
+.our-promise h2 {
+    font-size: 30px;
+    margin-bottom: 18px;
+    color: #f5b400;
+}
+
+.our-promise p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 0 auto 15px;
+    color: #ffffff;
+}
+
+.our-promise strong {
+    color: #f5b400;
+}
+
+
+/* =========================================================
+   FINAL SCHOOL TAGLINE
+   ========================================================= */
+
+.school-tagline {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.school-tagline h3 {
+    font-size: 25px;
+    font-weight: 800;
+    color: #123b6d;
+}
+
+.school-tagline span {
+    color: #f5b400;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .core-values,
+    .values-grid,
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .values-section,
+    .why-choose-section {
+        padding: 65px 5%;
+    }
+
+    .values-section > h1,
+    .why-choose-section > h1,
+    .values-section .section-title,
+    .why-choose-section .section-title {
+        font-size: 32px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .values-section,
+    .why-choose-section {
+        padding: 55px 20px;
+    }
+
+    .values-section > h1,
+    .why-choose-section > h1,
+    .values-section .section-title,
+    .why-choose-section .section-title {
+        font-size: 28px;
+    }
+
+    .values-section > h1::after,
+    .why-choose-section > h1::after,
+    .values-section .section-title::after,
+    .why-choose-section .section-title::after {
+        margin-bottom: 30px;
+    }
+
+    .core-values,
+    .values-grid,
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .value-card,
+    .why-card {
+        padding: 25px 22px;
+    }
+
+    .values-section h2 {
+        font-size: 20px;
+    }
+
+    .values-section p,
+    .why-card p,
+    .why-choose-section > p {
+        font-size: 15px;
+    }
+
+    .our-promise {
+        padding: 35px 22px;
+        margin-top: 40px;
+    }
+
+    .our-promise h2 {
+        font-size: 25px;
+    }
+
+    .our-promise p {
+        font-size: 16px;
+    }
+
+    .school-tagline h3 {
+        font-size: 21px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .values-section,
+    .why-choose-section {
+        padding: 45px 15px;
+    }
+
+    .values-section > h1,
+    .why-choose-section > h1,
+    .values-section .section-title,
+    .why-choose-section .section-title {
+        font-size: 25px;
+    }
+
+    .value-card,
+    .why-card {
+        padding: 22px 18px;
+    }
+
+    .our-promise {
+        border-radius: 15px;
+        padding: 30px 18px;
+    }
+}
+```
+
+### Important
+
+Your current HTML appears to contain **headings and paragraphs without wrapper cards**. The CSS above supports that structure, but for the **best modern design**, your Core Values and Why Choose Us content should be placed inside cards.
+
+For example:
+
+```html
+<div class="value-card">
+    <h2>Integrity:</h2>
+    <p>
+        We promote honesty, truthfulness, fairness, and doing the right thing
+        even when no one is watching.
+    </p>
 </div>
-</section>
+```
+
+And for Why Choose Us:
+
+```html
+<div class="why-card">
+    <h2>Quality Education</h2>
+    <p>
+        We provide quality, learner-centered education that builds strong
+        academic foundations and encourages curiosity, critical thinking,
+        and a love for learning.
+    </p>
+</div>
+```
+
+That will give you a much more professional **FRATAM Junior School** appearance with responsive cards, hover effects, school colors, and a proper mobile layout.
+
 <!-- =========================================
      FOOTER
 ========================================= -->
