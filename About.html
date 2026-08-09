@@ -1093,7 +1093,143 @@
 
                 padding: 8px;
             }
+/* =========================================
+   MOBILE TOGGLE
+========================================= */
 
+.mobile-toggle {
+    display: none;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(15, 44, 89, 0.12);
+    background: var(--primary-navy);
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 0;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    box-shadow: 0 5px 15px rgba(15, 44, 89, 0.18);
+    transition: all 0.3s ease;
+    z-index: 1101;
+}
+
+.mobile-toggle:hover {
+    background: var(--secondary-gold);
+    transform: translateY(-2px);
+}
+
+.mobile-toggle:active {
+    transform: scale(0.94);
+}
+
+.mobile-toggle:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 3px;
+}
+
+.mobile-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--white);
+    border-radius: 10px;
+    transition: all 0.35s ease;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 10px;
+        right: 10px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        background: rgba(255, 255, 255, 0.98);
+        padding: 0;
+        border-radius: 16px;
+
+        box-shadow:
+            0 15px 40px rgba(15, 44, 89, 0.18);
+
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-12px) scale(0.98);
+
+        transition:
+            max-height 0.45s ease,
+            opacity 0.25s ease,
+            transform 0.35s ease,
+            visibility 0.35s ease,
+            padding 0.35s ease;
+    }
+
+    .nav-links.show {
+        max-height: 520px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        padding: 10px;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0.8rem 1rem;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+    .nav-links li a:hover {
+        background: rgba(197, 160, 89, 0.12);
+    }
+
+    /* HAMBURGER → X */
+
+    .mobile-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+        width: 0;
+    }
+
+    .mobile-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .mobile-toggle.active {
+        background: var(--secondary-gold);
+    }
+
+    .mobile-toggle.active span {
+        background: var(--primary-navy);
+    }
+}
             .hero {
                 min-height: 480px;
             }
@@ -1271,7 +1407,20 @@
 
             <!-- NAVIGATION LINKS -->
 
-            <ul
+<!-- MOBILE TOGGLE -->
+<button
+    class="mobile-toggle"
+    id="mobileToggle"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="navLinks"
+    type="button">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+</button>            <ul
                 class="nav-links"
                 id="navLinks">
 
@@ -1858,188 +2007,90 @@
 
     <script>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+        <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-                const mobileToggle =
-                    document.getElementById(
-                        "mobileToggle"
-                    );
+    const mobileToggle =
+        document.getElementById("mobileToggle");
 
-                const navLinks =
-                    document.getElementById(
-                        "navLinks"
-                    );
+    const navLinks =
+        document.getElementById("navLinks");
 
+    if (!mobileToggle || !navLinks) {
+        return;
+    }
 
-                /* SAFETY CHECK */
+    mobileToggle.addEventListener("click", function () {
 
-                if (
-                    !mobileToggle ||
-                    !navLinks
-                ) {
-                    return;
-                }
+        const isOpen =
+            navLinks.classList.toggle("show");
 
-
-                /* =================================
-                   OPEN / CLOSE MENU
-                ================================= */
-
-                mobileToggle.addEventListener(
-                    "click",
-                    function () {
-
-                        const isOpen =
-                            navLinks.classList.toggle(
-                                "show"
-                            );
-
-                        mobileToggle.classList.toggle(
-                            "active",
-                            isOpen
-                        );
-
-
-                        mobileToggle.setAttribute(
-                            "aria-expanded",
-                            String(isOpen)
-                        );
-
-
-                        mobileToggle.setAttribute(
-                            "aria-label",
-                            isOpen
-                                ? "Close navigation"
-                                : "Open navigation"
-                        );
-
-                    }
-                );
-
-
-                /* =================================
-                   CLOSE WHEN LINK IS CLICKED
-                ================================= */
-
-                const menuItems =
-                    navLinks.querySelectorAll(
-                        "a"
-                    );
-
-
-                menuItems.forEach(
-                    function (link) {
-
-                        link.addEventListener(
-                            "click",
-                            function () {
-
-                                navLinks.classList.remove(
-                                    "show"
-                                );
-
-                                mobileToggle.classList.remove(
-                                    "active"
-                                );
-
-
-                                mobileToggle.setAttribute(
-                                    "aria-expanded",
-                                    "false"
-                                );
-
-
-                                mobileToggle.setAttribute(
-                                    "aria-label",
-                                    "Open navigation"
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-
-                /* =================================
-                   CLOSE WHEN RESIZING TO DESKTOP
-                ================================= */
-
-                window.addEventListener(
-                    "resize",
-                    function () {
-
-                        if (
-                            window.innerWidth > 768
-                        ) {
-
-                            navLinks.classList.remove(
-                                "show"
-                            );
-
-                            mobileToggle.classList.remove(
-                                "active"
-                            );
-
-
-                            mobileToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-
-                            mobileToggle.setAttribute(
-                                "aria-label",
-                                "Open navigation"
-                            );
-
-                        }
-
-                    }
-                );
-
-
-                /* =================================
-                   CLOSE WITH ESCAPE KEY
-                ================================= */
-
-                document.addEventListener(
-                    "keydown",
-                    function (event) {
-
-                        if (
-                            event.key === "Escape"
-                        ) {
-
-                            navLinks.classList.remove(
-                                "show"
-                            );
-
-                            mobileToggle.classList.remove(
-                                "active"
-                            );
-
-
-                            mobileToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-
-                            mobileToggle.setAttribute(
-                                "aria-label",
-                                "Open navigation"
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
+        mobileToggle.classList.toggle(
+            "active",
+            isOpen
         );
+
+        mobileToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+        mobileToggle.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Close navigation"
+                : "Open navigation"
+        );
+    });
+
+
+    /* Close after clicking a navigation link */
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("show");
+            mobileToggle.classList.remove("active");
+
+            mobileToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            mobileToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+        });
+
+    });
+
+
+    /* Close when pressing Escape */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            navLinks.classList.remove("show");
+            mobileToggle.classList.remove("active");
+
+            mobileToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            mobileToggle.setAttribute(
+                "aria-label",
+                "Open navigation"
+            );
+        }
+
+    });
+
+});
+</script>
 
     </script>
 
