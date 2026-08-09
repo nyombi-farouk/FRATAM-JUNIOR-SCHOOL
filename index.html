@@ -27,49 +27,54 @@
 <style>
 
     /* =========================================
-       RESET
+       GLOBAL RESET
     ========================================= */
 
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
     }
-
 
     html {
         scroll-behavior: smooth;
     }
 
-
-    :root {
-        --primary-navy: #0F2C59;
-        --secondary-gold: #C5A059;
-        --accent-blue: #00A8E8;
-        --light-bg: #F8FAFC;
-        --dark-text: #1E293B;
-        --white: #FFFFFF;
-        --grey: #64748B;
-    }
-
-
     body {
-        color: var(--dark-text);
+        font-family: 'Poppins', sans-serif;
+        color: #1E293B;
+        background: #ffffff;
         line-height: 1.6;
         overflow-x: hidden;
-        background: var(--white);
     }
-
 
     a {
         text-decoration: none;
         color: inherit;
     }
 
-
     ul {
         list-style: none;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+
+    /* =========================================
+       VARIABLES
+    ========================================= */
+
+    :root {
+        --navy: #0F2C59;
+        --gold: #C5A059;
+        --blue: #00A8E8;
+        --light: #F8FAFC;
+        --dark: #1E293B;
+        --grey: #64748B;
+        --white: #FFFFFF;
     }
 
 
@@ -78,11 +83,14 @@
     ========================================= */
 
     header {
-        background: var(--white);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         position: sticky;
         top: 0;
         z-index: 1000;
+
+        background: var(--white);
+
+        box-shadow:
+            0 4px 18px rgba(0, 0, 0, 0.08);
     }
 
 
@@ -92,11 +100,10 @@
 
     .navbar {
         max-width: 1200px;
-        margin: auto;
-
         min-height: 75px;
 
-        padding: 0.6rem 2rem;
+        margin: auto;
+        padding: 10px 25px;
 
         display: flex;
         align-items: center;
@@ -113,35 +120,36 @@
     .brand-logo {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+
+        z-index: 1101;
     }
 
-
     .badge-icon {
-        width: auto;
+        width: 55px;
         height: 55px;
         flex-shrink: 0;
     }
 
-
     .brand-name {
-        color: var(--primary-navy);
-        font-size: 1.4rem;
-        font-weight: 700;
-        line-height: 1.2;
-    }
+        color: var(--navy);
 
+        font-size: 1.35rem;
+        font-weight: 800;
+
+        line-height: 1.1;
+    }
 
     .brand-name span {
         display: block;
 
-        color: var(--secondary-gold);
+        color: var(--gold);
 
-        font-size: 0.75rem;
-
+        font-size: 0.68rem;
         font-weight: 600;
 
         letter-spacing: 1px;
+        margin-top: 3px;
     }
 
 
@@ -152,23 +160,21 @@
     .nav-links {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+
+        gap: 1.4rem;
     }
 
-
     .nav-links a {
-        color: var(--dark-text);
+        color: var(--dark);
 
-        font-size: 0.95rem;
-
-        font-weight: 500;
+        font-size: 0.92rem;
+        font-weight: 600;
 
         transition: 0.3s ease;
     }
 
-
     .nav-links a:hover {
-        color: var(--secondary-gold);
+        color: var(--gold);
     }
 
 
@@ -177,26 +183,25 @@
     ========================================= */
 
     .btn-enroll {
-        background: var(--primary-navy);
+        display: inline-block;
 
-        color: var(--white) !important;
-
-        padding: 0.65rem 1.4rem;
+        padding: 10px 20px;
 
         border-radius: 25px;
 
-        border: 2px solid var(--secondary-gold);
+        background: var(--navy);
+        color: var(--white) !important;
 
-        font-weight: 600 !important;
+        border: 2px solid var(--gold);
 
         transition: 0.3s ease;
     }
 
-
     .btn-enroll:hover {
-        background: var(--secondary-gold);
+        background: var(--gold);
+        color: var(--navy) !important;
 
-        color: var(--primary-navy) !important;
+        transform: translateY(-2px);
     }
 
 
@@ -210,33 +215,22 @@
         width: 45px;
         height: 45px;
 
-        padding: 8px;
-
         border: none;
-
         border-radius: 8px;
 
-        background: var(--primary-navy);
+        background: var(--navy);
 
         cursor: pointer;
-
-        flex-direction: column;
 
         align-items: center;
         justify-content: center;
 
+        flex-direction: column;
+
         gap: 5px;
 
-        z-index: 1101;
-
-        transition: 0.3s ease;
+        z-index: 1102;
     }
-
-
-    .mobile-toggle:hover {
-        background: var(--secondary-gold);
-    }
-
 
     .mobile-toggle span {
         width: 25px;
@@ -251,30 +245,70 @@
 
 
     /* =========================================
-       STATIC HERO
+       MOBILE BUTTON X ANIMATION
+    ========================================= */
+
+    .mobile-toggle.active span:nth-child(1) {
+        transform:
+            translateY(8px)
+            rotate(45deg);
+    }
+
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-toggle.active span:nth-child(3) {
+        transform:
+            translateY(-8px)
+            rotate(-45deg);
+    }
+
+
+    /* =========================================
+       HERO
+       NO SLIDER
+       NO ANIMATION
     ========================================= */
 
     .hero {
         position: relative;
 
         width: 100%;
-
         min-height: 78vh;
 
         display: flex;
-
         align-items: center;
-
         justify-content: center;
-
-        overflow: hidden;
 
         background-image:
             url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png');
 
         background-size: cover;
-
         background-position: center;
+        background-repeat: no-repeat;
+
+        overflow: hidden;
+    }
+
+
+    /* =========================================
+       HERO OVERLAY
+    ========================================= */
+
+    .hero::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                135deg,
+                rgba(15, 44, 89, 0.88),
+                rgba(15, 44, 89, 0.68),
+                rgba(15, 44, 89, 0.88)
+            );
     }
 
 
@@ -284,14 +318,12 @@
 
     .hero-content {
         position: relative;
-
         z-index: 2;
 
         width: 100%;
+        max-width: 950px;
 
-        max-width: 1000px;
-
-        padding: 5rem 2rem;
+        padding: 90px 25px;
 
         text-align: center;
 
@@ -299,47 +331,62 @@
     }
 
 
+    /* =========================================
+       HERO LOGO
+    ========================================= */
+
     .hero-badge {
-        height: 125px;
+        width: 120px;
+        height: 120px;
 
-        width: auto;
-
-        margin-bottom: 1.2rem;
+        margin: 0 auto 20px;
 
         filter:
             drop-shadow(
-                0 5px 15px
-                rgba(0, 0, 0, 0.45)
+                0 6px 15px
+                rgba(0, 0, 0, 0.4)
             );
     }
 
 
-    .hero-content h1 {
-        font-size: clamp(2.2rem, 5vw, 4rem);
+    /* =========================================
+       HERO HEADING
+    ========================================= */
 
-        font-weight: 800;
+    .hero-content h1 {
+        font-size:
+            clamp(
+                2.2rem,
+                5vw,
+                4rem
+            );
 
         line-height: 1.15;
 
-        margin-bottom: 1rem;
+        font-weight: 800;
+
+        margin-bottom: 18px;
 
         text-shadow:
             0 3px 8px
             rgba(0, 0, 0, 0.4);
     }
 
-
     .hero-content h1 span {
-        color: var(--secondary-gold);
+        color: var(--gold);
     }
 
 
+    /* =========================================
+       HERO TEXT
+    ========================================= */
+
     .hero-content p {
-        max-width: 750px;
+        max-width: 760px;
 
-        margin: 0 auto 2rem;
+        margin: 0 auto 30px;
 
-        font-size: 1.15rem;
+        font-size: 1.08rem;
 
         opacity: 0.96;
     }
@@ -353,21 +400,18 @@
         display: flex;
 
         justify-content: center;
-
         align-items: center;
 
-        gap: 1rem;
+        gap: 15px;
 
         flex-wrap: wrap;
     }
 
+    .btn-primary,
+    .btn-secondary {
+        display: inline-block;
 
-    .btn-primary {
-        background: var(--secondary-gold);
-
-        color: var(--primary-navy);
-
-        padding: 0.85rem 2rem;
+        padding: 13px 27px;
 
         border-radius: 6px;
 
@@ -376,33 +420,25 @@
         transition: 0.3s ease;
     }
 
+    .btn-primary {
+        background: var(--gold);
+        color: var(--navy);
+    }
 
     .btn-primary:hover {
+        background: #d8b66c;
+
         transform: translateY(-3px);
-
-        background: #d4af66;
     }
-
 
     .btn-secondary {
-        color: var(--white);
-
         border: 2px solid var(--white);
-
-        padding: 0.85rem 2rem;
-
-        border-radius: 6px;
-
-        font-weight: 600;
-
-        transition: 0.3s ease;
+        color: var(--white);
     }
-
 
     .btn-secondary:hover {
         background: var(--white);
-
-        color: var(--primary-navy);
+        color: var(--navy);
 
         transform: translateY(-3px);
     }
@@ -413,154 +449,136 @@
     ========================================= */
 
     .features {
+        position: relative;
+        z-index: 10;
+
         max-width: 1200px;
 
-        margin: -3.5rem auto 4rem;
+        margin:
+            -55px auto
+            70px;
 
-        padding: 0 2rem;
+        padding: 0 25px;
 
         display: grid;
 
         grid-template-columns:
             repeat(
-                auto-fit,
-                minmax(260px, 1fr)
+                3,
+                1fr
             );
 
-        gap: 2rem;
-
-        position: relative;
-
-        z-index: 10;
+        gap: 25px;
     }
-
 
     .feature-card {
         background: var(--white);
 
-        padding: 2.4rem 1.5rem;
-
-        border-radius: 14px;
+        padding: 35px 25px;
 
         text-align: center;
 
-        box-shadow:
-            0 12px 35px
-            rgba(0, 0, 0, 0.09);
+        border-radius: 14px;
 
         border-bottom:
-            4px solid var(--secondary-gold);
+            4px solid var(--gold);
+
+        box-shadow:
+            0 12px 35px
+            rgba(0, 0, 0, 0.1);
 
         transition: 0.3s ease;
     }
-
 
     .feature-card:hover {
         transform: translateY(-8px);
     }
 
-
     .feature-card h3 {
-        color: var(--primary-navy);
+        color: var(--navy);
 
-        margin-bottom: 0.7rem;
+        font-size: 1.2rem;
 
-        font-size: 1.25rem;
+        margin-bottom: 10px;
     }
-
 
     .feature-card p {
         color: var(--grey);
 
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
 
     /* =========================================
-       ABOUT
+       ABOUT SECTION
     ========================================= */
 
     .about {
-        background: var(--light-bg);
+        background: var(--light);
 
-        padding: 5rem 2rem;
+        padding: 80px 25px;
     }
 
-
     .about-container {
-        max-width: 900px;
+        max-width: 1000px;
 
         margin: auto;
 
         display: flex;
-
         flex-direction: column;
 
-        gap: 3rem;
-
-        align-items: center;
+        gap: 35px;
     }
-
 
     .about-text {
         width: 100%;
-
-        text-align: left;
     }
-
 
     .about-text h1,
     .about-text h2 {
-        color: var(--primary-navy);
+        color: var(--navy);
 
         font-size: 2.2rem;
 
         line-height: 1.2;
 
-        margin-bottom: 1rem;
+        margin-bottom: 18px;
     }
-
 
     .about-text p {
         color: #4A5568;
 
-        margin-bottom: 1.2rem;
+        margin-bottom: 16px;
+
+        font-size: 0.98rem;
     }
 
+    .about-text strong {
+        color: var(--navy);
+    }
+
+
+    /* =========================================
+       SCHOOL IMAGE
+    ========================================= */
 
     .about-image {
         width: 100%;
 
         display: flex;
-
         justify-content: center;
-
-        order: 2;
     }
 
-
     .about-image img {
-        display: block;
-
         width: 100%;
 
-        max-width: 800px;
+        max-width: 850px;
 
-        border-radius: 14px;
+        border-radius: 15px;
 
         box-shadow:
             0 15px 35px
-            rgba(0, 0, 0, 0.12);
-    }
-
-
-    .about-container > .about-text:first-child {
-        order: 1;
-    }
-
-
-    .about-container > .about-text:last-child {
-        order: 3;
+            rgba(0, 0, 0, 0.13);
     }
 
 
@@ -569,79 +587,123 @@
     ========================================= */
 
     footer {
-        background: var(--primary-navy);
+        background: var(--navy);
 
         color: var(--white);
 
         padding:
-            4rem 2rem
-            1.5rem;
+            60px 25px
+            20px;
     }
-
 
     .footer-container {
         max-width: 1200px;
 
-        margin: 0 auto 3rem;
+        margin: auto;
 
         display: grid;
 
         grid-template-columns:
             repeat(
-                auto-fit,
-                minmax(220px, 1fr)
+                3,
+                1fr
             );
 
-        gap: 3rem;
-    }
+        gap: 40px;
 
+        margin-bottom: 40px;
+    }
 
     .footer-col h4 {
-        color: var(--secondary-gold);
+        color: var(--gold);
 
-        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+
+        margin-bottom: 18px;
     }
-
 
     .footer-col p,
     .footer-col li {
+        color: rgba(
+            255,
+            255,
+            255,
+            0.82
+        );
+
         font-size: 0.9rem;
 
-        opacity: 0.82;
-
-        margin-bottom: 0.6rem;
+        margin-bottom: 8px;
     }
 
-
-    .footer-col a {
+    .footer-col li a {
         transition: 0.3s ease;
     }
 
-
-    .footer-col a:hover {
-        color: var(--secondary-gold);
-
-        opacity: 1;
+    .footer-col li a:hover {
+        color: var(--gold);
     }
 
-
     .footer-bottom {
-        text-align: center;
-
-        padding-top: 2rem;
-
         border-top:
             1px solid
-            rgba(255,255,255,0.12);
+            rgba(
+                255,
+                255,
+                255,
+                0.15
+            );
+
+        padding-top: 20px;
+
+        text-align: center;
+
+        color:
+            rgba(
+                255,
+                255,
+                255,
+                0.65
+            );
 
         font-size: 0.85rem;
-
-        opacity: 0.7;
     }
 
 
     /* =========================================
-       MOBILE DESIGN
+       TABLETS
+    ========================================= */
+
+    @media (max-width: 900px) {
+
+        .nav-links {
+            gap: 0.8rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+        }
+
+        .features {
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+        }
+
+        .footer-container {
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+        }
+    }
+
+
+    /* =========================================
+       MOBILE
     ========================================= */
 
     @media (max-width: 768px) {
@@ -650,33 +712,11 @@
             min-height: 68px;
 
             padding:
-                0.6rem 1rem;
+                8px 15px;
         }
 
 
-        .brand-logo {
-            gap: 8px;
-        }
-
-
-        .badge-icon {
-            height: 47px;
-        }
-
-
-        .brand-name {
-            font-size: 1.05rem;
-        }
-
-
-        .brand-name span {
-            font-size: 0.58rem;
-
-            letter-spacing: 0.7px;
-        }
-
-
-        /* SHOW TOGGLE */
+        /* SHOW MOBILE TOGGLE */
 
         .mobile-toggle {
             display: flex;
@@ -693,6 +733,8 @@
 
             width: 100%;
 
+            background: var(--white);
+
             display: flex;
 
             flex-direction: column;
@@ -700,8 +742,6 @@
             align-items: stretch;
 
             gap: 0;
-
-            background: var(--white);
 
             padding: 0;
 
@@ -717,23 +757,26 @@
                 translateY(-10px);
 
             box-shadow:
-                0 12px 25px
-                rgba(0,0,0,0.12);
+                0 15px 25px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.12
+                );
 
             transition:
                 max-height 0.4s ease,
                 opacity 0.3s ease,
                 transform 0.3s ease,
                 visibility 0.3s ease;
-
-            z-index: 1100;
         }
 
 
         /* OPEN MENU */
 
         .nav-links.show {
-            max-height: 500px;
+            max-height: 550px;
 
             opacity: 1;
 
@@ -743,8 +786,8 @@
                 translateY(0);
 
             padding:
-                0.7rem 1rem
-                1rem;
+                8px 15px
+                15px;
         }
 
 
@@ -758,73 +801,49 @@
 
             width: 100%;
 
-            padding: 0.9rem 1rem;
+            padding: 13px 15px;
 
             border-bottom:
                 1px solid #edf0f4;
 
-            font-weight: 600;
+            font-size: 0.95rem;
         }
 
 
         .nav-links li a:hover {
             background: #f5f7fa;
 
-            padding-left: 1.4rem;
+            padding-left: 20px;
         }
 
 
         .nav-links .btn-enroll {
-            margin-top: 0.8rem;
+            margin-top: 10px;
 
             text-align: center;
 
-            border-bottom: none;
+            border: 2px solid var(--gold);
         }
 
 
-        /* HAMBURGER TO X */
-
-        .mobile-toggle.active
-        span:nth-child(1) {
-            transform:
-                translateY(8px)
-                rotate(45deg);
-        }
-
-
-        .mobile-toggle.active
-        span:nth-child(2) {
-            opacity: 0;
-
-            transform: scale(0);
-        }
-
-
-        .mobile-toggle.active
-        span:nth-child(3) {
-            transform:
-                translateY(-8px)
-                rotate(-45deg);
-        }
-
-
-        /* STATIC HERO */
+        /* HERO */
 
         .hero {
             min-height: 650px;
 
-            background-position: center;
+            background-position:
+                center center;
         }
 
 
         .hero-content {
             padding:
-                4rem 1.3rem;
+                70px 18px;
         }
 
 
         .hero-badge {
+            width: 90px;
             height: 90px;
         }
 
@@ -835,7 +854,7 @@
 
 
         .hero-content p {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
 
@@ -849,7 +868,7 @@
         .hero-buttons a {
             width: 100%;
 
-            max-width: 260px;
+            max-width: 270px;
 
             text-align: center;
         }
@@ -858,15 +877,14 @@
         /* FEATURES */
 
         .features {
+            grid-template-columns: 1fr;
+
             margin:
-                -2rem auto
-                3rem;
+                -30px auto
+                55px;
 
             padding:
-                0 1rem;
-
-            grid-template-columns:
-                1fr;
+                0 15px;
         }
 
 
@@ -874,7 +892,7 @@
 
         .about {
             padding:
-                4rem 1rem;
+                60px 15px;
         }
 
 
@@ -888,10 +906,16 @@
 
         footer {
             padding:
-                3rem 1rem
-                1.5rem;
+                50px 18px
+                20px;
         }
 
+
+        .footer-container {
+            grid-template-columns: 1fr;
+
+            gap: 30px;
+        }
     }
 
 
@@ -901,57 +925,51 @@
 
     @media (max-width: 480px) {
 
-        .navbar {
-            padding:
-                0.55rem 0.8rem;
-        }
-
-
         .badge-icon {
-            height: 42px;
+            width: 44px;
+            height: 44px;
         }
-
 
         .brand-name {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
-
 
         .brand-name span {
             font-size: 0.5rem;
-        }
 
+            letter-spacing: 0.7px;
+        }
 
         .mobile-toggle {
             width: 42px;
             height: 42px;
         }
 
-
         .mobile-toggle span {
             width: 23px;
         }
-
 
         .hero {
             min-height: 600px;
         }
 
-
         .hero-content h1 {
             font-size: 1.8rem;
         }
 
-
         .hero-content p {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
-
         .hero-badge {
+            width: 75px;
             height: 75px;
         }
 
+        .about-text h1,
+        .about-text h2 {
+            font-size: 1.55rem;
+        }
     }
 
 </style>
@@ -963,7 +981,7 @@
 
 ```
 <!-- =========================================
-     NAVIGATION
+     HEADER / NAVIGATION
 ========================================= -->
 
 <header>
@@ -971,9 +989,12 @@
     <nav class="navbar">
 
 
-        <!-- BRAND -->
+        <!-- SCHOOL BRAND -->
 
-        <div class="brand-logo">
+        <a href="index.html"
+           class="brand-logo"
+           aria-label="FRATAM Junior School Home">
+
 
             <svg
                 class="badge-icon"
@@ -981,84 +1002,34 @@
                 xmlns="http://www.w3.org/2000/svg">
 
                 <path
-                    d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                    d="M200 10 L370 40 V220 C370 330 200 420 200 420 C200 420 30 330 30 220 V40 Z"
                     fill="#0F2C59"
                     stroke="#C5A059"
                     stroke-width="12"/>
 
                 <path
-                    d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                    d="M200 30 L340 55 V210 C340 300 200 380 200 380 C200 380 60 300 60 210 V55 Z"
                     fill="#FFFFFF"/>
 
-                <rect
-                    x="75"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <rect
-                    x="75"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <path
-                    d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
-                    fill="#0F2C59"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
                 <text
                     x="200"
-                    y="375"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="bold"
-                    font-size="22"
-                    fill="#FFFFFF"
-                    text-anchor="middle">
-                    Excelling is our goal
-                </text>
-
-                <text
-                    x="200"
-                    y="105"
-                    font-family="'Poppins', sans-serif"
+                    y="110"
+                    text-anchor="middle"
+                    font-family="Poppins"
                     font-weight="900"
                     font-size="36"
-                    fill="#0F2C59"
-                    text-anchor="middle">
+                    fill="#0F2C59">
                     FRATAM
                 </text>
 
                 <text
                     x="200"
-                    y="135"
-                    font-family="'Poppins', sans-serif"
+                    y="140"
+                    text-anchor="middle"
+                    font-family="Poppins"
                     font-weight="600"
                     font-size="18"
-                    fill="#0F2C59"
-                    text-anchor="middle"
-                    letter-spacing="3">
+                    fill="#0F2C59">
                     JUNIOR SCHOOL
                 </text>
 
@@ -1075,15 +1046,15 @@
 
             </div>
 
-        </div>
+        </a>
 
 
-        <!-- MOBILE BUTTON -->
+        <!-- MOBILE TOGGLE -->
 
         <button
-            type="button"
             class="mobile-toggle"
             id="mobileToggle"
+            type="button"
             aria-label="Open navigation"
             aria-expanded="false">
 
@@ -1094,7 +1065,7 @@
         </button>
 
 
-        <!-- NAVIGATION LINKS -->
+        <!-- NAVIGATION -->
 
         <ul
             class="nav-links"
@@ -1143,6 +1114,112 @@
     </nav>
 
 </header>
+
+
+
+<!-- =========================================
+     STATIC HERO
+     ONE IMAGE ONLY
+     NO SLIDER
+========================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+
+        <!-- SCHOOL BADGE -->
+
+        <svg
+            class="hero-badge"
+            viewBox="0 0 400 450"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M200 10 L370 40 V220 C370 330 200 420 200 420 C200 420 30 330 30 220 V40 Z"
+                fill="#0F2C59"
+                stroke="#C5A059"
+                stroke-width="12"/>
+
+            <path
+                d="M200 30 L340 55 V210 C340 300 200 380 200 380 C200 380 60 300 60 210 V55 Z"
+                fill="#FFFFFF"/>
+
+            <text
+                x="200"
+                y="110"
+                text-anchor="middle"
+                font-family="Poppins"
+                font-weight="900"
+                font-size="36"
+                fill="#0F2C59">
+                FRATAM
+            </text>
+
+            <text
+                x="200"
+                y="140"
+                text-anchor="middle"
+                font-family="Poppins"
+                font-weight="600"
+                font-size="18"
+                fill="#0F2C59">
+                JUNIOR SCHOOL
+            </text>
+
+        </svg>
+
+
+        <h1>
+
+            Welcome to
+
+            <span>
+                FRATAM
+            </span>
+
+            Junior School
+
+        </h1>
+
+
+        <p>
+
+            We believe every child has the potential
+            to learn, grow and excel. We provide a
+            safe, friendly and inspiring environment
+            where learners are encouraged to reach
+            their full potential.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="About.html"
+                class="btn-primary">
+
+                Discover More
+
+            </a>
+
+
+            <a
+                href="Apply.html"
+                class="btn-secondary">
+
+                Enroll Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 <!-- =========================================
      FEATURES
@@ -1221,7 +1298,15 @@
                 It is my great pleasure to welcome you to
                 FRATAM Junior School, a place where we believe
                 that every child has the potential to learn,
-                grow, and excel. Our motto, “Excelling is our goal,”
+                grow, and excel.
+            </p>
+
+
+            <p>
+                Our motto,
+                <strong>
+                    "Excelling is our goal,"
+                </strong>
                 reflects our commitment to providing quality
                 education while nurturing discipline, confidence,
                 creativity, and good character.
@@ -1232,9 +1317,14 @@
                 At FRATAM Junior School, we strive to create a
                 safe, friendly, and inspiring learning environment
                 where every learner is valued and encouraged to
-                discover their abilities. We work closely with
-                parents and guardians because we believe that
-                the success of every child is a shared responsibility.
+                discover their abilities.
+            </p>
+
+
+            <p>
+                We work closely with parents and guardians because
+                we believe that the success of every child is a
+                shared responsibility.
             </p>
 
 
@@ -1276,7 +1366,7 @@
 
             <img
                 src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png"
-                alt="FRATAM Junior School Students">
+                alt="FRATAM Junior School">
 
         </div>
 
@@ -1296,7 +1386,10 @@
                 <strong>
                     "Excelling is our goal."
                 </strong>
+            </p>
 
+
+            <p>
                 We believe every student is capable of greatness
                 when provided with the right support, discipline,
                 and encouragement.
@@ -1322,116 +1415,30 @@
      FOOTER
 ========================================= -->
 
-<footer id="contact">
+<footer>
+
 
     <div class="footer-container">
 
 
+        <!-- SCHOOL -->
+
         <div class="footer-col">
 
-            <svg
-                class="badge-icon"
-                viewBox="0 0 400 450"
-                xmlns="http://www.w3.org/2000/svg"
-                style="height:65px;margin-bottom:10px;">
-
-                <path
-                    d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
-                    fill="#0F2C59"
-                    stroke="#C5A059"
-                    stroke-width="12"/>
-
-                <path
-                    d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
-                    fill="#FFFFFF"/>
-
-                <rect
-                    x="75"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <rect
-                    x="75"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <path
-                    d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
-                    fill="#0F2C59"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <text
-                    x="200"
-                    y="375"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="bold"
-                    font-size="22"
-                    fill="#FFFFFF"
-                    text-anchor="middle">
-                    Excelling is our goal
-                </text>
-
-                <text
-                    x="200"
-                    y="105"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="900"
-                    font-size="36"
-                    fill="#0F2C59"
-                    text-anchor="middle">
-                    FRATAM
-                </text>
-
-                <text
-                    x="200"
-                    y="135"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="600"
-                    font-size="20"
-                    fill="#0F2C59"
-                    text-anchor="middle"
-                    letter-spacing="3">
-                    JUNIOR SCHOOL
-                </text>
-
-            </svg>
-
+            <h4>
+                FRATAM JUNIOR SCHOOL
+            </h4>
 
             <p>
-                FRATAM JUNIOR SCHOOL
+                Excelling is our goal.
             </p>
 
             <p>
-                <em>
-                    Excelling is our goal
-                </em>
+                Quality education, discipline,
+                confidence and good character.
             </p>
 
         </div>
-
 
 
         <!-- QUICK LINKS -->
@@ -1463,6 +1470,12 @@
                 </li>
 
                 <li>
+                    <a href="Gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
                     <a href="Apply.html">
                         Admissions
                     </a>
@@ -1471,7 +1484,6 @@
             </ul>
 
         </div>
-
 
 
         <!-- CONTACT -->
@@ -1518,161 +1530,154 @@
 
 <script>
 
-    document.addEventListener(
-        "DOMContentLoaded",
+    const mobileToggle =
+        document.getElementById(
+            "mobileToggle"
+        );
+
+    const navLinks =
+        document.getElementById(
+            "navLinks"
+        );
+
+
+    /* =========================================
+       OPEN / CLOSE MOBILE MENU
+    ========================================= */
+
+    mobileToggle.addEventListener(
+        "click",
         function () {
 
-            const mobileToggle =
-                document.getElementById(
-                    "mobileToggle"
+            navLinks.classList.toggle(
+                "show"
+            );
+
+            mobileToggle.classList.toggle(
+                "active"
+            );
+
+
+            const isOpen =
+                navLinks.classList.contains(
+                    "show"
                 );
 
-            const navLinks =
-                document.getElementById(
-                    "navLinks"
-                );
+
+            mobileToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
 
 
-            if (
-                !mobileToggle ||
-                !navLinks
-            ) {
-                return;
-            }
+            mobileToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close navigation"
+                    : "Open navigation"
+            );
+
+        }
+    );
 
 
-            /* OPEN / CLOSE MENU */
+    /* =========================================
+       CLOSE MENU AFTER LINK CLICK
+    ========================================= */
 
-            mobileToggle.addEventListener(
+    const navItems =
+        navLinks.querySelectorAll("a");
+
+
+    navItems.forEach(
+        function (item) {
+
+            item.addEventListener(
                 "click",
                 function () {
 
-                    navLinks.classList.toggle(
+                    navLinks.classList.remove(
                         "show"
                     );
 
-                    mobileToggle.classList.toggle(
+                    mobileToggle.classList.remove(
                         "active"
                     );
 
-
-                    const isOpen =
-                        navLinks.classList.contains(
-                            "show"
-                        );
-
-
                     mobileToggle.setAttribute(
                         "aria-expanded",
-                        isOpen
+                        "false"
                     );
-
 
                     mobileToggle.setAttribute(
                         "aria-label",
-                        isOpen
-                            ? "Close navigation"
-                            : "Open navigation"
+                        "Open navigation"
                     );
 
                 }
             );
 
-
-            /* CLOSE AFTER CLICKING LINK */
-
-            const menuItems =
-                navLinks.querySelectorAll("a");
+        }
+    );
 
 
-            menuItems.forEach(
-                function (link) {
+    /* =========================================
+       CLOSE MENU WITH ESCAPE
+    ========================================= */
 
-                    link.addEventListener(
-                        "click",
-                        function () {
+    document.addEventListener(
+        "keydown",
+        function (event) {
 
-                            navLinks.classList.remove(
-                                "show"
-                            );
+            if (
+                event.key === "Escape"
+            ) {
 
-                            mobileToggle.classList.remove(
-                                "active"
-                            );
+                navLinks.classList.remove(
+                    "show"
+                );
 
-                            mobileToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
+                mobileToggle.classList.remove(
+                    "active"
+                );
 
-                            mobileToggle.setAttribute(
-                                "aria-label",
-                                "Open navigation"
-                            );
+                mobileToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-                        }
-                    );
+            }
 
-                }
-            );
-
-
-            /* CLOSE WHEN RESIZING */
-
-            window.addEventListener(
-                "resize",
-                function () {
-
-                    if (
-                        window.innerWidth > 768
-                    ) {
-
-                        navLinks.classList.remove(
-                            "show"
-                        );
-
-                        mobileToggle.classList.remove(
-                            "active"
-                        );
-
-                        mobileToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                    }
-
-                }
-            );
+        }
+    );
 
 
-            /* ESCAPE KEY */
+    /* =========================================
+       RESET MENU ON DESKTOP
+    ========================================= */
 
-            document.addEventListener(
-                "keydown",
-                function (event) {
+    window.addEventListener(
+        "resize",
+        function () {
 
-                    if (
-                        event.key === "Escape"
-                    ) {
+            if (
+                window.innerWidth > 768
+            ) {
 
-                        navLinks.classList.remove(
-                            "show"
-                        );
+                navLinks.classList.remove(
+                    "show"
+                );
 
-                        mobileToggle.classList.remove(
-                            "active"
-                        );
+                mobileToggle.classList.remove(
+                    "active"
+                );
 
-                        mobileToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
+                mobileToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
 
-                    }
-
-                }
-            );
+            }
 
         }
     );
