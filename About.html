@@ -261,6 +261,9 @@
             width: 100%;
             text-align: center;
             order: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .about-image img {
             width: 100%;
@@ -270,17 +273,19 @@
         }
         .about-text {
             width: 100%;
-            text-align: center;
+            text-align: right;
         }
         .about-text h1 {
             color: var(--primary-navy);
             font-size: 2.2rem;
             margin-bottom: 1rem;
+            text-align: right;
         }
         .about-text h2 {
             color: var(--primary-navy);
             font-size: 2.2rem;
             margin-bottom: 1rem;
+            text-align: right;
         }
         .about-text p {
             margin-bottom: 1.2rem;
@@ -307,6 +312,13 @@
             .hero { height: 70vh; }
             .slide-content h1 { font-size: 2rem; }
             .hero-badge { height: 80px; }
+            .about-text {
+                text-align: right;
+            }
+            .about-text h1,
+            .about-text h2 {
+                text-align: right;
+            }
             .hero-buttons { flex-direction: column; }
         }
     </style>
