@@ -1,353 +1,2048 @@
-```css
-/* =========================================
-   MODERN MOBILE TOGGLE
-   Replace ONLY your existing
-   .mobile-toggle CSS section with this
-========================================= */
+<!DOCTYPE html>
+<html lang="en">
 
-.mobile-toggle {
-    display: none;
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(15, 44, 89, 0.12);
-    background: var(--primary-navy);
-    border-radius: 12px;
-    cursor: pointer;
+<head>
 
-    padding: 0;
+    <meta charset="UTF-8">
 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    gap: 5px;
+    <meta name="description"
+          content="FRATAM Junior School - Excelling is Our Goal. Quality education, discipline, confidence, creativity and good character.">
 
-    position: relative;
+    <title>FRATAM Junior School | Excelling is Our Goal</title>
 
-    box-shadow:
-        0 5px 15px rgba(15, 44, 89, 0.18);
 
-    transition:
-        background 0.3s ease,
-        transform 0.25s ease,
-        box-shadow 0.3s ease;
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-    z-index: 1101;
-}
 
-/* Hover */
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="ChatGPT Image Aug 2, 2026, 08_37_15 AM.png">
 
-.mobile-toggle:hover {
-    background: var(--secondary-gold);
 
-    transform: translateY(-2px);
+    <style>
 
-    box-shadow:
-        0 8px 20px rgba(15, 44, 89, 0.25);
-}
+        /* =========================================
+           CSS RESET
+        ========================================= */
 
-/* Click */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        /* =========================================
+           BRAND VARIABLES
+        ========================================= */
+
+        :root {
+            --primary-navy: #0F2C59;
+            --secondary-gold: #C5A059;
+            --accent-blue: #00A8E8;
+            --light-bg: #F8FAFC;
+            --dark-text: #1E293B;
+            --white: #FFFFFF;
+            --grey: #64748B;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
 
-.mobile-toggle:active {
-    transform: scale(0.94);
-}
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
 
-/* Keyboard accessibility */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 2rem;
+            position: relative;
+        }
+
+
+        /* =========================================
+           BRAND
+        ========================================= */
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.mobile-toggle:focus-visible {
-    outline: 3px solid var(--accent-blue);
-    outline-offset: 3px;
-}
+        .badge-icon {
+            height: 55px;
+            width: auto;
+            flex-shrink: 0;
+        }
 
-/* Hamburger lines */
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.2;
+        }
 
-.mobile-toggle span {
-    display: block;
+        .brand-name span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--secondary-gold);
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
 
-    width: 25px;
-    height: 3px;
 
-    background: var(--white);
+        /* =========================================
+           DESKTOP NAVIGATION
+        ========================================= */
 
-    border-radius: 10px;
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
 
-    transform-origin: center;
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark-text);
+            transition: color 0.3s ease;
+        }
 
-    transition:
-        transform 0.35s ease,
-        opacity 0.25s ease,
-        width 0.3s ease;
-}
+        .nav-links a:hover {
+            color: var(--secondary-gold);
+        }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+        /* =========================================
+           ENROLL BUTTON
+        ========================================= */
 
-@media (max-width: 768px) {
+        .btn-enroll {
+            background-color: var(--primary-navy);
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 25px;
+            border: 2px solid var(--secondary-gold);
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+        }
 
-    .mobile-toggle {
-        display: flex;
-    }
+        .btn-enroll:hover {
+            background-color: var(--secondary-gold);
+            color: var(--primary-navy) !important;
+        }
 
 
-    /* =====================================
-       MODERN MOBILE MENU
-    ===================================== */
+        /* =========================================
+           MODERN MOBILE TOGGLE
+        ========================================= */
+
+        .mobile-toggle {
+            display: none;
+
+            width: 48px;
+            height: 48px;
 
-    .nav-links {
-        position: absolute;
+            border: 1px solid rgba(15, 44, 89, 0.12);
 
-        top: calc(100% + 8px);
-        left: 10px;
-        right: 10px;
+            background: var(--primary-navy);
 
-        width: auto;
+            border-radius: 12px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
+            cursor: pointer;
 
-        gap: 4px;
+            padding: 0;
 
-        background: rgba(255, 255, 255, 0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-        padding: 0;
+            gap: 5px;
 
-        margin: 0;
+            position: relative;
 
-        border-radius: 16px;
+            box-shadow:
+                0 5px 15px rgba(15, 44, 89, 0.18);
 
-        box-shadow:
-            0 15px 40px rgba(15, 44, 89, 0.18);
+            transition:
+                background 0.3s ease,
+                transform 0.25s ease,
+                box-shadow 0.3s ease;
 
-        border:
-            1px solid rgba(15, 44, 89, 0.08);
+            z-index: 1101;
+        }
 
-        max-height: 0;
+        .mobile-toggle:hover {
+            background: var(--secondary-gold);
 
-        overflow: hidden;
+            transform: translateY(-2px);
 
-        opacity: 0;
+            box-shadow:
+                0 8px 20px rgba(15, 44, 89, 0.25);
+        }
 
-        visibility: hidden;
+        .mobile-toggle:active {
+            transform: scale(0.94);
+        }
 
-        transform:
-            translateY(-12px)
-            scale(0.98);
+        .mobile-toggle:focus-visible {
+            outline: 3px solid var(--accent-blue);
+            outline-offset: 3px;
+        }
 
-        transform-origin: top center;
+        .mobile-toggle span {
+            display: block;
 
-        transition:
-            max-height 0.45s ease,
-            opacity 0.25s ease,
-            transform 0.35s ease,
-            visibility 0.35s ease,
-            padding 0.35s ease;
-    }
+            width: 25px;
+            height: 3px;
 
+            background: var(--white);
 
-    /* =====================================
-       OPEN MENU
-    ===================================== */
+            border-radius: 10px;
 
-    .nav-links.show {
+            transform-origin: center;
 
-        max-height: 520px;
+            transition:
+                transform 0.35s ease,
+                opacity 0.25s ease,
+                width 0.3s ease;
+        }
 
-        opacity: 1;
 
-        visibility: visible;
+        /* =========================================
+           HERO SECTION
+        ========================================= */
 
-        transform:
-            translateY(0)
-            scale(1);
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            min-height: 550px;
+            overflow: hidden;
+            background-color: var(--primary-navy);
+        }
 
-        padding:
-            10px;
-    }
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 15s infinite ease-in-out;
+        }
 
+        .slide {
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
 
-    /* =====================================
-       NAVIGATION ITEMS
-    ===================================== */
+            background-size: cover;
+            background-position: center;
+        }
 
-    .nav-links li {
-        width: 100%;
-    }
 
-    .nav-links li a {
+        /* =========================================
+           HERO OVERLAY
+        ========================================= */
 
-        display: flex;
+        .slide::after {
+            content: '';
 
-        align-items: center;
+            position: absolute;
 
-        width: 100%;
+            top: 0;
+            left: 0;
 
-        min-height: 48px;
+            width: 100%;
+            height: 100%;
 
-        padding:
-            0.8rem 1rem;
+            background:
+                linear-gradient(
+                    rgba(15, 44, 89, 0.65),
+                    rgba(15, 44, 89, 0.85)
+                );
 
-        border-radius: 10px;
+            z-index: 1;
+        }
 
-        border-bottom: none;
 
-        font-weight: 600;
+        /* =========================================
+           HERO IMAGES
+        ========================================= */
 
-        color: var(--dark-text);
+        .slide-1 {
+            background-image:
+                url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png');
+        }
 
-        transition:
-            background 0.25s ease,
-            color 0.25s ease,
-            transform 0.25s ease,
-            padding-left 0.25s ease;
-    }
+        .slide-2 {
+            background-image:
+                url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80');
+        }
 
+        .slide-3 {
+            background-image:
+                url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80');
+        }
 
-    /* Link hover */
 
-    .nav-links li a:hover {
+        /* =========================================
+           HERO CONTENT
+        ========================================= */
 
-        background:
-            rgba(197, 160, 89, 0.12);
+        .slide-content {
+            position: relative;
+            z-index: 2;
 
-        color:
-            var(--primary-navy);
+            max-width: 850px;
 
-        padding-left:
-            1.25rem;
+            padding: 0 2rem;
 
-        transform:
-            translateX(3px);
-    }
+            color: var(--white);
+        }
 
+        .hero-badge {
+            height: 120px;
+            width: auto;
 
-    /* =====================================
-       ENROLL BUTTON
-    ===================================== */
+            margin-bottom: 1rem;
 
-    .nav-links .btn-enroll {
+            filter:
+                drop-shadow(
+                    0 4px 12px rgba(0, 0, 0, 0.4)
+                );
+        }
 
-        justify-content: center;
+        .slide-content h1 {
+            font-size: 3rem;
 
-        margin-top: 6px;
+            margin-bottom: 1rem;
 
-        padding:
-            0.85rem 1rem;
+            font-weight: 700;
 
-        background:
-            var(--primary-navy);
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.4);
+        }
 
-        color:
-            var(--white) !important;
+        .slide-content p {
+            font-size: 1.2rem;
 
-        border:
-            2px solid var(--secondary-gold);
+            margin-bottom: 2rem;
 
-        border-radius:
-            10px;
-    }
+            opacity: 0.95;
 
-    .nav-links .btn-enroll:hover {
+            text-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.4);
+        }
 
-        background:
-            var(--secondary-gold);
 
-        color:
-            var(--primary-navy) !important;
+        /* =========================================
+           HERO BUTTONS
+        ========================================= */
 
-        padding-left:
-            1rem;
+        .hero-buttons {
+            display: flex;
 
-        transform:
-            translateX(0);
-    }
+            gap: 1rem;
 
+            justify-content: center;
 
-    /* =====================================
-       HAMBURGER → X
-    ===================================== */
+            flex-wrap: wrap;
+        }
 
-    .mobile-toggle.active span:nth-child(1) {
+        .btn-primary {
+            background-color: var(--secondary-gold);
 
-        transform:
-            translateY(8px)
-            rotate(45deg);
-    }
+            color: var(--primary-navy);
 
-    .mobile-toggle.active span:nth-child(2) {
+            padding: 0.8rem 2rem;
 
-        opacity: 0;
+            border-radius: 5px;
 
-        width: 0;
+            font-weight: 700;
 
-        transform:
-            scale(0);
-    }
+            transition: 0.3s;
+        }
 
-    .mobile-toggle.active span:nth-child(3) {
+        .btn-secondary {
+            border: 2px solid var(--white);
 
-        transform:
-            translateY(-8px)
-            rotate(-45deg);
-    }
+            color: var(--white);
 
+            padding: 0.8rem 2rem;
 
-    /* =====================================
-       ACTIVE BUTTON
-    ===================================== */
+            border-radius: 5px;
 
-    .mobile-toggle.active {
+            font-weight: 600;
 
-        background:
-            var(--secondary-gold);
+            transition: 0.3s;
+        }
 
-        box-shadow:
-            0 8px 20px rgba(15, 44, 89, 0.25);
-    }
+        .btn-primary:hover {
+            background-color: #d4af66;
 
-    .mobile-toggle.active span {
+            transform: translateY(-2px);
+        }
 
-        background:
-            var(--primary-navy);
-    }
-}
+        .btn-secondary:hover {
+            background-color: var(--white);
 
+            color: var(--primary-navy);
 
-/* =========================================
-   SMALL PHONES
-========================================= */
+            transform: translateY(-2px);
+        }
 
-@media (max-width: 480px) {
 
-    .mobile-toggle {
+        /* =========================================
+           SLIDER ANIMATION
+        ========================================= */
 
-        width: 44px;
-        height: 44px;
+        @keyframes slideAnimation {
 
-        border-radius: 11px;
-    }
+            0%,
+            28% {
+                transform: translateX(0%);
+            }
 
-    .mobile-toggle span {
+            33%,
+            61% {
+                transform: translateX(-100vw);
+            }
 
-        width: 23px;
-        height: 3px;
-    }
+            66%,
+            94% {
+                transform: translateX(-200vw);
+            }
 
-    .nav-links {
+            100% {
+                transform: translateX(0%);
+            }
 
-        left: 8px;
-        right: 8px;
+        }
 
-        top: calc(100% + 6px);
 
-        border-radius: 14px;
-    }
+        /* =========================================
+           FEATURES
+        ========================================= */
 
-    .nav-links.show {
+        .features {
+            max-width: 1200px;
 
-        padding: 8px;
-    }
-}
-```
+            margin: -4rem auto 4rem;
+
+            padding: 0 2rem;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 2rem;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+
+            padding: 2.5rem 1.5rem;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.08);
+
+            border-bottom:
+                4px solid var(--secondary-gold);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-navy);
+
+            margin-bottom: 0.8rem;
+
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--grey);
+        }
+
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================= */
+
+        .about {
+            background-color: var(--light-bg);
+
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 3rem;
+
+            align-items: center;
+        }
+
+
+        /* =========================================
+           ABOUT IMAGE
+        ========================================= */
+
+        .about-image {
+            width: 100%;
+
+            text-align: center;
+
+            order: 2;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+
+            max-width: 800px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 10px 20px
+                rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* =========================================
+           ABOUT TEXT
+        ========================================= */
+
+        .about-text {
+            width: 100%;
+
+            text-align: left;
+        }
+
+        .about-text h1,
+        .about-text h2 {
+            color: var(--primary-navy);
+
+            font-size: 2.2rem;
+
+            margin-bottom: 1rem;
+
+            text-align: left;
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+
+            color: #4A5568;
+        }
+
+        .about-container > .about-text:first-child {
+            order: 1;
+        }
+
+        .about-container > .about-text:last-child {
+            order: 3;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background-color: var(--primary-navy);
+
+            color: var(--white);
+
+            padding:
+                4rem 2rem
+                1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+
+            margin: 0 auto 3rem;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(220px, 1fr)
+                );
+
+            gap: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--secondary-gold);
+
+            margin-bottom: 1.2rem;
+
+            font-size: 1.1rem;
+        }
+
+        .footer-col p,
+        .footer-col li {
+            font-size: 0.9rem;
+
+            opacity: 0.8;
+
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            transition: 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--secondary-gold);
+
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+
+            padding-top: 2rem;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.1);
+
+            font-size: 0.85rem;
+
+            opacity: 0.7;
+        }
+
+
+        /* =========================================
+           MOBILE NAVIGATION
+        ========================================= */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                flex-direction: row;
+
+                padding:
+                    0.7rem 1rem;
+
+                gap: 0;
+            }
+
+
+            /* BRAND */
+
+            .brand-logo {
+                gap: 8px;
+            }
+
+            .badge-icon {
+                height: 48px;
+            }
+
+            .brand-name {
+                font-size: 1.05rem;
+            }
+
+            .brand-name span {
+                font-size: 0.6rem;
+            }
+
+
+            /* SHOW MOBILE BUTTON */
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+
+            /* =====================================
+               MODERN MOBILE MENU
+            ===================================== */
+
+            .nav-links {
+
+                position: absolute;
+
+                top: calc(100% + 8px);
+
+                left: 10px;
+                right: 10px;
+
+                width: auto;
+
+                display: flex;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 4px;
+
+                background:
+                    rgba(255, 255, 255, 0.98);
+
+                padding: 0;
+
+                margin: 0;
+
+                border-radius: 16px;
+
+                box-shadow:
+                    0 15px 40px
+                    rgba(15, 44, 89, 0.18);
+
+                border:
+                    1px solid
+                    rgba(15, 44, 89, 0.08);
+
+                max-height: 0;
+
+                overflow: hidden;
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                transform:
+                    translateY(-12px)
+                    scale(0.98);
+
+                transform-origin:
+                    top center;
+
+                transition:
+                    max-height 0.45s ease,
+                    opacity 0.25s ease,
+                    transform 0.35s ease,
+                    visibility 0.35s ease,
+                    padding 0.35s ease;
+
+                z-index: 1100;
+            }
+
+
+            /* OPEN MENU */
+
+            .nav-links.show {
+
+                max-height: 520px;
+
+                opacity: 1;
+
+                visibility: visible;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                padding:
+                    10px;
+            }
+
+
+            /* NAV ITEMS */
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links li a {
+
+                display: flex;
+
+                align-items: center;
+
+                width: 100%;
+
+                min-height: 48px;
+
+                padding:
+                    0.8rem 1rem;
+
+                border-radius: 10px;
+
+                border-bottom: none;
+
+                font-weight: 600;
+
+                color: var(--dark-text);
+
+                transition:
+                    background 0.25s ease,
+                    color 0.25s ease,
+                    transform 0.25s ease,
+                    padding-left 0.25s ease;
+            }
+
+            .nav-links li a:hover {
+
+                background:
+                    rgba(197, 160, 89, 0.12);
+
+                color:
+                    var(--primary-navy);
+
+                padding-left:
+                    1.25rem;
+
+                transform:
+                    translateX(3px);
+            }
+
+
+            /* ENROLL */
+
+            .nav-links .btn-enroll {
+
+                justify-content: center;
+
+                margin-top: 6px;
+
+                padding:
+                    0.85rem 1rem;
+
+                background:
+                    var(--primary-navy);
+
+                color:
+                    var(--white) !important;
+
+                border:
+                    2px solid
+                    var(--secondary-gold);
+
+                border-radius:
+                    10px;
+            }
+
+            .nav-links .btn-enroll:hover {
+
+                background:
+                    var(--secondary-gold);
+
+                color:
+                    var(--primary-navy) !important;
+
+                padding-left:
+                    1rem;
+
+                transform:
+                    translateX(0);
+            }
+
+
+            /* =====================================
+               HAMBURGER → X
+            ===================================== */
+
+            .mobile-toggle.active
+            span:nth-child(1) {
+
+                transform:
+                    translateY(8px)
+                    rotate(45deg);
+            }
+
+            .mobile-toggle.active
+            span:nth-child(2) {
+
+                opacity: 0;
+
+                width: 0;
+
+                transform:
+                    scale(0);
+            }
+
+            .mobile-toggle.active
+            span:nth-child(3) {
+
+                transform:
+                    translateY(-8px)
+                    rotate(-45deg);
+            }
+
+
+            /* ACTIVE TOGGLE */
+
+            .mobile-toggle.active {
+
+                background:
+                    var(--secondary-gold);
+
+                box-shadow:
+                    0 8px 20px
+                    rgba(15, 44, 89, 0.25);
+            }
+
+            .mobile-toggle.active span {
+
+                background:
+                    var(--primary-navy);
+            }
+
+
+            /* =====================================
+               HERO
+            ===================================== */
+
+            .hero {
+                height: 70vh;
+
+                min-height: 500px;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+
+            .hero-badge {
+                height: 80px;
+            }
+
+
+            /* HERO BUTTONS */
+
+            .hero-buttons {
+
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .hero-buttons a {
+
+                width: 100%;
+
+                max-width: 250px;
+
+                text-align: center;
+            }
+
+
+            /* ABOUT */
+
+            .about-text {
+                text-align: left;
+            }
+
+            .about-text h1,
+            .about-text h2 {
+
+                text-align: left;
+
+                font-size: 1.8rem;
+            }
+
+
+            /* FEATURES */
+
+            .features {
+
+                margin-top: -2rem;
+
+                padding:
+                    0 1rem;
+            }
+
+        }
+
+
+        /* =========================================
+           SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 480px) {
+
+            .navbar {
+                padding:
+                    0.6rem 0.8rem;
+            }
+
+            .badge-icon {
+                height: 42px;
+            }
+
+            .brand-name {
+                font-size: 0.9rem;
+            }
+
+            .brand-name span {
+                font-size: 0.5rem;
+
+                letter-spacing: 0.5px;
+            }
+
+            .mobile-toggle {
+
+                width: 44px;
+
+                height: 44px;
+
+                border-radius: 11px;
+            }
+
+            .mobile-toggle span {
+
+                width: 23px;
+
+                height: 3px;
+            }
+
+            .nav-links {
+
+                left: 8px;
+
+                right: 8px;
+
+                top: calc(100% + 6px);
+
+                border-radius: 14px;
+            }
+
+            .nav-links.show {
+
+                padding: 8px;
+            }
+
+            .hero {
+                min-height: 480px;
+            }
+
+            .slide-content {
+                padding:
+                    0 1.2rem;
+            }
+
+            .slide-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .slide-content p {
+                font-size: 0.9rem;
+            }
+
+            .about {
+                padding:
+                    4rem 1rem;
+            }
+
+            .about-text h1,
+            .about-text h2 {
+                font-size: 1.6rem;
+            }
+
+            footer {
+                padding:
+                    3rem 1rem 1.5rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVIGATION BAR
+    ========================================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+
+            <!-- BRAND -->
+
+            <div class="brand-logo">
+
+                <svg
+                    class="badge-icon"
+                    viewBox="0 0 400 450"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <path
+                        d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="12"/>
+
+                    <path
+                        d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                        fill="#FFFFFF"/>
+
+                    <rect
+                        x="75"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+
+                    <rect
+                        x="205"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+
+                    <rect
+                        x="205"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <rect
+                        x="75"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <path
+                        d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <text
+                        x="200"
+                        y="375"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="bold"
+                        font-size="22"
+                        fill="#FFFFFF"
+                        text-anchor="middle">
+                        Excelling is our goal
+                    </text>
+
+                    <text
+                        x="200"
+                        y="105"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="900"
+                        font-size="36"
+                        fill="#0F2C59"
+                        text-anchor="middle">
+                        FRATAM
+                    </text>
+
+                    <text
+                        x="200"
+                        y="135"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="600"
+                        font-size="18"
+                        fill="#0F2C59"
+                        text-anchor="middle"
+                        letter-spacing="3">
+                        JUNIOR SCHOOL
+                    </text>
+
+                </svg>
+
+
+                <div class="brand-name">
+
+                    FRATAM
+
+                    <span>
+                        JUNIOR SCHOOL
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE TOGGLE -->
+
+            <button
+                class="mobile-toggle"
+                id="mobileToggle"
+                aria-label="Open navigation"
+                aria-expanded="false"
+                aria-controls="navLinks"
+                type="button">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <!-- NAVIGATION LINKS -->
+
+            <ul
+                class="nav-links"
+                id="navLinks">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="About.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Academics.html">
+                        Academics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Gallery.html">
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Contact.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="Apply.html"
+                        class="btn-enroll">
+                        Enroll Now
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         HERO SLIDER
+    ========================================= -->
+
+    <section class="hero">
+
+        <div class="slider">
+
+
+            <!-- SLIDE 1 -->
+
+            <div class="slide slide-1">
+
+                <div class="slide-content">
+
+                    <svg
+                        class="hero-badge"
+                        viewBox="0 0 400 450"
+                        xmlns="http://www.w3.org/2000/svg">
+
+                        <path
+                            d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                            fill="#0F2C59"
+                            stroke="#C5A059"
+                            stroke-width="12"/>
+
+                        <path
+                            d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                            fill="#FFFFFF"/>
+
+                        <text
+                            x="200"
+                            y="105"
+                            font-family="'Poppins', sans-serif"
+                            font-weight="900"
+                            font-size="36"
+                            fill="#0F2C59"
+                            text-anchor="middle">
+                            FRATAM
+                        </text>
+
+                        <text
+                            x="200"
+                            y="135"
+                            font-family="'Poppins', sans-serif"
+                            font-weight="600"
+                            font-size="18"
+                            fill="#0F2C59"
+                            text-anchor="middle"
+                            letter-spacing="3">
+                            JUNIOR SCHOOL
+                        </text>
+
+                    </svg>
+
+
+                    <h1>
+                        Excelling Is Our Goal
+                    </h1>
+
+                    <p>
+                        Inspiring young minds through quality education,
+                        discipline, creativity and strong values.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="About.html"
+                            class="btn-primary">
+                            Discover More
+                        </a>
+
+                        <a
+                            href="Apply.html"
+                            class="btn-secondary">
+                            Apply Now
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 2 -->
+
+            <div class="slide slide-2">
+
+                <div class="slide-content">
+
+                    <h1>
+                        Quality Education
+                    </h1>
+
+                    <p>
+                        Building strong academic foundations
+                        for tomorrow's leaders.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="Academics.html"
+                            class="btn-primary">
+                            Our Academics
+                        </a>
+
+                        <a
+                            href="Contact.html"
+                            class="btn-secondary">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SLIDE 3 -->
+
+            <div class="slide slide-3">
+
+                <div class="slide-content">
+
+                    <h1>
+                        Growing Together
+                    </h1>
+
+                    <p>
+                        A safe, friendly and inspiring environment
+                        where every learner is valued.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="Gallery.html"
+                            class="btn-primary">
+                            View Gallery
+                        </a>
+
+                        <a
+                            href="Apply.html"
+                            class="btn-secondary">
+                            Join FRATAM
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FEATURES
+    ========================================= -->
+
+    <section class="features">
+
+
+        <div class="feature-card">
+
+            <h3>
+                Quality Education
+            </h3>
+
+            <p>
+                We provide quality teaching that helps
+                learners develop strong academic foundations.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>
+                Strong Values
+            </h3>
+
+            <p>
+                We nurture discipline, confidence,
+                creativity and good character.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <h3>
+                Safe Environment
+            </h3>
+
+            <p>
+                Every learner is valued and encouraged
+                to discover and develop their abilities.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         ABOUT SECTION
+    ========================================= -->
+
+    <section
+        class="about"
+        id="about">
+
+        <div class="about-container">
+
+
+            <!-- MESSAGE FROM HEADMASTER -->
+
+            <div class="about-text">
+
+                <h1>
+                    Message from the Headmaster
+                </h1>
+
+
+                <p>
+                    It is my great pleasure to welcome you to
+                    FRATAM Junior School, a place where we believe
+                    that every child has the potential to learn,
+                    grow, and excel. Our motto,
+                    “Excelling is our goal,” reflects our commitment
+                    to providing quality education while nurturing
+                    discipline, confidence, creativity, and good character.
+                </p>
+
+
+                <p>
+                    At FRATAM Junior School, we strive to create
+                    a safe, friendly, and inspiring learning environment
+                    where every learner is valued and encouraged to
+                    discover their abilities. We work closely with
+                    parents and guardians because we believe that
+                    the success of every child is a shared responsibility.
+                </p>
+
+
+                <p>
+                    Our dedicated teachers are committed to guiding
+                    learners academically, socially, and morally.
+                    Through quality teaching, co-curricular activities,
+                    teamwork, and strong values, we prepare our learners
+                    to become responsible and successful members of society.
+                </p>
+
+
+                <p>
+                    I warmly invite you to explore our school,
+                    learn more about our programs, and become part
+                    of the FRATAM family.
+                </p>
+
+
+                <p>
+                    Together, let us nurture, inspire, and empower
+                    our children to reach their full potential.
+                </p>
+
+
+                <p>
+                    <strong>
+                        — Headmaster, FRATAM Junior School
+                    </strong>
+                </p>
+
+            </div>
+
+
+            <!-- SCHOOL IMAGE -->
+
+            <div class="about-image">
+
+                <img
+                    src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png"
+                    alt="FRATAM Junior School Students">
+
+            </div>
+
+
+            <!-- WELCOME -->
+
+            <div class="about-text">
+
+                <h2>
+                    Welcome to FRATAM Junior School
+                </h2>
+
+
+                <p>
+                    At FRATAM, we live by our motto:
+                    <strong>
+                        "Excelling is our goal."
+                    </strong>
+
+                    We believe every student is capable
+                    of greatness when provided with the
+                    right support, discipline, and encouragement.
+                </p>
+
+
+                <p>
+                    Our junior school curriculum is carefully
+                    structured to transition young minds
+                    seamlessly through their primary academic
+                    years while maintaining strong ethical
+                    foundations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+
+    <footer id="contact">
+
+        <div class="footer-container">
+
+
+            <!-- SCHOOL -->
+
+            <div class="footer-col">
+
+                <svg
+                    class="badge-icon"
+                    viewBox="0 0 400 450"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="
+                        height:65px;
+                        margin-bottom:10px;
+                    ">
+
+                    <path
+                        d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="12"/>
+
+                    <path
+                        d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                        fill="#FFFFFF"/>
+
+                    <rect
+                        x="75"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+
+                    <rect
+                        x="205"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+
+                    <rect
+                        x="205"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <rect
+                        x="75"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <path
+                        d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+
+                    <text
+                        x="200"
+                        y="375"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="bold"
+                        font-size="22"
+                        fill="#FFFFFF"
+                        text-anchor="middle">
+                        Excelling is our goal
+                    </text>
+
+                    <text
+                        x="200"
+                        y="105"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="900"
+                        font-size="36"
+                        fill="#0F2C59"
+                        text-anchor="middle">
+                        FRATAM
+                    </text>
+
+                    <text
+                        x="200"
+                        y="135"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="600"
+                        font-size="20"
+                        fill="#0F2C59"
+                        text-anchor="middle"
+                        letter-spacing="3">
+                        JUNIOR SCHOOL
+                    </text>
+
+                </svg>
+
+
+                <p>
+                    FRATAM JUNIOR SCHOOL
+                </p>
+
+                <p>
+                    <em>
+                        Excelling is our goal
+                    </em>
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+
+            <div class="footer-col">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="About.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="Academics.html">
+                            Academics
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="Apply.html">
+                            Admissions
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-col">
+
+                <h4>
+                    Contact Us
+                </h4>
+
+                <p>
+                    📍 School Campus, Main Road
+                </p>
+
+                <p>
+                    📞 +256-730-404-503
+                </p>
+
+                <p>
+                    ✉️ trippler33221@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- COPYRIGHT -->
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 FRATAM JUNIOR SCHOOL.
+                All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         MOBILE NAVIGATION JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const mobileToggle =
+                    document.getElementById(
+                        "mobileToggle"
+                    );
+
+                const navLinks =
+                    document.getElementById(
+                        "navLinks"
+                    );
+
+
+                /* SAFETY CHECK */
+
+                if (
+                    !mobileToggle ||
+                    !navLinks
+                ) {
+                    return;
+                }
+
+
+                /* =================================
+                   OPEN / CLOSE MENU
+                ================================= */
+
+                mobileToggle.addEventListener(
+                    "click",
+                    function () {
+
+                        const isOpen =
+                            navLinks.classList.toggle(
+                                "show"
+                            );
+
+                        mobileToggle.classList.toggle(
+                            "active",
+                            isOpen
+                        );
+
+
+                        mobileToggle.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
+
+
+                        mobileToggle.setAttribute(
+                            "aria-label",
+                            isOpen
+                                ? "Close navigation"
+                                : "Open navigation"
+                        );
+
+                    }
+                );
+
+
+                /* =================================
+                   CLOSE WHEN LINK IS CLICKED
+                ================================= */
+
+                const menuItems =
+                    navLinks.querySelectorAll(
+                        "a"
+                    );
+
+
+                menuItems.forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                navLinks.classList.remove(
+                                    "show"
+                                );
+
+                                mobileToggle.classList.remove(
+                                    "active"
+                                );
+
+
+                                mobileToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+
+                                mobileToggle.setAttribute(
+                                    "aria-label",
+                                    "Open navigation"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =================================
+                   CLOSE WHEN RESIZING TO DESKTOP
+                ================================= */
+
+                window.addEventListener(
+                    "resize",
+                    function () {
+
+                        if (
+                            window.innerWidth > 768
+                        ) {
+
+                            navLinks.classList.remove(
+                                "show"
+                            );
+
+                            mobileToggle.classList.remove(
+                                "active"
+                            );
+
+
+                            mobileToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+
+                            mobileToggle.setAttribute(
+                                "aria-label",
+                                "Open navigation"
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                /* =================================
+                   CLOSE WITH ESCAPE KEY
+                ================================= */
+
+                document.addEventListener(
+                    "keydown",
+                    function (event) {
+
+                        if (
+                            event.key === "Escape"
+                        ) {
+
+                            navLinks.classList.remove(
+                                "show"
+                            );
+
+                            mobileToggle.classList.remove(
+                                "active"
+                            );
+
+
+                            mobileToggle.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+
+                            mobileToggle.setAttribute(
+                                "aria-label",
+                                "Open navigation"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
