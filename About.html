@@ -249,10 +249,49 @@
 
         /* ABOUT SECTION */
         .about { background-color: var(--light-bg); padding: 5rem 2rem; }
-        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .about-text h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 1rem; }
-        .about-text p { margin-bottom: 1.2rem; color: #4A5568; }
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-image {
+            width: 100%;
+            text-align: center;
+            order: 2;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .about-text {
+            width: 100%;
+            text-align: center;
+        }
+        .about-text h1 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .about-text h2 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #4A5568;
+        }
+        .about-container > .about-text:first-child {
+            order: 1;
+        }
+        .about-container > .about-text:last-child {
+            order: 3;
+        }
 
         /* FOOTER */
         footer { background-color: var(--primary-navy); color: var(--white); padding: 4rem 2rem 1.5rem; }
@@ -268,7 +307,6 @@
             .hero { height: 70vh; }
             .slide-content h1 { font-size: 2rem; }
             .hero-badge { height: 80px; }
-            .about-container { grid-template-columns: 1fr; }
             .hero-buttons { flex-direction: column; }
         }
     </style>
@@ -311,30 +349,72 @@
     <!-- ABOUT SECTION -->
     <section class="about" id="about">
         <div class="about-container">
-             <div>
-            <div class="about-text">
-                <h2>Welcome to FRATAM Junior School</h2>
-                <p>At FRATAM, we live by our motto: <strong>"Excelling is our goal."</strong> We believe every student is capable of greatness when provided with the right support, discipline, and encouragement.</p>
-                <p>Our junior school curriculum is carefully structured to transition young minds seamlessly through their primary academic years while maintaining strong ethical foundations.</p>
-            </div>
-             <div class="about-image">
-                <img src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png" alt="FRATAM Junior School Students">
-            </div>
-        </div>
+
+            <!-- MESSAGE FROM THE HEADMASTER -->
             <div class="about-text">
                 <h1>Message from the Headmaster</h1>
-                <p>It is my great pleasure to welcome you to FRATAM Junior School, a place where we believe that every child has the potential to learn, grow, and excel. Our motto, “Excelling is our goal,” reflects our commitment to providing quality education while nurturing discipline, confidence, creativity, and good character.
 
-At FRATAM Junior School, we strive to create a safe, friendly, and inspiring learning environment where every learner is valued and encouraged to discover their abilities. We work closely with parents and guardians because we believe that the success of every child is a shared responsibility.
+                <p>
+                    It is my great pleasure to welcome you to FRATAM Junior School,
+                    a place where we believe that every child has the potential to
+                    learn, grow, and excel. Our motto, “Excelling is our goal,”
+                    reflects our commitment to providing quality education while
+                    nurturing discipline, confidence, creativity, and good character.
+                </p>
 
-Our dedicated teachers are committed to guiding learners academically, socially, and morally. Through quality teaching, co-curricular activities, teamwork, and strong values, we prepare our learners to become responsible and successful members of society.
+                <p>
+                    At FRATAM Junior School, we strive to create a safe, friendly,
+                    and inspiring learning environment where every learner is valued
+                    and encouraged to discover their abilities. We work closely with
+                    parents and guardians because we believe that the success of
+                    every child is a shared responsibility.
+                </p>
 
-I warmly invite you to explore our school, learn more about our programs, and become part of the FRATAM family.
+                <p>
+                    Our dedicated teachers are committed to guiding learners
+                    academically, socially, and morally. Through quality teaching,
+                    co-curricular activities, teamwork, and strong values, we prepare
+                    our learners to become responsible and successful members of society.
+                </p>
 
-Together, let us nurture, inspire, and empower our children to reach their full potential.
+                <p>
+                    I warmly invite you to explore our school, learn more about our
+                    programs, and become part of the FRATAM family.
+                </p>
 
-— Headmaster, FRATAM Junior School</p>
+                <p>
+                    Together, let us nurture, inspire, and empower our children to
+                    reach their full potential.
+                </p>
+
+                <p><strong>— Headmaster, FRATAM Junior School</strong></p>
             </div>
+
+            <!-- PICTURE IN THE MIDDLE -->
+            <div class="about-image">
+                <img src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png"
+                     alt="FRATAM Junior School Students">
+            </div>
+
+            <!-- WELCOME SECTION -->
+            <div class="about-text">
+                <h2>Welcome to FRATAM Junior School</h2>
+
+                <p>
+                    At FRATAM, we live by our motto:
+                    <strong>"Excelling is our goal."</strong>
+                    We believe every student is capable of greatness when provided
+                    with the right support, discipline, and encouragement.
+                </p>
+
+                <p>
+                    Our junior school curriculum is carefully structured to transition
+                    young minds seamlessly through their primary academic years while
+                    maintaining strong ethical foundations.
+                </p>
+            </div>
+
+        </div>
     </section>
 
     <!-- FOOTER -->
