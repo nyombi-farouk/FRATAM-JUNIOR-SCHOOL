@@ -1,366 +1,2065 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRATAM Junior School | Excelling is Our Goal</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS RESET & BRAND VARIABLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
 
-        :root {
-            --primary-navy: #0F2C59;
-            --secondary-gold: #C5A059;
-            --accent-blue: #00A8E8;
-            --light-bg: #F8FAFC;
-            --dark-text: #1E293B;
-            --white: #FFFFFF;
-        }
+<meta charset="UTF-8">
 
-        body {
-            color: var(--dark-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+<meta name="description"
+      content="FRATAM Junior School - Excelling is Our Goal. Quality education, discipline, confidence, creativity and good character.">
 
-        /* HEADER & NAVIGATION */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+<title>FRATAM Junior School | Excelling is Our Goal</title>
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0.6rem 2rem;
-        }
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
 
-        .badge-icon {
-            height: 55px;
-            width: auto;
-        }
 
-        .brand-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            line-height: 1.2;
-        }
+<style>
 
-        .brand-name span {
-            display: block;
-            font-size: 0.75rem;
-            color: var(--secondary-gold);
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
+/* =========================================================
+   CSS RESET & BRAND VARIABLES
+========================================================= */
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-        .nav-links a {
-            font-weight: 500;
-            color: var(--dark-text);
-            transition: color 0.3s;
-        }
+:root {
+    --primary-navy: #0F2C59;
+    --secondary-gold: #C5A059;
+    --accent-blue: #00A8E8;
+    --light-bg: #F8FAFC;
+    --dark-text: #1E293B;
+    --white: #FFFFFF;
+}
 
-        .nav-links a:hover {
-            color: var(--secondary-gold);
-        }
 
-        .btn-enroll {
-            background-color: var(--primary-navy);
-            color: var(--white) !important;
-            padding: 0.6rem 1.4rem;
-            border-radius: 25px;
-            border: 2px solid var(--secondary-gold);
-            font-weight: 600 !important;
-            transition: all 0.3s ease;
-        }
+/* =========================================================
+   GENERAL
+========================================================= */
 
-        .btn-enroll:hover {
-            background-color: var(--secondary-gold);
-            color: var(--primary-navy) !important;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* HERO SLIDER SECTION WITH BACKGROUND IMAGES */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            overflow: hidden;
-            background-color: var(--primary-navy);
-        }
+body {
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: var(--white);
+}
 
-        .slider {
-            display: flex;
-            width: 300%;
-            height: 100%;
-            animation: slideAnimation 15s infinite ease-in-out;
-        }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        .slide {
-            width: 100vw;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
+ul {
+    list-style: none;
+}
 
-        /* Dark overlay over hero images to make text pop */
-        .slide::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(15, 44, 89, 0.65), rgba(15, 44, 89, 0.85));
-            z-index: 1;
-        }
 
-        /* HERO BACKGROUND IMAGES */
-        /* Slide 1 uses your uploaded students picture */
-        .slide-1 { 
-            background-image: url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png'); 
-        }
-        /* Slide 2 & 3 use high-res educational activity images */
-        .slide-2 { 
-            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80'); 
-        }
-        .slide-3 { 
-            background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80'); 
-        }
+/* =========================================================
+   HEADER & NAVIGATION
+========================================================= */
 
-        .slide-content {
-            z-index: 2;
-            max-width: 850px;
-            padding: 0 2rem;
-            color: var(--white);
-        }
+header {
+    background-color: var(--white);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .hero-badge {
-            height: 120px;
-            width: auto;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.6rem 2rem;
+}
 
-        .slide-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .slide-content p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
+.badge-icon {
+    height: 55px;
+    width: auto;
+}
 
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
+.brand-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    line-height: 1.2;
+}
 
-        .btn-primary {
-            background-color: var(--secondary-gold);
-            color: var(--primary-navy);
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-weight: 700;
-            transition: 0.3s;
-        }
+.brand-name span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--secondary-gold);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
 
-        .btn-secondary {
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
 
-        .btn-primary:hover { background-color: #d4af66; }
-        .btn-secondary:hover { background-color: var(--white); color: var(--primary-navy); }
+.nav-links a {
+    font-weight: 500;
+    color: var(--dark-text);
+    transition: color 0.3s;
+}
 
-        /* KEYFRAME SLIDE ANIMATION */
-        @keyframes slideAnimation {
-            0%, 28% { transform: translateX(0%); }
-            33%, 61% { transform: translateX(-100vw); }
-            66%, 94% { transform: translateX(-200vw); }
-            100% { transform: translateX(0%); }
-        }
+.nav-links a:hover {
+    color: var(--secondary-gold);
+}
 
-        /* FEATURES SECTION */
-        .features {
-            max-width: 1200px;
-            margin: -4rem auto 4rem;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            position: relative;
-            z-index: 10;
-        }
+.btn-enroll {
+    background-color: var(--primary-navy);
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 25px;
+    border: 2px solid var(--secondary-gold);
+    font-weight: 600 !important;
+    transition: all 0.3s ease;
+}
 
-        .feature-card {
-            background-color: var(--white);
-            padding: 2.5rem 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-bottom: 4px solid var(--secondary-gold);
-            transition: transform 0.3s ease;
-        }
+.btn-enroll:hover {
+    background-color: var(--secondary-gold);
+    color: var(--primary-navy) !important;
+}
 
-        .feature-card:hover { transform: translateY(-8px); }
-        .feature-card h3 { color: var(--primary-navy); margin-bottom: 0.8rem; font-size: 1.25rem; }
 
-        /* ABOUT SECTION */
-        .about { background-color: var(--light-bg); padding: 5rem 2rem; }
-        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .about-text h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 1rem; }
-        .about-text p { margin-bottom: 1.2rem; color: #4A5568; }
+/* =========================================================
+   HERO SLIDER SECTION
+========================================================= */
 
-        /* FOOTER */
-        footer { background-color: var(--primary-navy); color: var(--white); padding: 4rem 2rem 1.5rem; }
-        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
-        .footer-col h4 { color: var(--secondary-gold); margin-bottom: 1.2rem; font-size: 1.1rem; }
-        .footer-col p, .footer-col li { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.6rem; }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7; }
+.hero {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
+    background-color: var(--primary-navy);
+}
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 1rem; }
-            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-            .hero { height: 70vh; }
-            .slide-content h1 { font-size: 2rem; }
-            .hero-badge { height: 80px; }
-            .about-container { grid-template-columns: 1fr; }
-            .hero-buttons { flex-direction: column; }
-        }
-    </style>
+.slider {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    animation: slideAnimation 15s infinite ease-in-out;
+}
+
+.slide {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(15, 44, 89, 0.65),
+        rgba(15, 44, 89, 0.85)
+    );
+    z-index: 1;
+}
+
+
+/* HERO BACKGROUND IMAGES */
+
+.slide-1 {
+    background-image:
+        url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png');
+}
+
+.slide-2 {
+    background-image:
+        url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80');
+}
+
+.slide-3 {
+    background-image:
+        url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80');
+}
+
+.slide-content {
+    z-index: 2;
+    max-width: 850px;
+    padding: 0 2rem;
+    color: var(--white);
+}
+
+.hero-badge {
+    height: 120px;
+    width: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-primary {
+    background-color: var(--secondary-gold);
+    color: var(--primary-navy);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-secondary {
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #d4af66;
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-navy);
+}
+
+
+/* =========================================================
+   KEYFRAME SLIDE ANIMATION
+========================================================= */
+
+@keyframes slideAnimation {
+
+    0%, 28% {
+        transform: translateX(0%);
+    }
+
+    33%, 61% {
+        transform: translateX(-100vw);
+    }
+
+    66%, 94% {
+        transform: translateX(-200vw);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+
+}
+
+
+/* =========================================================
+   FEATURES SECTION
+========================================================= */
+
+.features {
+    max-width: 1200px;
+    margin: -4rem auto 4rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-bottom: 4px solid var(--secondary-gold);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-card h3 {
+    color: var(--primary-navy);
+    margin-bottom: 0.8rem;
+    font-size: 1.25rem;
+}
+
+
+/* =========================================================
+   GENERAL SECTION HEADER
+========================================================= */
+
+.section-heading {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.section-heading h2 {
+    color: var(--primary-navy);
+    font-size: 2.3rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+.section-heading p {
+    color: #64748B;
+    font-size: 1rem;
+}
+
+.section-line {
+    width: 70px;
+    height: 4px;
+    background: var(--secondary-gold);
+    margin: 1rem auto;
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about {
+    background-color: var(--light-bg);
+    padding: 5rem 2rem;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.about-text h2 {
+    color: var(--primary-navy);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+    color: #4A5568;
+}
+
+
+/* =========================================================
+   VISION & MISSION
+========================================================= */
+
+.vision-mission {
+    padding: 5rem 2rem;
+    background: var(--white);
+}
+
+.vm-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.vm-card {
+    position: relative;
+    padding: 3rem 2.5rem;
+    border-radius: 18px;
+    background: var(--white);
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 15px 40px rgba(15,44,89,0.08);
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+.vm-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--secondary-gold);
+}
+
+.vm-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(15,44,89,0.13);
+}
+
+.vm-icon {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary-navy);
+    color: var(--secondary-gold);
+    font-size: 1.8rem;
+    margin-bottom: 1.3rem;
+}
+
+.vm-card h3 {
+    color: var(--primary-navy);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.vm-card p {
+    color: #64748B;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HEADTEACHER MESSAGE
+========================================================= */
+
+.hm-message {
+    padding: 5rem 2rem;
+    background:
+        linear-gradient(
+            135deg,
+            #0F2C59 0%,
+            #173F78 100%
+        );
+    color: var(--white);
+}
+
+.hm-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hm-image {
+    text-align: center;
+}
+
+.hm-image-box {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 7px solid var(--secondary-gold);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.1);
+}
+
+.hm-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hm-placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.hm-content h2 {
+    color: var(--white);
+    font-size: 2.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hm-content .gold-line {
+    width: 70px;
+    height: 4px;
+    background: var(--secondary-gold);
+    border-radius: 10px;
+    margin: 1rem 0 1.5rem;
+}
+
+.hm-content p {
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.2rem;
+    line-height: 1.9;
+}
+
+.hm-signature {
+    margin-top: 1.5rem;
+    color: var(--secondary-gold) !important;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   CORE VALUES
+========================================================= */
+
+.core-values {
+    padding: 5rem 2rem;
+    background: var(--light-bg);
+}
+
+.values-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.value-card {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-radius: 15px;
+    border-top: 4px solid var(--secondary-gold);
+    box-shadow: 0 8px 25px rgba(15,44,89,0.07);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(15,44,89,0.12);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EEF4FA;
+    color: var(--primary-navy);
+    font-size: 1.6rem;
+}
+
+.value-card h3 {
+    color: var(--primary-navy);
+    margin-bottom: 0.7rem;
+    font-size: 1.15rem;
+}
+
+.value-card p {
+    color: #64748B;
+    font-size: 0.92rem;
+}
+
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+.why-choose {
+    padding: 5rem 2rem;
+    background: var(--white);
+}
+
+.choose-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.choose-image {
+    position: relative;
+}
+
+.choose-image img {
+    width: 100%;
+    display: block;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.choose-content h2 {
+    color: var(--primary-navy);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.choose-content > p {
+    color: #64748B;
+    margin-bottom: 1.5rem;
+}
+
+.choose-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.choose-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--light-bg);
+    transition: all 0.3s ease;
+}
+
+.choose-item:hover {
+    transform: translateX(6px);
+    background: #EEF4FA;
+}
+
+.choose-check {
+    min-width: 35px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--primary-navy);
+    color: var(--secondary-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.choose-item h4 {
+    color: var(--primary-navy);
+    margin-bottom: 0.2rem;
+}
+
+.choose-item p {
+    color: #64748B;
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   CALL TO ACTION
+========================================================= */
+
+.cta {
+    padding: 5rem 2rem;
+    background: linear-gradient(
+        135deg,
+        var(--secondary-gold),
+        #D9BC7B
+    );
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    color: var(--primary-navy);
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.cta p {
+    color: #26364D;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--primary-navy);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    border-radius: 30px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--white);
+    color: var(--primary-navy);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    background-color: var(--primary-navy);
+    color: var(--white);
+    padding: 4rem 2rem 1.5rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+    color: var(--secondary-gold);
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.footer-col p,
+.footer-col li {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0.6rem;
+}
+
+.footer-col a {
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: var(--secondary-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .navbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hm-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hm-content .gold-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .values-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-badge {
+        height: 80px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .vm-container {
+        grid-template-columns: 1fr;
+    }
+
+    .choose-container {
+        grid-template-columns: 1fr;
+    }
+
+    .values-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .navbar {
+        padding: 0.7rem 1rem;
+    }
+
+    .brand-name {
+        font-size: 1.1rem;
+    }
+
+    .badge-icon {
+        height: 45px;
+    }
+
+    .nav-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+    }
+
+    .nav-links li:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .hero {
+        height: 75vh;
+    }
+
+    .slide-content {
+        padding: 0 1.2rem;
+    }
+
+    .slide-content h1 {
+        font-size: 1.7rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    .section-heading h2,
+    .hm-content h2,
+    .choose-content h2,
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .about,
+    .vision-mission,
+    .hm-message,
+    .core-values,
+    .why-choose,
+    .cta {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .vm-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .values-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hm-image-box {
+        width: 190px;
+        height: 190px;
+    }
+
+    .footer-container {
+        gap: 2rem;
+    }
+
+}
+
+</style>
+
 </head>
+
+
 <body>
 
-    <!-- NAVIGATION BAR -->
-    <header>
-        <nav class="navbar">
-            <div class="brand-logo">
-                <!-- SVG Badge -->
-                <svg class="badge-icon" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="12"/>
-                    <path d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z" fill="#FFFFFF"/>
-                    <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="160" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <rect x="75" y="255" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <path d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="4"/>
-                    <text x="200" y="375" font-family="'Poppins', sans-serif" font-weight="bold" font-size="22" fill="#FFFFFF" text-anchor="middle">Excelling is our goal</text>
-                    <text x="200" y="105" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" fill="#0F2C59" text-anchor="middle">FRATAM</text>
-                    <text x="200" y="135" font-family="'Poppins', sans-serif" font-weight="600" font-size="18" fill="#0F2C59" text-anchor="middle" letter-spacing="3">JUNIOR SCHOOL</text>
-                </svg>
-                <div class="brand-name">
+
+<!-- =====================================================
+     NAVIGATION BAR
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="brand-logo">
+
+            <!-- SVG BADGE -->
+
+            <svg
+                class="badge-icon"
+                viewBox="0 0 400 450"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <path
+                    d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                    fill="#0F2C59"
+                    stroke="#C5A059"
+                    stroke-width="12"/>
+
+                <path
+                    d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                    fill="#FFFFFF"/>
+
+                <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
+
+                <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
+
+                <rect
+                    x="205"
+                    y="160"
+                    width="120"
+                    height="90"
+                    fill="#FFFFFF"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <rect
+                    x="75"
+                    y="255"
+                    width="120"
+                    height="90"
+                    fill="#FFFFFF"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <path
+                    d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
+                    fill="#0F2C59"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <text
+                    x="200"
+                    y="375"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="bold"
+                    font-size="22"
+                    fill="#FFFFFF"
+                    text-anchor="middle">
+                    Excelling is our goal
+                </text>
+
+                <text
+                    x="200"
+                    y="105"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="900"
+                    font-size="36"
+                    fill="#0F2C59"
+                    text-anchor="middle">
                     FRATAM
-                    <span>JUNIOR SCHOOL</span>
+                </text>
+
+                <text
+                    x="200"
+                    y="135"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="600"
+                    font-size="18"
+                    fill="#0F2C59"
+                    text-anchor="middle"
+                    letter-spacing="3">
+                    JUNIOR SCHOOL
+                </text>
+
+            </svg>
+
+
+            <div class="brand-name">
+
+                FRATAM
+
+                <span>JUNIOR SCHOOL</span>
+
+            </div>
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="HOME PAGE.html">Home</a>
+            </li>
+
+            <li>
+                <a href="About.html">About Us</a>
+            </li>
+
+            <li>
+                <a href="Academics.html">Academics</a>
+            </li>
+
+            <li>
+                <a href="Gallery.html">Gallery</a>
+            </li>
+
+            <li>
+                <a href="Contact.html">Contact</a>
+            </li>
+
+            <li>
+                <a href="Apply.html" class="btn-enroll">
+                    Enroll Now
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="slider">
+
+
+        <!-- SLIDE 1 -->
+
+        <div class="slide slide-1">
+
+            <div class="slide-content">
+
+                <h1>
+                    Welcome to FRATAM Junior School
+                </h1>
+
+                <p>
+                    Building confident, disciplined, creative and
+                    responsible learners prepared for a successful future.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="About.html" class="btn-primary">
+                        Discover Our School
+                    </a>
+
+                    <a href="Apply.html" class="btn-secondary">
+                        Enroll Now
+                    </a>
+
                 </div>
+
             </div>
-            <ul class="nav-links">
-                <li><a href="HOME PAGE.html">Home</a></li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="Academics.html">Academics</a></li>
-                <li><a href="Gallery.html">Gallery</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="Apply.html" class="btn-enroll">Enroll Now</a></li>
+
+        </div>
+
+
+        <!-- SLIDE 2 -->
+
+        <div class="slide slide-2">
+
+            <div class="slide-content">
+
+                <h1>
+                    Inspiring Young Minds
+                </h1>
+
+                <p>
+                    We provide an environment where learners discover
+                    their talents, develop confidence and pursue excellence.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#vision" class="btn-primary">
+                        Our Vision
+                    </a>
+
+                    <a href="#mission" class="btn-secondary">
+                        Our Mission
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SLIDE 3 -->
+
+        <div class="slide slide-3">
+
+            <div class="slide-content">
+
+                <h1>
+                    Excellence Starts Here
+                </h1>
+
+                <p>
+                    Quality education, strong character and a commitment
+                    to excellence define the FRATAM learning experience.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#why-choose" class="btn-primary">
+                        Why Choose Us
+                    </a>
+
+                    <a href="Contact.html" class="btn-secondary">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section class="features">
+
+    <div class="feature-card">
+
+        <h3>
+            Quality Education
+        </h3>
+
+        <p>
+            We provide meaningful learning experiences designed
+            to help every learner achieve academic excellence.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <h3>
+            Strong Character
+        </h3>
+
+        <p>
+            We nurture discipline, integrity, respect and
+            responsibility in every learner.
+        </p>
+
+    </div>
+
+
+    <div class="feature-card">
+
+        <h3>
+            Talents & Creativity
+        </h3>
+
+        <p>
+            We encourage learners to discover their abilities,
+            express themselves and develop their talents.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT SECTION
+===================================================== -->
+
+<section class="about" id="about">
+
+    <div class="about-container">
+
+        <div class="about-image">
+
+            <img
+                src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png"
+                alt="FRATAM Junior School Students">
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>
+                Welcome to FRATAM Junior School
+            </h2>
+
+            <p>
+                At FRATAM, we live by our motto:
+                <strong>"Excelling is our goal."</strong>
+                We believe every student is capable of greatness
+                when provided with the right support, discipline,
+                and encouragement.
+            </p>
+
+            <p>
+                Our junior school curriculum is carefully structured
+                to transition young minds seamlessly through their
+                primary academic years while maintaining strong
+                ethical foundations.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VISION & MISSION
+===================================================== -->
+
+<section class="vision-mission" id="vision">
+
+    <div class="section-heading">
+
+        <h2>
+            Our Vision & Mission
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p>
+            Our direction is guided by a clear vision and a strong
+            commitment to developing learners who can make a positive
+            difference in society.
+        </p>
+
+    </div>
+
+
+    <div class="vm-container">
+
+
+        <!-- VISION -->
+
+        <div class="vm-card">
+
+            <div class="vm-icon">
+                👁
+            </div>
+
+            <h3>
+                Our Vision
+            </h3>
+
+            <p>
+                To be a leading junior school that inspires learners
+                to achieve academic excellence, develop strong character,
+                discover their talents and become confident, responsible
+                and productive members of society.
+            </p>
+
+        </div>
+
+
+        <!-- MISSION -->
+
+        <div class="vm-card" id="mission">
+
+            <div class="vm-icon">
+                🎯
+            </div>
+
+            <h3>
+                Our Mission
+            </h3>
+
+            <p>
+                To provide quality, holistic and learner-centred education
+                in a safe, supportive and inspiring environment where every
+                child is encouraged to learn, grow, create, lead and excel
+                academically, socially and morally.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MESSAGE FROM THE HEADTEACHER
+===================================================== -->
+
+<section class="hm-message" id="headteacher">
+
+    <div class="hm-container">
+
+
+        <!-- HEADTEACHER IMAGE -->
+
+        <div class="hm-image">
+
+            <div class="hm-image-box">
+
+                <!-- Replace this with the HM image when available -->
+
+                <div class="hm-placeholder">
+                    HEADTEACHER
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="hm-content">
+
+            <h2>
+                Message from the Headteacher
+            </h2>
+
+            <div class="gold-line"></div>
+
+            <p>
+                Dear Parents, Guardians and Learners,
+            </p>
+
+            <p>
+                It gives me great pleasure to welcome you to
+                FRATAM Junior School. Our school is committed to
+                providing an environment where every learner is
+                valued, supported and encouraged to reach their
+                full potential.
+            </p>
+
+            <p>
+                At FRATAM, we understand that education is more
+                than academic achievement. We strive to develop
+                disciplined, confident, respectful and responsible
+                young people who are prepared to face the challenges
+                of tomorrow.
+            </p>
+
+            <p>
+                Through dedicated teachers, supportive parents,
+                purposeful learning and a strong culture of excellence,
+                we continue to guide our learners towards achieving
+                their dreams.
+            </p>
+
+            <p>
+                I invite parents and guardians to work closely with
+                our school as we nurture and develop the next generation
+                of leaders. Together, we can create a brighter future
+                for our children.
+            </p>
+
+            <p>
+                Thank you for trusting FRATAM Junior School.
+                Let us continue to work together because
+                <strong>excelling is our goal.</strong>
+            </p>
+
+            <p class="hm-signature">
+                Headteacher<br>
+                FRATAM Junior School
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CORE VALUES
+===================================================== -->
+
+<section class="core-values" id="values">
+
+    <div class="section-heading">
+
+        <h2>
+            Our Core Values
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p>
+            These values guide our learners, teachers and the entire
+            FRATAM Junior School community.
+        </p>
+
+    </div>
+
+
+    <div class="values-container">
+
+
+        <!-- VALUE 1 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                ⭐
+            </div>
+
+            <h3>
+                Excellence
+            </h3>
+
+            <p>
+                We encourage every learner to strive for the highest
+                standards in learning, behaviour and personal growth.
+            </p>
+
+        </div>
+
+
+        <!-- VALUE 2 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                🤝
+            </div>
+
+            <h3>
+                Respect
+            </h3>
+
+            <p>
+                We treat one another with dignity, kindness and
+                appreciation regardless of our differences.
+            </p>
+
+        </div>
+
+
+        <!-- VALUE 3 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                🛡
+            </div>
+
+            <h3>
+                Integrity
+            </h3>
+
+            <p>
+                We promote honesty, truthfulness and doing what is
+                right even when nobody is watching.
+            </p>
+
+        </div>
+
+
+        <!-- VALUE 4 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                📚
+            </div>
+
+            <h3>
+                Hard Work
+            </h3>
+
+            <p>
+                We believe consistent effort, commitment and determination
+                are important foundations for success.
+            </p>
+
+        </div>
+
+
+        <!-- VALUE 5 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                💡
+            </div>
+
+            <h3>
+                Creativity
+            </h3>
+
+            <p>
+                We encourage learners to think independently, explore
+                ideas and find innovative solutions to challenges.
+            </p>
+
+        </div>
+
+
+        <!-- VALUE 6 -->
+
+        <div class="value-card">
+
+            <div class="value-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Responsibility
+            </h3>
+
+            <p>
+                We teach learners to take responsibility for their
+                choices, actions, learning and community.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+<section class="why-choose" id="why-choose">
+
+    <div class="choose-container">
+
+
+        <div class="choose-image">
+
+            <img
+                src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png"
+                alt="FRATAM Junior School Learners">
+
+        </div>
+
+
+        <div class="choose-content">
+
+            <h2>
+                Why Choose FRATAM Junior School?
+            </h2>
+
+            <div class="section-line" style="margin: 1rem 0;"></div>
+
+            <p>
+                Choosing the right school is one of the most important
+                decisions a parent can make. At FRATAM, we are committed
+                to giving every learner a strong foundation for lifelong
+                learning and success.
+            </p>
+
+
+            <div class="choose-list">
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Quality Learning
+                        </h4>
+
+                        <p>
+                            We provide engaging and structured learning
+                            experiences that support academic progress.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Dedicated Teachers
+                        </h4>
+
+                        <p>
+                            Our teachers guide, encourage and support
+                            learners throughout their educational journey.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Character Development
+                        </h4>
+
+                        <p>
+                            We develop learners who are disciplined,
+                            respectful, confident and responsible.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Safe & Supportive Environment
+                        </h4>
+
+                        <p>
+                            We promote a welcoming school environment
+                            where learners feel valued and motivated.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Talent Development
+                        </h4>
+
+                        <p>
+                            Learners are encouraged to explore creativity,
+                            talents, leadership and co-curricular activities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="choose-item">
+
+                    <div class="choose-check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Strong Parent Partnership
+                        </h4>
+
+                        <p>
+                            We value cooperation between the school,
+                            parents and guardians for the success of every child.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALL TO ACTION
+===================================================== -->
+
+<section class="cta">
+
+    <div class="cta-container">
+
+        <h2>
+            Give Your Child a Strong Foundation
+        </h2>
+
+        <p>
+            Join FRATAM Junior School and become part of a community
+            committed to quality education, character development
+            and excellence.
+        </p>
+
+        <a href="Apply.html" class="cta-button">
+            Apply for Admission
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="contact">
+
+    <div class="footer-container">
+
+
+        <!-- SCHOOL INFORMATION -->
+
+        <div class="footer-col">
+
+            <svg
+                class="badge-icon"
+                viewBox="0 0 400 450"
+                xmlns="http://www.w3.org/2000/svg"
+                style="height: 65px; margin-bottom: 10px;">
+
+                <path
+                    d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                    fill="#0F2C59"
+                    stroke="#C5A059"
+                    stroke-width="12"/>
+
+                <path
+                    d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                    fill="#FFFFFF"/>
+
+                <rect
+                    x="75"
+                    y="160"
+                    width="120"
+                    height="90"
+                    fill="#0F2C59"/>
+
+                <rect
+                    x="205"
+                    y="255"
+                    width="120"
+                    height="90"
+                    fill="#0F2C59"/>
+
+                <rect
+                    x="205"
+                    y="160"
+                    width="120"
+                    height="90"
+                    fill="#FFFFFF"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <rect
+                    x="75"
+                    y="255"
+                    width="120"
+                    height="90"
+                    fill="#FFFFFF"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <path
+                    d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
+                    fill="#0F2C59"
+                    stroke="#C5A059"
+                    stroke-width="4"/>
+
+                <text
+                    x="200"
+                    y="375"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="bold"
+                    font-size="22"
+                    fill="#FFFFFF"
+                    text-anchor="middle">
+                    Excelling is our goal
+                </text>
+
+                <text
+                    x="200"
+                    y="105"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="900"
+                    font-size="36"
+                    fill="#0F2C59"
+                    text-anchor="middle">
+                    FRATAM
+                </text>
+
+                <text
+                    x="200"
+                    y="135"
+                    font-family="'Poppins', sans-serif"
+                    font-weight="600"
+                    font-size="20"
+                    fill="#0F2C59"
+                    text-anchor="middle"
+                    letter-spacing="3">
+                    JUNIOR SCHOOL
+                </text>
+
+            </svg>
+
+            <p>
+                FRATAM JUNIOR SCHOOL
+            </p>
+
+            <p>
+                <em>
+                    Excelling is our goal
+                </em>
+            </p>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="footer-col">
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <ul>
+
+                <li>
+                    <a href="HOME PAGE.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="About.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Academics.html">
+                        Academics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="Apply.html">
+                        Admissions
+                    </a>
+                </li>
+
             </ul>
-        </nav>
-    </header>
 
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-image">
-                <img src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png" alt="FRATAM Junior School Students">
-            </div>
-            <div class="about-text">
-                <h2>Welcome to FRATAM Junior School</h2>
-                <p>At FRATAM, we live by our motto: <strong>"Excelling is our goal."</strong> We believe every student is capable of greatness when provided with the right support, discipline, and encouragement.</p>
-                <p>Our junior school curriculum is carefully structured to transition young minds seamlessly through their primary academic years while maintaining strong ethical foundations.</p>
-            </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-col">
-                <svg class="badge-icon" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg" style="height: 65px; margin-bottom: 10px;">
-                    <path d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="12"/>
-                    <path d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z" fill="#FFFFFF"/>
-                    <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
-                    <rect x="205" y="160" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <rect x="75" y="255" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
-                    <path d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="4"/>
-                    <text x="200" y="375" font-family="'Poppins', sans-serif" font-weight="bold" font-size="22" fill="#FFFFFF" text-anchor="middle">Excelling is our goal</text>
-                    <text x="200" y="105" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" fill="#0F2C59" text-anchor="middle">FRATAM</text>
-                    <text x="200" y="135" font-family="'Poppins', sans-serif" font-weight="600" font-size="20" fill="#0F2C59" text-anchor="middle" letter-spacing="3">JUNIOR SCHOOL</text>
-                </svg>
-                <p>FRATAM JUNIOR SCHOOL</p>
-                <p><em>Excelling is our goal</em></p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="HOME PAGE.html">Home</a></li>
-                    <li><a href="About.html">About Us</a></li>
-                    <li><a href="Academics.html">Academics</a></li>
-                    <li><a href="Apply.html">Admissions</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>📍 School Campus, Main Road</p>
-                <p>📞 +256-730-404-503</p>
-                <p>✉️ trippler33221@gmail.com</p>
-            </div>
+
+        <!-- SCHOOL INFORMATION -->
+
+        <div class="footer-col">
+
+            <h4>
+                Our School
+            </h4>
+
+            <ul>
+
+                <li>
+                    <a href="#vision">
+                        Our Vision
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#mission">
+                        Our Mission
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#headteacher">
+                        Headteacher's Message
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#values">
+                        Core Values
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#why-choose">
+                        Why Choose Us
+                    </a>
+                </li>
+
+            </ul>
+
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 FRATAM JUNIOR SCHOOL. All rights reserved.</p>
+
+
+        <!-- CONTACT -->
+
+        <div class="footer-col">
+
+            <h4>
+                Contact Us
+            </h4>
+
+            <p>
+                📍 School Campus, Main Road
+            </p>
+
+            <p>
+                📞 +256-730-404-503
+            </p>
+
+            <p>
+                ✉️ trippler33221@gmail.com
+            </p>
+
         </div>
-    </footer>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            &copy; 2026 FRATAM JUNIOR SCHOOL.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
 
 </body>
+
 </html>
+```
+ssss
