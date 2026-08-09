@@ -242,70 +242,16 @@ header {
     height: 85vh;
     min-height: 550px;
     overflow: hidden;
-    background-color: var(--primary-navy);
-}
-
-
-/* =========================================
-   HERO SLIDER
-========================================= */
-
-.slider {
-    display: flex;
-    width: 300vw;
-    height: 100%;
-    animation: slideAnimation 18s infinite;
-}
-
-.slide {
-    position: relative;
-    width: 100vw;
-    height: 100%;
-    flex-shrink: 0;
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+background-image:"";
+}
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-
-/* =========================================
-   HERO IMAGES
-========================================= */
-
-.slide-1 {
-    background-image:
-        url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png');
-}
-
-/* =========================================
-   HERO OVERLAY
-========================================= */
-
-.slide::after {
-    content: '';
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    background:
-        linear-gradient(
-            rgba(15, 44, 89, 0.65),
-            rgba(15, 44, 89, 0.85)
-        );
-
-    z-index: 1;
-}
-
 
 /* =========================================
    HERO CONTENT
