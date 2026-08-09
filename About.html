@@ -1,72 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="FRATAM Junior School - Excelling is Our Goal. Quality education, discipline, confidence, creativity and good character.">
-
     <title>FRATAM Junior School | Excelling is Our Goal</title>
-
     <!-- Google Fonts -->
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-
-        /* =====================================================
-           GENERAL
-        ===================================================== */
-
+        /* CSS RESET & BRAND VARIABLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --primary-navy: #0F2C59;
+            --secondary-gold: #C5A059;
+            --accent-blue: #00A8E8;
+            --light-bg: #F8FAFC;
+            --dark-text: #1E293B;
+            --white: #FFFFFF;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            color: #222;
-            background: #fff;
-            line-height: 1.7;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
-
-        .navbar {
-            width: 100%;
-            min-height: 85px;
-            background: #0F2C59;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 6%;
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,.15);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 2rem;
         }
 
         .brand-logo {
@@ -76,450 +59,307 @@
         }
 
         .badge-icon {
-            width: 62px;
-            height: 70px;
-            object-fit: contain;
+            height: 55px;
+            width: auto;
         }
 
         .brand-name {
-            color: #fff;
-            font-size: 23px;
-            font-weight: 800;
-            line-height: 1.1;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.2;
         }
 
         .brand-name span {
             display: block;
-            color: #C5A059;
-            font-size: 11px;
-            letter-spacing: 2px;
-            margin-top: 4px;
+            font-size: 0.75rem;
+            color: var(--secondary-gold);
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .nav-links {
             display: flex;
+            gap: 1.5rem;
             align-items: center;
-            gap: 25px;
-            list-style: none;
         }
 
         .nav-links a {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            transition: .3s ease;
+            font-weight: 500;
+            color: var(--dark-text);
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #C5A059;
+            color: var(--secondary-gold);
         }
 
         .btn-enroll {
-            background: #C5A059;
-            padding: 11px 20px;
+            background-color: var(--primary-navy);
+            color: var(--white) !important;
+            padding: 0.6rem 1.4rem;
             border-radius: 25px;
-            color: #0F2C59 !important;
+            border: 2px solid var(--secondary-gold);
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
         }
 
         .btn-enroll:hover {
-            background: #fff;
-            color: #0F2C59 !important;
+            background-color: var(--secondary-gold);
+            color: var(--primary-navy) !important;
         }
 
-        .mobile-toggle {
-            display: none;
-            width: 42px;
-            height: 40px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .mobile-toggle span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #fff;
-            border-radius: 5px;
-            transition: .3s ease;
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
+        /* HERO SLIDER SECTION WITH BACKGROUND IMAGES */
         .hero {
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-            background:
-                linear-gradient(
-                    rgba(15,44,89,.88),
-                    rgba(15,44,89,.88)
-                ),
-                url("ChatGPT Image Aug 2, 2026, 08_53_58 AM.png")
-                center/cover no-repeat;
-        }
-
-        .slide-content {
-            max-width: 900px;
-            color: #fff;
-        }
-
-        .slide-content h1 {
-            font-size: clamp(38px, 6vw, 70px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin: 25px 0 15px;
-            color: #fff;
-        }
-
-        .slide-content p {
-            max-width: 750px;
-            margin: auto;
-            font-size: 18px;
-            color: #f2f2f2;
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary,
-        .btn-secondary {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            transition: .3s ease;
-        }
-
-        .btn-primary {
-            background: #C5A059;
-            color: #0F2C59;
-        }
-
-        .btn-secondary {
-            border: 2px solid #fff;
-            color: #fff;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-primary:hover {
-            background: #fff;
-        }
-
-        .btn-secondary:hover {
-            background: #fff;
-            color: #0F2C59;
-        }
-
-
-        /* =====================================================
-           GENERAL SECTION
-        ===================================================== */
-
-        section {
-            padding: 80px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            color: #0F2C59;
-            font-size: 38px;
-            font-weight: 800;
-        }
-
-        .section-title p {
-            color: #666;
-            max-width: 750px;
-            margin: 10px auto 0;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: #C5A059;<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="FRATAM Junior School - Excelling is Our Goal. Quality education, discipline, confidence, creativity and good character.">
-
-    <title>FRATAM Junior School. | Excelling is Our Goal</title>
-
-    <!-- Google Fonts -->
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <style>
-
-        /* =====================================================
-           GENERAL
-        ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #222;
-            background: #fff;
-            line-height: 1.7;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
-
-        .navbar {
+            position: relative;
             width: 100%;
-            min-height: 85px;
-            background: #0F2C59;
+            height: 85vh;
+            overflow: hidden;
+            background-color: var(--primary-navy);
+        }
+
+        .slider {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 6%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,.15);
+            width: 300%;
+            height: 100%;
+            animation: slideAnimation 15s infinite ease-in-out;
         }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .badge-icon {
-            width: 62px;
-            height: 70px;
-            object-fit: contain;
-        }
-
-        .brand-name {
-            color: #fff;
-            font-size: 23px;
-            font-weight: 800;
-            line-height: 1.1;
-        }
-
-        .brand-name span {
-            display: block;
-            color: #C5A059;
-            font-size: 11px;
-            letter-spacing: 2px;
-            margin-top: 4px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            transition: .3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #C5A059;
-        }
-
-        .btn-enroll {
-            background: #C5A059;
-            padding: 11px 20px;
-            border-radius: 25px;
-            color: #0F2C59 !important;
-        }
-
-        .btn-enroll:hover {
-            background: #fff;
-            color: #0F2C59 !important;
-        }
-
-        .mobile-toggle {
-            display: none;
-            width: 42px;
-            height: 40px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .mobile-toggle span {
-            display: block;
-            width: 28px;
-            height: 3px;
-            background: #fff;
-            border-radius: 5px;
-            transition: .3s ease;
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            min-height: 650px;
+        .slide {
+            width: 100vw;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 80px 20px;
-            background:
-                linear-gradient(
-                    rgba(15,44,89,.88),
-                    rgba(15,44,89,.88)
-                ),
-                url("ChatGPT Image Aug 2, 2026, 08_53_58 AM.png")
-                center/cover no-repeat;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Dark overlay over hero images to make text pop */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(15, 44, 89, 0.65), rgba(15, 44, 89, 0.85));
+            z-index: 1;
+        }
+
+        /* HERO BACKGROUND IMAGES */
+        /* Slide 1 uses your uploaded students picture */
+        .slide-1 { 
+            background-image: url('ChatGPT Image Aug 2, 2026, 08_53_58 AM.png'); 
+        }
+        /* Slide 2 & 3 use high-res educational activity images */
+        .slide-2 { 
+            background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80'); 
+        }
+        .slide-3 { 
+            background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1600&q=80'); 
         }
 
         .slide-content {
-            max-width: 900px;
-            color: #fff;
+            z-index: 2;
+            max-width: 850px;
+            padding: 0 2rem;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            height: 120px;
+            width: auto;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
         }
 
         .slide-content h1 {
-            font-size: clamp(38px, 6vw, 70px);
-            font-weight: 900;
-            text-transform: uppercase;
-            margin: 25px 0 15px;
-            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
         }
 
         .slide-content p {
-            max-width: 750px;
-            margin: auto;
-            font-size: 18px;
-            color: #f2f2f2;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
         }
 
         .hero-buttons {
             display: flex;
+            gap: 1rem;
             justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary,
-        .btn-secondary {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 30px;
-            font-weight: 700;
-            transition: .3s ease;
         }
 
         .btn-primary {
-            background: #C5A059;
-            color: #0F2C59;
+            background-color: var(--secondary-gold);
+            color: var(--primary-navy);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: 0.3s;
         }
 
         .btn-secondary {
-            border: 2px solid #fff;
-            color: #fff;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            transform: translateY(-3px);
+        .btn-primary:hover { background-color: #d4af66; }
+        .btn-secondary:hover { background-color: var(--white); color: var(--primary-navy); }
+
+        /* KEYFRAME SLIDE ANIMATION */
+        @keyframes slideAnimation {
+            0%, 28% { transform: translateX(0%); }
+            33%, 61% { transform: translateX(-100vw); }
+            66%, 94% { transform: translateX(-200vw); }
+            100% { transform: translateX(0%); }
         }
 
-        .btn-primary:hover {
-            background: #fff;
+        /* FEATURES SECTION */
+        .features {
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 10;
         }
 
-        .btn-secondary:hover {
-            background: #fff;
-            color: #0F2C59;
-        }
-
-
-        /* =====================================================
-           GENERAL SECTION
-        ===================================================== */
-
-        section {
-            padding: 80px 7%;
-        }
-
-        .section-title {
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
             text-align: center;
-            margin-bottom: 45px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--secondary-gold);
+            transition: transform 0.3s ease;
         }
 
-        .section-title h2 {
-            color: #0F2C59;
-            font-size: 38px;
-            font-weight: 800;
-        }
+        .feature-card:hover { transform: translateY(-8px); }
+        .feature-card h3 { color: var(--primary-navy); margin-bottom: 0.8rem; font-size: 1.25rem; }
 
-        .section-title p {
-            color: #666;
-            max-width: 750px;
-            margin: 10px auto 0;
-        }
+        /* ABOUT SECTION */
+        .about { background-color: var(--light-bg); padding: 5rem 2rem; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .about-text h2 { color: var(--primary-navy); font-size: 2.2rem; margin-bottom: 1rem; }
+        .about-text p { margin-bottom: 1.2rem; color: #4A5568; }
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: #C5A059;
+        /* FOOTER */
+        footer { background-color: var(--primary-navy); color: var(--white); padding: 4rem 2rem 1.5rem; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: var(--secondary-gold); margin-bottom: 1.2rem; font-size: 1.1rem; }
+        .footer-col p, .footer-col li { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.6rem; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7; }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 1rem; }
+            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .hero { height: 70vh; }
+            .slide-content h1 { font-size: 2rem; }
+            .hero-badge { height: 80px; }
+            .about-container { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <nav class="navbar">
+            <div class="brand-logo">
+                <!-- SVG Badge -->
+                <svg class="badge-icon" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="12"/>
+                    <path d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z" fill="#FFFFFF"/>
+                    <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
+                    <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
+                    <rect x="205" y="160" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
+                    <rect x="75" y="255" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
+                    <path d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="4"/>
+                    <text x="200" y="375" font-family="'Poppins', sans-serif" font-weight="bold" font-size="22" fill="#FFFFFF" text-anchor="middle">Excelling is our goal</text>
+                    <text x="200" y="105" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" fill="#0F2C59" text-anchor="middle">FRATAM</text>
+                    <text x="200" y="135" font-family="'Poppins', sans-serif" font-weight="600" font-size="18" fill="#0F2C59" text-anchor="middle" letter-spacing="3">JUNIOR SCHOOL</text>
+                </svg>
+                <div class="brand-name">
+                    FRATAM
+                    <span>JUNIOR SCHOOL</span>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="HOME PAGE.html">Home</a></li>
+                <li><a href="About.html">About Us</a></li>
+                <li><a href="Academics.html">Academics</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="Apply.html" class="btn-enroll">Enroll Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="ChatGPT Image Aug 2, 2026, 08_53_58 AM.png" alt="FRATAM Junior School Students">
+            </div>
+            <div class="about-text">
+                <h2>Welcome to FRATAM Junior School</h2>
+                <p>At FRATAM, we live by our motto: <strong>"Excelling is our goal."</strong> We believe every student is capable of greatness when provided with the right support, discipline, and encouragement.</p>
+                <p>Our junior school curriculum is carefully structured to transition young minds seamlessly through their primary academic years while maintaining strong ethical foundations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <svg class="badge-icon" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg" style="height: 65px; margin-bottom: 10px;">
+                    <path d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="12"/>
+                    <path d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z" fill="#FFFFFF"/>
+                    <rect x="75" y="160" width="120" height="90" fill="#0F2C59"/>
+                    <rect x="205" y="255" width="120" height="90" fill="#0F2C59"/>
+                    <rect x="205" y="160" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
+                    <rect x="75" y="255" width="120" height="90" fill="#FFFFFF" stroke="#C5A059" stroke-width="4"/>
+                    <path d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z" fill="#0F2C59" stroke="#C5A059" stroke-width="4"/>
+                    <text x="200" y="375" font-family="'Poppins', sans-serif" font-weight="bold" font-size="22" fill="#FFFFFF" text-anchor="middle">Excelling is our goal</text>
+                    <text x="200" y="105" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" fill="#0F2C59" text-anchor="middle">FRATAM</text>
+                    <text x="200" y="135" font-family="'Poppins', sans-serif" font-weight="600" font-size="20" fill="#0F2C59" text-anchor="middle" letter-spacing="3">JUNIOR SCHOOL</text>
+                </svg>
+                <p>FRATAM JUNIOR SCHOOL</p>
+                <p><em>Excelling is our goal</em></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="HOME PAGE.html">Home</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Academics.html">Academics</a></li>
+                    <li><a href="Apply.html">Admissions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>📍 School Campus, Main Road</p>
+                <p>📞 +256-730-404-503</p>
+                <p>✉️ trippler33221@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FRATAM JUNIOR SCHOOL. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
