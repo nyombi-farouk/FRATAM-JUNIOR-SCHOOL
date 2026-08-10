@@ -1,7 +1,7 @@
 /* ==========================================
    FRATAM JUNIOR SCHOOL
    APPLICATION + EMAILJS SCRIPT
-   ========================================== */
+========================================== */
 
 // ================================
 // EMAILJS CONFIGURATION
@@ -9,9 +9,12 @@
 
 const EMAILJS_PUBLIC_KEY = "e0n54GWwX9gXxtSWs";
 const EMAILJS_SERVICE_ID = "service_ms66hyq";
-const EMAILJS_TEMPLATE_ID = "template_bb3yaho";
+const EMAILJS_TEMPLATE_ID = "template_70fmwwt";
 
-// Load EmailJS automatically
+// ================================
+// LOAD EMAILJS AUTOMATICALLY
+// ================================
+
 const emailjsScript = document.createElement("script");
 
 emailjsScript.src =
@@ -24,10 +27,13 @@ emailjsScript.onload = function () {
     });
 
     console.log("EmailJS initialized successfully.");
+
 };
 
 emailjsScript.onerror = function () {
+
     console.error("Failed to load EmailJS.");
+
 };
 
 document.head.appendChild(emailjsScript);
@@ -64,7 +70,11 @@ if (form) {
 
         e.preventDefault();
 
-        // Get form values
+
+        // ==========================================
+        // GET FORM VALUES
+        // ==========================================
+
         const studentName =
             document.getElementById("studentName").value.trim();
 
@@ -151,7 +161,9 @@ if (form) {
         // ==========================================
 
         let applications =
-            JSON.parse(localStorage.getItem("applications")) || [];
+            JSON.parse(
+                localStorage.getItem("applications")
+            ) || [];
 
         applications.push(application);
 
@@ -162,7 +174,7 @@ if (form) {
 
 
         // ==========================================
-        // SHOW SENDING MESSAGE
+        // SUBMIT BUTTON
         // ==========================================
 
         const submitButton =
@@ -175,6 +187,7 @@ if (form) {
 
         submitButton.innerHTML =
             '<i class="fas fa-spinner fa-spin"></i> Sending Application...';
+
 
         result.innerHTML =
             "⏳ Sending your application...";
@@ -219,11 +232,11 @@ if (form) {
         };
 
 
-        try {
+        // ==========================================
+        // SEND APPLICATION
+        // ==========================================
 
-            // ==========================================
-            // SEND APPLICATION THROUGH EMAILJS
-            // ==========================================
+        try {
 
             await emailjs.send(
                 EMAILJS_SERVICE_ID,
@@ -242,7 +255,6 @@ if (form) {
             result.style.color = "#16a34a";
 
             form.reset();
-
 
             console.log(
                 "Application sent successfully."
