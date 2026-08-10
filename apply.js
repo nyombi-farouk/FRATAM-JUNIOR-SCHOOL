@@ -1,20 +1,21 @@
+```javascript
 /* ==========================================
    FRATAM JUNIOR SCHOOL
    APPLICATION + EMAILJS SCRIPT
 ========================================== */
 
-// ================================
+// ==========================================
 // EMAILJS CONFIGURATION
-// ================================
+// ==========================================
 
 const EMAILJS_PUBLIC_KEY = "e0n54GWwX9gXxtSWs";
 const EMAILJS_SERVICE_ID = "service_ms66hyq";
-const EMAILJS_TEMPLATE_ID = "template_70fmwwt";
+const EMAILJS_TEMPLATE_ID = "template_6cqjh1n";
 
 
-// ================================
+// ==========================================
 // EMAILJS LOADING
-// ================================
+// ==========================================
 
 let emailJSReady = false;
 
@@ -45,10 +46,15 @@ document.head.appendChild(emailjsScript);
 
 
 // ==========================================
-// MOBILE MENU
+// PAGE INITIALIZATION
 // ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    // ==========================================
+    // MOBILE MENU
+    // ==========================================
 
     const menuBtn = document.getElementById("menuBtn");
     const navMenu = document.getElementById("navMenu");
@@ -73,12 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!form) {
 
-        console.warn("⚠️ Application form #applyForm was not found.");
+        console.warn(
+            "⚠️ Application form #applyForm was not found."
+        );
 
         return;
 
     }
 
+
+    // ==========================================
+    // FORM SUBMISSION
+    // ==========================================
 
     form.addEventListener("submit", async function (e) {
 
@@ -92,12 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!emailJSReady || typeof emailjs === "undefined") {
 
             result.innerHTML =
-                "❌ Email service is still loading. Please wait a few seconds and try again.";
+                "❌ Email service is not ready. Please wait a moment and try again.";
 
             result.style.color = "#dc2626";
 
             console.error(
-                "EmailJS is not ready."
+                "EmailJS has not finished loading."
             );
 
             return;
@@ -138,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // ==========================================
-        // CHECK FORM ELEMENTS
+        // CHECK REQUIRED ELEMENTS
         // ==========================================
 
         if (
@@ -158,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
             result.style.color = "#dc2626";
 
             console.error(
-                "One or more form fields were not found."
+                "Required form elements could not be found."
             );
 
             return;
@@ -226,7 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // ==========================================
-        // BASIC EMAIL VALIDATION
+        // VALIDATE EMAIL
         // ==========================================
 
         const emailPattern =
@@ -282,19 +294,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const templateParams = {
 
-            student: studentName,
-
             studentName: studentName,
 
             dob: dob,
 
             gender: gender,
 
-            class: classApply,
-
             classApply: classApply,
-
-            parent: parentName,
 
             parentName: parentName,
 
@@ -313,18 +319,32 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
 
+        // ==========================================
+        // DEBUG INFORMATION
+        // ==========================================
+
         console.log(
-            "📧 Sending application through EmailJS..."
+            "📧 Preparing EmailJS application..."
         );
 
         console.log(
-            "Template:",
+            "Service ID:",
+            EMAILJS_SERVICE_ID
+        );
+
+        console.log(
+            "Template ID:",
             EMAILJS_TEMPLATE_ID
+        );
+
+        console.log(
+            "Application data:",
+            templateParams
         );
 
 
         // ==========================================
-        // SEND EMAIL
+        // SEND EMAIL THROUGH EMAILJS
         // ==========================================
 
         try {
@@ -351,7 +371,9 @@ document.addEventListener("DOMContentLoaded", function () {
             result.style.color = "#16a34a";
 
 
-            // Clear form ONLY after successful email
+            // ==========================================
+            // CLEAR FORM AFTER SUCCESS
+            // ==========================================
 
             form.reset();
 
@@ -359,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
 
             // ==========================================
-            // EMAIL ERROR
+            // EMAILJS ERROR
             // ==========================================
 
             console.error(
@@ -402,3 +424,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+```
