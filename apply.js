@@ -11,9 +11,12 @@ const EMAILJS_PUBLIC_KEY = "e0n54GWwX9gXxtSWs";
 const EMAILJS_SERVICE_ID = "service_ms66hyq";
 const EMAILJS_TEMPLATE_ID = "template_70fmwwt";
 
+
 // ================================
-// LOAD EMAILJS AUTOMATICALLY
+// EMAILJS LOADING
 // ================================
+
+let emailJSReady = false;
 
 const emailjsScript = document.createElement("script");
 
@@ -26,13 +29,15 @@ emailjsScript.onload = function () {
         publicKey: EMAILJS_PUBLIC_KEY
     });
 
-    console.log("EmailJS initialized successfully.");
+    emailJSReady = true;
+
+    console.log("✅ EmailJS initialized successfully.");
 
 };
 
 emailjsScript.onerror = function () {
 
-    console.error("Failed to load EmailJS.");
+    console.error("❌ Failed to load EmailJS.");
 
 };
 
@@ -43,28 +48,37 @@ document.head.appendChild(emailjsScript);
 // MOBILE MENU
 // ==========================================
 
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (menuBtn && navMenu) {
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
 
-    menuBtn.addEventListener("click", () => {
+    if (menuBtn && navMenu) {
 
-        navMenu.classList.toggle("show");
+        menuBtn.addEventListener("click", function () {
 
-    });
+            navMenu.classList.toggle("show");
 
-}
+        });
+
+    }
 
 
-// ==========================================
-// APPLICATION FORM
-// ==========================================
+    // ==========================================
+    // APPLICATION FORM
+    // ==========================================
 
-const form = document.getElementById("applyForm");
-const result = document.getElementById("result");
+    const form = document.getElementById("applyForm");
+    const result = document.getElementById("result");
 
-if (form) {
+    if (!form) {
+
+        console.warn("⚠️ Application form #applyForm was not found.");
+
+        return;
+
+    }
+
 
     form.addEventListener("submit", async function (e) {
 
@@ -72,39 +86,122 @@ if (form) {
 
 
         // ==========================================
-        // GET FORM VALUES
+        // CHECK EMAILJS
+        // ==========================================
+
+        if (!emailJSReady || typeof emailjs === "undefined") {
+
+            result.innerHTML =
+                "❌ Email service is still loading. Please wait a few seconds and try again.";
+
+            result.style.color = "#dc2626";
+
+            console.error(
+                "EmailJS is not ready."
+            );
+
+            return;
+
+        }
+
+
+        // ==========================================
+        // GET FORM ELEMENTS
+        // ==========================================
+
+        const studentNameElement =
+            document.getElementById("studentName");
+
+        const dobElement =
+            document.getElementById("dob");
+
+        const genderElement =
+            document.getElementById("gender");
+
+        const classApplyElement =
+            document.getElementById("classApply");
+
+        const parentNameElement =
+            document.getElementById("parentName");
+
+        const phoneElement =
+            document.getElementById("phone");
+
+        const emailElement =
+            document.getElementById("email");
+
+        const addressElement =
+            document.getElementById("address");
+
+        const messageElement =
+            document.getElementById("message");
+
+
+        // ==========================================
+        // CHECK FORM ELEMENTS
+        // ==========================================
+
+        if (
+            !studentNameElement ||
+            !dobElement ||
+            !genderElement ||
+            !classApplyElement ||
+            !parentNameElement ||
+            !phoneElement ||
+            !emailElement ||
+            !addressElement
+        ) {
+
+            result.innerHTML =
+                "❌ Some required form fields are missing.";
+
+            result.style.color = "#dc2626";
+
+            console.error(
+                "One or more form fields were not found."
+            );
+
+            return;
+
+        }
+
+
+        // ==========================================
+        // GET VALUES
         // ==========================================
 
         const studentName =
-            document.getElementById("studentName").value.trim();
+            studentNameElement.value.trim();
 
         const dob =
-            document.getElementById("dob").value;
+            dobElement.value;
 
         const gender =
-            document.getElementById("gender").value;
+            genderElement.value;
 
         const classApply =
-            document.getElementById("classApply").value;
+            classApplyElement.value;
 
         const parentName =
-            document.getElementById("parentName").value.trim();
+            parentNameElement.value.trim();
 
         const phone =
-            document.getElementById("phone").value.trim();
+            phoneElement.value.trim();
 
         const email =
-            document.getElementById("email").value.trim();
+            emailElement.value.trim();
 
         const address =
-            document.getElementById("address").value.trim();
+            addressElement.value.trim();
 
         const message =
-            document.getElementById("message").value.trim();
+            messageElement
+                ? messageElement.value.trim()
+                : "";
 
 
         // ==========================================
-        // CHECK REQUIRED INFORMATION
+        // VALIDATE REQUIRED FIELDS
         // ==========================================
 
         if (
@@ -124,53 +221,27 @@ if (form) {
             result.style.color = "#dc2626";
 
             return;
+
         }
 
 
         // ==========================================
-        // APPLICATION OBJECT
+        // BASIC EMAIL VALIDATION
         // ==========================================
 
-        const application = {
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            student: studentName,
+        if (!emailPattern.test(email)) {
 
-            dob: dob,
+            result.innerHTML =
+                "⚠️ Please enter a valid email address.";
 
-            gender: gender,
+            result.style.color = "#dc2626";
 
-            class: classApply,
+            return;
 
-            parent: parentName,
-
-            phone: phone,
-
-            email: email,
-
-            address: address,
-
-            message: message,
-
-            date: new Date().toLocaleString()
-
-        };
-
-
-        // ==========================================
-        // SAVE APPLICATION TO LOCAL STORAGE
-        // ==========================================
-
-        let applications =
-            JSON.parse(
-                localStorage.getItem("applications")
-            ) || [];
-
-        applications.push(application);
-
-        localStorage.setItem(
-            "applications",
-            JSON.stringify(applications)
-        );
+        }
 
 
         // ==========================================
@@ -180,14 +251,24 @@ if (form) {
         const submitButton =
             form.querySelector('button[type="submit"]');
 
-        const originalButtonText =
-            submitButton.innerHTML;
+        let originalButtonText = "";
 
-        submitButton.disabled = true;
+        if (submitButton) {
 
-        submitButton.innerHTML =
-            '<i class="fas fa-spinner fa-spin"></i> Sending Application...';
+            originalButtonText =
+                submitButton.innerHTML;
 
+            submitButton.disabled = true;
+
+            submitButton.innerHTML =
+                '<i class="fas fa-spinner fa-spin"></i> Sending Application...';
+
+        }
+
+
+        // ==========================================
+        // SHOW SENDING MESSAGE
+        // ==========================================
 
         result.innerHTML =
             "⏳ Sending your application...";
@@ -232,13 +313,23 @@ if (form) {
         };
 
 
+        console.log(
+            "📧 Sending application through EmailJS..."
+        );
+
+        console.log(
+            "Template:",
+            EMAILJS_TEMPLATE_ID
+        );
+
+
         // ==========================================
-        // SEND APPLICATION
+        // SEND EMAIL
         // ==========================================
 
         try {
 
-            await emailjs.send(
+            const response = await emailjs.send(
                 EMAILJS_SERVICE_ID,
                 EMAILJS_TEMPLATE_ID,
                 templateParams
@@ -249,31 +340,46 @@ if (form) {
             // SUCCESS
             // ==========================================
 
+            console.log(
+                "✅ EmailJS response:",
+                response
+            );
+
             result.innerHTML =
                 "✅ Application submitted successfully! We shall contact you soon.";
 
             result.style.color = "#16a34a";
 
-            form.reset();
 
-            console.log(
-                "Application sent successfully."
-            );
+            // Clear form ONLY after successful email
+
+            form.reset();
 
 
         } catch (error) {
 
             // ==========================================
-            // ERROR
+            // EMAIL ERROR
             // ==========================================
 
             console.error(
-                "EmailJS Error:",
+                "❌ EmailJS Error:",
                 error
             );
 
+            console.error(
+                "EmailJS Status:",
+                error?.status
+            );
+
+            console.error(
+                "EmailJS Message:",
+                error?.text
+            );
+
+
             result.innerHTML =
-                "❌ Application saved, but the email could not be sent. Please try again.";
+                "❌ Application could not be sent. Please try again.";
 
             result.style.color = "#dc2626";
 
@@ -284,11 +390,15 @@ if (form) {
         // RESTORE BUTTON
         // ==========================================
 
-        submitButton.disabled = false;
+        if (submitButton) {
 
-        submitButton.innerHTML =
-            originalButtonText;
+            submitButton.disabled = false;
+
+            submitButton.innerHTML =
+                originalButtonText;
+
+        }
 
     });
 
-}
+});
