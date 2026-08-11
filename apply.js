@@ -1,6 +1,945 @@
 ```javascript
 /* ==========================================
    FRATAM JUNIOR SCHOOL
+   ADMISSION APPLICATION
+   EMAILJS
+   ========================================== */
+
+"use strict";
+
+
+/* ==========================================
+   EMAILJS CONFIGURATION
+   ========================================== */
+
+const EMAILJS_PUBLIC_KEY = "e0n54GWwX9gXxtSWs";
+const EMAILJS_SERVICE_ID = "service_ms66hyq";
+const EMAILJS_TEMPLATE_ID = "template_6cqjh1n";
+
+
+/* ==========================================
+   VARIABLES
+   ========================================== */
+
+let emailJSReady = false;
+
+
+/* ==========================================
+   LOAD EMAILJS
+   ========================================== */
+
+function loadEmailJS() {
+
+    return new Promise(function (resolve, reject) {
+
+        /*
+         * If EmailJS is already loaded,
+         * initialize it and continue.
+         */
+
+        if (
+            typeof window.emailjs !== "undefined"
+        ) {
+
+            try {
+
+                window.emailjs.init({
+                    publicKey: EMAILJS_PUBLIC_KEY
+                });
+
+                emailJSReady = true;
+
+                console.log(
+                    "EmailJS initialized successfully."
+                );
+
+                resolve();
+
+            } catch (error) {
+
+                console.error(
+                    "EmailJS initialization error:",
+                    error
+                );
+
+                reject(error);
+            }
+
+            return;
+        }
+
+
+        /*
+         * Load EmailJS library.
+         */
+
+        const script =
+            document.createElement("script");
+
+
+        script.src =
+            "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+
+
+        script.async = true;
+
+
+        script.onload = function () {
+
+            try {
+
+                if (
+                    typeof window.emailjs ===
+                    "undefined"
+                ) {
+
+                    throw new Error(
+                        "EmailJS library could not be found."
+                    );
+
+                }
+
+
+                window.emailjs.init({
+                    publicKey: EMAILJS_PUBLIC_KEY
+                });
+
+
+                emailJSReady = true;
+
+
+                console.log(
+                    "EmailJS loaded successfully."
+                );
+
+
+                resolve();
+
+
+            } catch (error) {
+
+                emailJSReady = false;
+
+                console.error(
+                    "EmailJS initialization failed:",
+                    error
+                );
+
+                reject(error);
+
+            }
+
+        };
+
+
+        script.onerror = function () {
+
+            emailJSReady = false;
+
+            const error =
+                new Error(
+                    "Unable to load EmailJS."
+                );
+
+
+            console.error(
+                "EmailJS loading failed."
+            );
+
+
+            reject(error);
+
+        };
+
+
+        document.head.appendChild(script);
+
+    });
+
+}
+
+
+/* ==========================================
+   SHOW RESULT MESSAGE
+   ========================================== */
+
+function showResult(
+    message,
+    type
+) {
+
+    const result =
+        document.getElementById("result");
+
+
+    if (!result) {
+
+        console.log(message);
+
+        return;
+
+    }
+
+
+    result.textContent =
+        message;
+
+
+    result.style.display =
+        "block";
+
+
+    result.style.padding =
+        "14px 16px";
+
+
+    result.style.marginTop =
+        "20px";
+
+
+    result.style.borderRadius =
+        "10px";
+
+
+    result.style.fontWeight =
+        "600";
+
+
+    result.style.lineHeight =
+        "1.5";
+
+
+    result.style.textAlign =
+        "center";
+
+
+    /* SUCCESS */
+
+    if (type === "success") {
+
+        result.style.color =
+            "#166534";
+
+        result.style.backgroundColor =
+            "#dcfce7";
+
+        result.style.border =
+            "1px solid #86efac";
+
+    }
+
+
+    /* ERROR */
+
+    else if (type === "error") {
+
+        result.style.color =
+            "#991b1b";
+
+        result.style.backgroundColor =
+            "#fee2e2";
+
+        result.style.border =
+            "1px solid #fca5a5";
+
+    }
+
+
+    /* LOADING */
+
+    else {
+
+        result.style.color =
+            "#1e40af";
+
+        result.style.backgroundColor =
+            "#dbeafe";
+
+        result.style.border =
+            "1px solid #93c5fd";
+
+    }
+
+}
+
+
+/* ==========================================
+   DOM READY
+   ========================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* ==========================================
+           MOBILE NAVIGATION
+           ========================================== */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+
+        const navMenu =
+            document.getElementById("navMenu");
+
+
+        if (
+            menuBtn &&
+            navMenu
+        ) {
+
+            menuBtn.addEventListener(
+                "click",
+                function () {
+
+                    navMenu.classList.toggle(
+                        "show"
+                    );
+
+
+                    const isOpen =
+                        navMenu.classList.contains(
+                            "show"
+                        );
+
+
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        isOpen
+                            ? "true"
+                            : "false"
+                    );
+
+                }
+            );
+
+
+            /*
+             * Close menu after clicking
+             * a navigation link.
+             */
+
+            const navLinks =
+                navMenu.querySelectorAll("a");
+
+
+            navLinks.forEach(
+                function (link) {
+
+                    link.addEventListener(
+                        "click",
+                        function () {
+
+                            navMenu.classList.remove(
+                                "show"
+                            );
+
+
+                            menuBtn.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* ==========================================
+           GET APPLICATION FORM
+           ========================================== */
+
+        const form =
+            document.getElementById(
+                "applyForm"
+            );
+
+
+        if (!form) {
+
+            console.error(
+                "ERROR: applyForm was not found."
+            );
+
+            return;
+
+        }
+
+
+        /* ==========================================
+           GET FORM FIELDS
+           ========================================== */
+
+        const studentName =
+            document.getElementById(
+                "studentName"
+            );
+
+
+        const dob =
+            document.getElementById(
+                "dob"
+            );
+
+
+        const gender =
+            document.getElementById(
+                "gender"
+            );
+
+
+        const classApply =
+            document.getElementById(
+                "classApply"
+            );
+
+
+        const parentName =
+            document.getElementById(
+                "parentName"
+            );
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            );
+
+
+        const email =
+            document.getElementById(
+                "email"
+            );
+
+
+        const address =
+            document.getElementById(
+                "address"
+            );
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        /* ==========================================
+           CHECK FORM FIELDS
+           ========================================== */
+
+        const fields = [
+            studentName,
+            dob,
+            gender,
+            classApply,
+            parentName,
+            phone,
+            email,
+            address
+        ];
+
+
+        const missingField =
+            fields.some(
+                function (field) {
+                    return !field;
+                }
+            );
+
+
+        if (missingField) {
+
+            console.error(
+                "ERROR: One or more form fields are missing."
+            );
+
+
+            showResult(
+                "NOT SENT — The application form is missing required fields.",
+                "error"
+            );
+
+
+            return;
+
+        }
+
+
+        /* ==========================================
+           SUBMIT EVENT
+           ========================================== */
+
+        form.addEventListener(
+            "submit",
+            async function (event) {
+
+                event.preventDefault();
+
+
+                /*
+                 * Prevent multiple clicks.
+                 */
+
+                if (
+                    form.dataset.sending ===
+                    "true"
+                ) {
+
+                    return;
+
+                }
+
+
+                form.dataset.sending =
+                    "true";
+
+
+                /* ==========================================
+                   SUBMIT BUTTON
+                   ========================================== */
+
+                const submitButton =
+                    form.querySelector(
+                        'button[type="submit"]'
+                    );
+
+
+                const originalButtonHTML =
+                    submitButton
+                        ? submitButton.innerHTML
+                        : "";
+
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        true;
+
+
+                    submitButton.innerHTML =
+                        '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                }
+
+
+                try {
+
+
+                    /* ==========================================
+                       CHECK EMAILJS
+                       ========================================== */
+
+                    if (
+                        !emailJSReady ||
+                        typeof window.emailjs ===
+                        "undefined"
+                    ) {
+
+                        throw new Error(
+                            "Email service is not ready. Please refresh the page and try again."
+                        );
+
+                    }
+
+
+                    /* ==========================================
+                       GET VALUES
+                       ========================================== */
+
+                    const studentNameValue =
+                        studentName.value.trim();
+
+
+                    const dobValue =
+                        dob.value.trim();
+
+
+                    const genderValue =
+                        gender.value.trim();
+
+
+                    const classApplyValue =
+                        classApply.value.trim();
+
+
+                    const parentNameValue =
+                        parentName.value.trim();
+
+
+                    const phoneValue =
+                        phone.value.trim();
+
+
+                    const emailValue =
+                        email.value.trim();
+
+
+                    const addressValue =
+                        address.value.trim();
+
+
+                    const messageValue =
+                        message
+                            ? message.value.trim()
+                            : "";
+
+
+                    /* ==========================================
+                       VALIDATION
+                       ========================================== */
+
+                    if (
+                        !studentNameValue ||
+                        !dobValue ||
+                        !genderValue ||
+                        !classApplyValue ||
+                        !parentNameValue ||
+                        !phoneValue ||
+                        !emailValue ||
+                        !addressValue
+                    ) {
+
+                        throw new Error(
+                            "Please complete all required fields."
+                        );
+
+                    }
+
+
+                    /* ==========================================
+                       EMAIL VALIDATION
+                       ========================================== */
+
+                    const emailPattern =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                    if (
+                        !emailPattern.test(
+                            emailValue
+                        )
+                    ) {
+
+                        throw new Error(
+                            "Please enter a valid email address."
+                        );
+
+                    }
+
+
+                    /* ==========================================
+                       PHONE VALIDATION
+                       ========================================== */
+
+                    if (
+                        phoneValue.length < 7
+                    ) {
+
+                        throw new Error(
+                            "Please enter a valid phone number."
+                        );
+
+                    }
+
+
+                    /* ==========================================
+                       SHOW SENDING MESSAGE
+                       ========================================== */
+
+                    showResult(
+                        "Sending your application...",
+                        "loading"
+                    );
+
+
+                    /* ==========================================
+                       EMAILJS TEMPLATE DATA
+                       ========================================== */
+
+                    const templateParams = {
+
+                        studentName:
+                            studentNameValue,
+
+                        dob:
+                            dobValue,
+
+                        gender:
+                            genderValue,
+
+                        classApply:
+                            classApplyValue,
+
+                        parentName:
+                            parentNameValue,
+
+                        phone:
+                            phoneValue,
+
+                        email:
+                            emailValue,
+
+                        address:
+                            addressValue,
+
+                        message:
+                            messageValue,
+
+                        date:
+                            new Date()
+                                .toLocaleString(),
+
+                        school:
+                            "FRATAM JUNIOR SCHOOL"
+
+                    };
+
+
+                    /* ==========================================
+                       DEBUG
+                       ========================================== */
+
+                    console.log(
+                        "================================"
+                    );
+
+
+                    console.log(
+                        "FRATAM APPLICATION"
+                    );
+
+
+                    console.log(
+                        "Service:",
+                        EMAILJS_SERVICE_ID
+                    );
+
+
+                    console.log(
+                        "Template:",
+                        EMAILJS_TEMPLATE_ID
+                    );
+
+
+                    console.log(
+                        "Sending data:",
+                        templateParams
+                    );
+
+
+                    console.log(
+                        "================================"
+                    );
+
+
+                    /* ==========================================
+                       SEND EMAIL
+                       ========================================== */
+
+                    const response =
+                        await window.emailjs.send(
+                            EMAILJS_SERVICE_ID,
+                            EMAILJS_TEMPLATE_ID,
+                            templateParams
+                        );
+
+
+                    /* ==========================================
+                       CHECK RESPONSE
+                       ========================================== */
+
+                    console.log(
+                        "EmailJS response:",
+                        response
+                    );
+
+
+                    if (
+                        response &&
+                        Number(response.status) === 200
+                    ) {
+
+
+                        /* ==========================================
+                           SUCCESS
+                           ========================================== */
+
+                        console.log(
+                            "APPLICATION SENT SUCCESSFULLY"
+                        );
+
+
+                        showResult(
+                            "SENT — Application submitted successfully! We shall contact you soon.",
+                            "success"
+                        );
+
+
+                        /*
+                         * Clear the form only after
+                         * EmailJS confirms success.
+                         */
+
+                        form.reset();
+
+
+                    } else {
+
+
+                        throw new Error(
+                            "EmailJS did not confirm successful delivery."
+                        );
+
+                    }
+
+
+                } catch (error) {
+
+
+                    /* ==========================================
+                       ERROR
+                       ========================================== */
+
+                    console.error(
+                        "================================"
+                    );
+
+
+                    console.error(
+                        "APPLICATION NOT SENT"
+                    );
+
+
+                    console.error(
+                        "Error:",
+                        error
+                    );
+
+
+                    console.error(
+                        "Status:",
+                        error
+                            ? error.status
+                            : "Unknown"
+                    );
+
+
+                    console.error(
+                        "Text:",
+                        error
+                            ? error.text
+                            : "Unknown"
+                    );
+
+
+                    let errorMessage =
+                        "NOT SENT — Your application could not be sent.";
+
+
+                    /*
+                     * Don't expose confusing
+                     * JavaScript object output.
+                     */
+
+                    if (
+                        error &&
+                        error.text
+                    ) {
+
+                        errorMessage +=
+                            " " +
+                            error.text;
+
+                    }
+
+                    else if (
+                        error &&
+                        error.message
+                    ) {
+
+                        errorMessage +=
+                            " " +
+                            error.message;
+
+                    }
+
+
+                    showResult(
+                        errorMessage,
+                        "error"
+                    );
+
+                }
+
+
+                finally {
+
+
+                    /* ==========================================
+                       RESTORE BUTTON
+                       ========================================== */
+
+                    if (
+                        submitButton
+                    ) {
+
+                        submitButton.disabled =
+                            false;
+
+
+                        submitButton.innerHTML =
+                            originalButtonHTML;
+
+                    }
+
+
+                    form.dataset.sending =
+                        "false";
+
+                }
+
+            }
+        );
+
+
+        /* ==========================================
+           START EMAILJS
+           ========================================== */
+
+        loadEmailJS()
+            .then(
+                function () {
+
+                    console.log(
+                        "FRATAM application system ready."
+                    );
+
+                }
+            )
+            .catch(
+                function (error) {
+
+                    console.error(
+                        "EmailJS could not be initialized:",
+                        error
+                    );
+
+                }
+            );
+
+
+    }
+);
+```
+```javascript
+/* ==========================================
+   FRATAM JUNIOR SCHOOL
    ADMISSION APPLICATION + EMAILJS
    ========================================== */
 
