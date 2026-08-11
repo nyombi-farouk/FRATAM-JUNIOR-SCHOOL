@@ -1,10 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
@@ -13,6 +12,9 @@
     <title>Apply Now | FRATAM JUNIOR SCHOOL</title>
 
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -34,7 +36,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: "Poppins", sans-serif;
         }
 
         :root {
@@ -42,10 +44,10 @@
             --primary-dark: #084298;
             --yellow: #ffb703;
             --dark: #111827;
-            --text: #333;
+            --text: #333333;
             --light: #f8fafc;
             --white: #ffffff;
-            --border: #ddd;
+            --border: #dddddd;
         }
 
         html {
@@ -94,7 +96,7 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            color: #111;
+            color: #111111;
         }
 
         .logo img {
@@ -111,7 +113,7 @@
 
         .logo span {
             display: block;
-            color: #444;
+            color: #444444;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 1px;
@@ -131,7 +133,7 @@
 
         nav a {
             text-decoration: none;
-            color: #333;
+            color: #333333;
             font-weight: 500;
             transition: 0.3s ease;
         }
@@ -163,10 +165,6 @@
 
         /* ==========================================
            HERO
-           
-           IMPORTANT:
-           school.jpg has been removed.
-           This prevents the 404 error.
            ========================================== */
 
         .apply-hero {
@@ -318,9 +316,9 @@
 
             font-size: 15px;
 
-            color: #333;
+            color: #333333;
 
-            background: #fff;
+            background: #ffffff;
 
             outline: none;
 
@@ -389,15 +387,12 @@
 
         button[type="submit"]:hover {
             background: var(--primary-dark);
-
             transform: translateY(-1px);
         }
 
         button[type="submit"]:disabled {
             opacity: 0.65;
-
             cursor: not-allowed;
-
             transform: none;
         }
 
@@ -512,7 +507,6 @@
             .form-container h2 {
                 font-size: 25px;
             }
-
         }
 
 
@@ -556,7 +550,6 @@
             textarea {
                 padding: 13px;
             }
-
         }
 
     </style>
@@ -565,7 +558,6 @@
 
 
 <body>
-
 
     <!-- ==========================================
          HEADER
@@ -672,8 +664,7 @@
             </h2>
 
 
-            <form id="applyForm">
-
+            <form id="applyForm" novalidate>
 
                 <!-- LEARNER INFORMATION -->
 
@@ -836,7 +827,7 @@
 
                 <!-- SUBMIT -->
 
-                <button type="submit">
+                <button type="submit" id="submitButton">
 
                     <i class="fas fa-paper-plane"></i>
 
@@ -848,7 +839,7 @@
             </form>
 
 
-            <!-- EmailJS result -->h
+            <!-- EmailJS result -->
 
             <div
                 id="result"
@@ -876,726 +867,10 @@
     </footer>
 
 
-    <!-- APPLICATION JAVASCRIPT -->
+    <!-- ONLY EXTERNAL JAVASCRIPT -->
+    <script src="apply.js"></script>
 
-   
 </body>
-<script>
-/* =========================================================
-   FRATAM JUNIOR SCHOOL
-   STUDENT APPLICATION JAVASCRIPT
-   ========================================================= */
 
-"use strict";
-
-
-/* =========================================================
-   EMAILJS CONFIGURATION
-   ========================================================= */
-
-const EMAILJS_PUBLIC_KEY = "e0n54GWwX9gXxtSWs";
-const EMAILJS_SERVICE_ID = "service_ms66hyq";
-const EMAILJS_TEMPLATE_ID = "template_6cqjh1n";
-
-
-/* =========================================================
-   GLOBAL STATE
-   ========================================================= */
-
-let emailJSReady = false;
-
-
-/* =========================================================
-   LOAD EMAILJS
-   ========================================================= */
-
-function loadEmailJS() {
-
-    return new Promise(function (resolve, reject) {
-
-        /* If EmailJS is already loaded */
-
-        if (typeof window.emailjs !== "undefined") {
-
-            try {
-
-                window.emailjs.init({
-                    publicKey: EMAILJS_PUBLIC_KEY
-                });
-
-                emailJSReady = true;
-
-                console.log(
-                    "FRATAM: EmailJS initialized."
-                );
-
-                resolve();
-
-            } catch (error) {
-
-                console.error(
-                    "FRATAM: EmailJS initialization failed.",
-                    error
-                );
-
-                reject(error);
-            }
-
-            return;
-        }
-
-
-        /* Create EmailJS script */
-
-        const script =
-            document.createElement("script");
-
-
-        script.src =
-            "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
-
-
-        script.async = true;
-
-
-        script.onload = function () {
-
-            try {
-
-                if (
-                    typeof window.emailjs ===
-                    "undefined"
-                ) {
-
-                    throw new Error(
-                        "EmailJS library was not found."
-                    );
-                }
-
-
-                window.emailjs.init({
-                    publicKey: EMAILJS_PUBLIC_KEY
-                });
-
-
-                emailJSReady = true;
-
-
-                console.log(
-                    "FRATAM: EmailJS loaded successfully."
-                );
-
-
-                resolve();
-
-            } catch (error) {
-
-                emailJSReady = false;
-
-                console.error(
-                    "FRATAM: EmailJS initialization failed.",
-                    error
-                );
-
-                reject(error);
-            }
-        };
-
-
-        script.onerror = function () {
-
-            emailJSReady = false;
-
-
-            reject(
-                new Error(
-                    "Unable to load EmailJS."
-                )
-            );
-        };
-
-
-        document.head.appendChild(script);
-
-    });
-}
-
-
-/* =========================================================
-   RESULT MESSAGE
-   ========================================================= */
-
-function showResult(message, type) {
-
-    const result =
-        document.getElementById("result");
-
-
-    if (!result) {
-
-        console.log(message);
-
-        return;
-    }
-
-
-    result.textContent = message;
-
-
-    result.style.display = "block";
-
-    result.style.padding = "14px 16px";
-
-    result.style.marginTop = "20px";
-
-    result.style.borderRadius = "10px";
-
-    result.style.textAlign = "center";
-
-    result.style.fontWeight = "600";
-
-    result.style.lineHeight = "1.5";
-
-
-    if (type === "success") {
-
-        result.style.color = "#166534";
-
-        result.style.backgroundColor = "#dcfce7";
-
-        result.style.border =
-            "1px solid #86efac";
-
-    }
-
-    else if (type === "error") {
-
-        result.style.color = "#991b1b";
-
-        result.style.backgroundColor = "#fee2e2";
-
-        result.style.border =
-            "1px solid #fca5a5";
-
-    }
-
-    else {
-
-        result.style.color = "#1e40af";
-
-        result.style.backgroundColor = "#dbeafe";
-
-        result.style.border =
-            "1px solid #93c5fd";
-    }
-}
-
-
-/* =========================================================
-   GET VALUE
-   ========================================================= */
-
-function getValue(id) {
-
-    const element =
-        document.getElementById(id);
-
-
-    if (!element) {
-
-        return "";
-    }
-
-
-    return element.value.trim();
-}
-
-
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
-
-function setupNavigation() {
-
-    const menuBtn =
-        document.getElementById("menuBtn");
-
-
-    const navMenu =
-        document.getElementById("navMenu");
-
-
-    if (!menuBtn || !navMenu) {
-
-        return;
-    }
-
-
-    menuBtn.addEventListener(
-        "click",
-        function () {
-
-            navMenu.classList.toggle("show");
-
-
-            const isOpen =
-                navMenu.classList.contains(
-                    "show"
-                );
-
-
-            menuBtn.setAttribute(
-                "aria-expanded",
-                isOpen
-                    ? "true"
-                    : "false"
-            );
-
-        }
-    );
-
-
-    const links =
-        navMenu.querySelectorAll("a");
-
-
-    links.forEach(
-        function (link) {
-
-            link.addEventListener(
-                "click",
-                function () {
-
-                    navMenu.classList.remove(
-                        "show"
-                    );
-
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                }
-            );
-
-        }
-    );
-}
-
-
-/* =========================================================
-   APPLICATION FORM
-   ========================================================= */
-
-function setupApplicationForm() {
-
-    const form =
-        document.getElementById(
-            "applyForm"
-        );
-
-
-    if (!form) {
-
-        console.error(
-            "FRATAM: applyForm was not found."
-        );
-
-        return;
-    }
-
-
-    form.addEventListener(
-        "submit",
-        async function (event) {
-
-            event.preventDefault();
-
-
-            /* Prevent duplicate submissions */
-
-            if (
-                form.dataset.submitting ===
-                "true"
-            ) {
-
-                return;
-            }
-
-
-            form.dataset.submitting =
-                "true";
-
-
-            const submitButton =
-                form.querySelector(
-                    'button[type="submit"]'
-                );
-
-
-            const originalButton =
-                submitButton
-                    ? submitButton.innerHTML
-                    : "Submit Application";
-
-
-            try {
-
-                /* =========================================
-                   VALIDATE FORM
-                   ========================================= */
-
-                const studentName =
-                    getValue("studentName");
-
-
-                const dob =
-                    getValue("dob");
-
-
-                const gender =
-                    getValue("gender");
-
-
-                const classApply =
-                    getValue("classApply");
-
-
-                const parentName =
-                    getValue("parentName");
-
-
-                const phone =
-                    getValue("phone");
-
-
-                const email =
-                    getValue("email");
-
-
-                const address =
-                    getValue("address");
-
-
-                const message =
-                    getValue("message");
-
-
-                if (
-                    !studentName ||
-                    !dob ||
-                    !gender ||
-                    !classApply ||
-                    !parentName ||
-                    !phone ||
-                    !email ||
-                    !address
-                ) {
-
-                    showResult(
-                        "NOT SENT — Please complete all required fields.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-
-                /* =========================================
-                   EMAIL VALIDATION
-                   ========================================= */
-
-                const emailPattern =
-                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-                if (
-                    !emailPattern.test(email)
-                ) {
-
-                    showResult(
-                        "NOT SENT — Please enter a valid email address.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-
-                /* =========================================
-                   PHONE VALIDATION
-                   ========================================= */
-
-                if (
-                    phone.length < 7
-                ) {
-
-                    showResult(
-                        "NOT SENT — Please enter a valid phone number.",
-                        "error"
-                    );
-
-                    return;
-                }
-
-
-                /* =========================================
-                   CHECK EMAILJS
-                   ========================================= */
-
-                if (!emailJSReady) {
-
-                    showResult(
-                        "Sending service is starting. Please wait...",
-                        "info"
-                    );
-
-
-                    await loadEmailJS();
-                }
-
-
-                if (
-                    !emailJSReady ||
-                    typeof window.emailjs ===
-                    "undefined"
-                ) {
-
-                    throw new Error(
-                        "Email service is not available."
-                    );
-                }
-
-
-                /* =========================================
-                   DISABLE BUTTON
-                   ========================================= */
-
-                if (submitButton) {
-
-                    submitButton.disabled =
-                        true;
-
-
-                    submitButton.innerHTML =
-                        '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                }
-
-
-                /* =========================================
-                   SHOW SENDING MESSAGE
-                   ========================================= */
-
-                showResult(
-                    "Sending your application...",
-                    "info"
-                );
-
-
-                /* =========================================
-                   EMAILJS DATA
-                   ========================================= */
-
-                const templateParams = {
-
-                    studentName:
-                        studentName,
-
-                    dob:
-                        dob,
-
-                    gender:
-                        gender,
-
-                    classApply:
-                        classApply,
-
-                    parentName:
-                        parentName,
-
-                    phone:
-                        phone,
-
-                    email:
-                        email,
-
-                    address:
-                        address,
-
-                    message:
-                        message,
-
-                    date:
-                        new Date()
-                            .toLocaleString(),
-
-                    school:
-                        "FRATAM JUNIOR SCHOOL"
-                };
-
-
-                console.log(
-                    "FRATAM application data:",
-                    templateParams
-                );
-
-
-                /* =========================================
-                   SEND EMAIL
-                   ========================================= */
-
-                const response =
-                    await window.emailjs.send(
-                        EMAILJS_SERVICE_ID,
-                        EMAILJS_TEMPLATE_ID,
-                        templateParams
-                    );
-
-
-                console.log(
-                    "EmailJS response:",
-                    response
-                );
-
-
-                /* =========================================
-                   SUCCESS
-                   ========================================= */
-
-                if (
-                    response &&
-                    Number(response.status) === 200
-                ) {
-
-                    showResult(
-                        "SENT — Application submitted successfully! We shall contact you soon.",
-                        "success"
-                    );
-
-
-                    form.reset();
-
-                }
-
-                else {
-
-                    throw new Error(
-                        "EmailJS did not confirm successful delivery."
-                    );
-                }
-
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "FRATAM application error:",
-                    error
-                );
-
-
-                let message =
-                    "NOT SENT — Your application could not be sent.";
-
-
-                if (
-                    error &&
-                    error.text
-                ) {
-
-                    message +=
-                        " " +
-                        error.text;
-
-                }
-
-                else if (
-                    error &&
-                    error.message
-                ) {
-
-                    message +=
-                        " " +
-                        error.message;
-                }
-
-
-                showResult(
-                    message,
-                    "error"
-                );
-
-            }
-
-
-            finally {
-
-                if (submitButton) {
-
-                    submitButton.disabled =
-                        false;
-
-
-                    submitButton.innerHTML =
-                        originalButton;
-                }
-
-
-                form.dataset.submitting =
-                    "false";
-            }
-
-        }
-    );
-}
-
-
-/* =========================================================
-   START APPLICATION
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        console.log(
-            "FRATAM Apply page loaded."
-        );
-
-
-        setupNavigation();
-
-
-        setupApplicationForm();
-
-
-        /* Start EmailJS */
-
-        loadEmailJS()
-            .then(
-                function () {
-
-                    console.log(
-                        "FRATAM: Application system ready."
-                    );
-
-                }
-            )
-            .catch(
-                function (error) {
-
-                    console.error(
-                        "FRATAM: EmailJS startup failed.",
-                        error
-                    );
-
-                }
-            );
-
-    }
-);
-```
-</script>
 </html>
+```
