@@ -172,22 +172,148 @@ color:var(--primary)!important;
 }
 
 /*=========================
-MOBILE HAMBURGER TOGGLE
-=========================*/
+/* =====================================================
+   MOBILE TOGGLE
+===================================================== */
 
-.hamburger {
-display: none;
-background: none;
-border: none;
-font-size: 26px;
-color: var(--primary);
-cursor: pointer;
-z-index: 1001;
-transition: color 0.3s ease;
+.mobile-toggle {
+
+    display:
+        none;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border:
+        1px solid rgba(15,44,89,.12);
+
+    background:
+        var(--primary-navy);
+
+    border-radius:
+        12px;
+
+    cursor:
+        pointer;
+
+    padding:
+        0;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
+
+    position:
+        relative;
+
+    box-shadow:
+        0 5px 15px rgba(15,44,89,.18);
+
+    transition:
+        background .3s ease,
+        transform .25s ease,
+        box-shadow .3s ease;
+
+    z-index:
+        1101;
 }
 
-.hamburger:focus {
-outline: none;
+.mobile-toggle:hover {
+
+    background:
+        var(--secondary-gold);
+
+    transform:
+        translateY(-2px);
+}
+
+.mobile-toggle:active {
+
+    transform:
+        scale(.94);
+}
+
+.mobile-toggle:focus-visible {
+
+    outline:
+        3px solid var(--accent-blue);
+
+    outline-offset:
+        3px;
+}
+
+.mobile-toggle span {
+
+    display:
+        block;
+
+    width:
+        25px;
+
+    height:
+        3px;
+
+    background:
+        var(--white);
+
+    border-radius:
+        10px;
+
+    transition:
+        transform .35s ease,
+        opacity .25s ease,
+        width .3s ease;
+}
+
+
+/* =====================================================
+   MOBILE TOGGLE ACTIVE
+===================================================== */
+
+.mobile-toggle.active {
+
+    background:
+        var(--secondary-gold);
+}
+
+.mobile-toggle.active span {
+
+    background:
+        var(--primary-navy);
+}
+
+.mobile-toggle.active span:nth-child(1) {
+
+    transform:
+        translateY(8px)
+        rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+
+    opacity:
+        0;
+
+    width:
+        0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+
+    transform:
+        translateY(-8px)
+        rotate(-45deg);
 }
 
 /*=========================
