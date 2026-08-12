@@ -6,7 +6,7 @@
     <title>FRATAM Junior School | Excelling is Our Goal</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-     <link rel="icon" type="image/png" href="ChatGPT Image Aug 2, 2026, 08_37_15 AM.png">
+    <link rel="icon" type="image/png" href="ChatGPT Image Aug 2, 2026, 08_37_15 AM.png">
 
     <style>
         /* CSS RESET & BRAND VARIABLES */
@@ -51,6 +51,7 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0.6rem 2rem;
+            position: relative;
         }
 
         .brand-logo {
@@ -110,6 +111,37 @@
             color: var(--primary-navy) !important;
         }
 
+        /* MOBILE MENU TOGGLE BUTTON */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 101;
+        }
+
+        .mobile-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-navy);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Animated hamburger icon when open */
+        .mobile-toggle.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .mobile-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-toggle.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
         /* HERO SLIDER SECTION WITH BACKGROUND IMAGES */
         .hero {
             position: relative;
@@ -137,13 +169,10 @@
             background-position: center;
         }
 
-
         /* HERO BACKGROUND IMAGES */
-        /* Slide 1 uses your uploaded students picture */
         .slide-1 { 
             background-image: url('ChatGPT Image Aug 7, 2026, 01_22_19 PM.png'); 
         }
-        /* Slide 2 & 3 use high-res educational activity images */
         .slide-2 { 
             background-image: url('ChatGPT Image Aug 9, 2026, 08_53_16 AM.png'); 
         }
@@ -160,7 +189,7 @@
 
         .hero-badge {
             height: 120px;
-            width: 85;
+            width: 85px;
             margin-bottom: 1rem;
             filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
         }
@@ -207,7 +236,7 @@
         .btn-secondary:hover { background-color: var(--white); color: var(--primary-navy); }
 
         /* KEYFRAME SLIDE ANIMATION */
-@keyframes slideAnimation {
+        @keyframes slideAnimation {
             0%, 28% { transform: translateX(0%); }
             33%, 61% { transform: translateX(-100vw); }
             66%, 94% { transform: translateX(-200vw); }
@@ -253,20 +282,41 @@
         .footer-col p, .footer-col li { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.6rem; }
         .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.7; }
 
+        h1 {
+            font-family: jokerman;
+            color: red;
+        }
+
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
-            .navbar { flex-direction: column; gap: 1rem; }
-            .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 1.5rem 0 1rem;
+                gap: 1.2rem;
+                text-align: center;
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
             .hero { height: 70vh; }
             .slide-content h1 { font-size: 2rem; }
             .hero-badge { height: 80px; }
             .about-container { grid-template-columns: 1fr; }
             .hero-buttons { flex-direction: column; }
         }
-h1{
-font-family:jokerman;
-color:red;
-}
     </style>
 </head>
 <body>
@@ -293,11 +343,19 @@ color:red;
                     <span>JUNIOR SCHOOL</span>
                 </div>
             </div>
-            <ul class="nav-links">
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="About.html">About Us</a></li>
                 <li><a href="Academics.html">Academics</a></li>
-				 <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
                 <li><a href="Contact.html">Contact</a></li>
                 <li><a href="Apply.html" class="btn-enroll">Apply Now</a></li>
             </ul>
@@ -311,7 +369,7 @@ color:red;
             <!-- SLIDE 1 (Features your students image) -->
             <div class="slide slide-1">
                 <div class="slide-content">
-			<p><h1>FRATAM JUNIOR SCHOOL</p></h1>
+                    <p><h1>FRATAM JUNIOR SCHOOL</h1></p>
                     <h2>Excelling is Our Goal</h2>
                     <p>Empowering young minds with strong moral values, academic excellence, and leadership skills.</p>
                     <div class="hero-buttons">
@@ -345,201 +403,144 @@ color:red;
 
         </div>
     </section>
-<center>	<h2>Managed by</h2>
-	<p>KYAMBADDE ASHIRAF</p></center>
-	<footer>
-<footer id="contact">
 
-    <div class="footer-container">
+    <center>
+        <h2>Managed by</h2>
+        <p>KYAMBADDE ASHIRAF</p>
+    </center>
 
+    <footer id="contact">
+        <div class="footer-container">
 
-        <!-- SCHOOL -->
+            <!-- SCHOOL -->
+            <div class="footer-col">
+                <svg
+                    class="badge-icon"
+                    viewBox="0 0 400 450"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="height:65px; margin-bottom:10px;">
+                    <path
+                        d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="12"/>
+                    <path
+                        d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
+                        fill="#FFFFFF"/>
+                    <rect
+                        x="75"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+                    <rect
+                        x="205"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#0F2C59"/>
+                    <rect
+                        x="205"
+                        y="160"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+                    <rect
+                        x="75"
+                        y="255"
+                        width="120"
+                        height="90"
+                        fill="#FFFFFF"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+                    <path
+                        d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
+                        fill="#0F2C59"
+                        stroke="#C5A059"
+                        stroke-width="4"/>
+                    <text
+                        x="200"
+                        y="375"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="bold"
+                        font-size="22"
+                        fill="#FFFFFF"
+                        text-anchor="middle">
+                        Excelling is our goal
+                    </text>
+                    <text
+                        x="200"
+                        y="105"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="900"
+                        font-size="36"
+                        fill="#0F2C59"
+                        text-anchor="middle">
+                        FRATAM
+                    </text>
+                    <text
+                        x="200"
+                        y="135"
+                        font-family="'Poppins', sans-serif"
+                        font-weight="600"
+                        font-size="20"
+                        fill="#0F2C59"
+                        text-anchor="middle"
+                        letter-spacing="3">
+                        JUNIOR SCHOOL
+                    </text>
+                </svg>
 
-        <div class="footer-col">
+                <p>FRATAM JUNIOR SCHOOL</p>
+                <p><em>Excelling is our goal</em></p>
+            </div>
 
-            <svg
-                class="badge-icon"
-                viewBox="0 0 400 450"
-                xmlns="http://www.w3.org/2000/svg"
-                style="
-                    height:65px;
-                    margin-bottom:10px;
-                ">
+            <!-- QUICK LINKS -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Academics.html">Academics</a></li>
+                    <li><a href="Apply.html">Admissions</a></li>
+                </ul>
+            </div>
 
-                <path
-                    d="M 200 10 L 370 40 V 220 C 370 330 200 420 200 420 C 200 420 30 330 30 220 V 40 Z"
-                    fill="#0F2C59"
-                    stroke="#C5A059"
-                    stroke-width="12"/>
-
-                <path
-                    d="M 200 30 L 340 55 V 210 C 340 300 200 380 200 380 C 200 380 60 300 60 210 V 55 Z"
-                    fill="#FFFFFF"/>
-
-                <rect
-                    x="75"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#0F2C59"/>
-
-                <rect
-                    x="205"
-                    y="160"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <rect
-                    x="75"
-                    y="255"
-                    width="120"
-                    height="90"
-                    fill="#FFFFFF"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <path
-                    d="M 40 330 Q 200 440 360 330 Q 200 460 40 330 Z"
-                    fill="#0F2C59"
-                    stroke="#C5A059"
-                    stroke-width="4"/>
-
-                <text
-                    x="200"
-                    y="375"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="bold"
-                    font-size="22"
-                    fill="#FFFFFF"
-                    text-anchor="middle">
-                    Excelling is our goal
-                </text>
-
-                <text
-                    x="200"
-                    y="105"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="900"
-                    font-size="36"
-                    fill="#0F2C59"
-                    text-anchor="middle">
-                    FRATAM
-                </text>
-
-                <text
-                    x="200"
-                    y="135"
-                    font-family="'Poppins', sans-serif"
-                    font-weight="600"
-                    font-size="20"
-                    fill="#0F2C59"
-                    text-anchor="middle"
-                    letter-spacing="3">
-                    JUNIOR SCHOOL
-                </text>
-
-            </svg>
-
-
-            <p>
-                FRATAM JUNIOR SCHOOL
-            </p>
-
-            <p>
-                <em>
-                    Excelling is our goal
-                </em>
-            </p>
+            <!-- CONTACT -->
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>School Campus, Main Road</p>
+                <p>+256-730-404-503</p>
+                <p>trippler33221@gmail.com</p>
+            </div>
 
         </div>
 
-
-        <!-- QUICK LINKS -->
-
-        <div class="footer-col">
-
-            <h4>
-                Quick Links
-            </h4>
-
-            <ul>
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="About.html">
-                        About Us
-                    </a>
-                </li>
-
-                <li>
-                    <a href="Academics.html">
-                        Academics
-                    </a>
-                </li>
-
-                <li>
-                    <a href="Apply.html">
-                        Admissions
-                    </a>
-                </li>
-
-            </ul>
-
+        <!-- COPYRIGHT -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 FRATAM JUNIOR SCHOOL. All rights reserved.</p>
         </div>
+    </footer>
 
+    <!-- MOBILE MENU TOGGLE SCRIPT -->
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.getElementById('nav-links');
 
-        <!-- CONTACT -->
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
 
-        <div class="footer-col">
-
-            <h4>
-                Contact Us
-            </h4>
-
-            <p>
-                 School Campus, Main Road
-            </p>
-
-            <p>
-                 +256-730-404-503
-            </p>
-
-            <p>
-                 trippler33221@gmail.com
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <!-- COPYRIGHT -->
-
-    <div class="footer-bottom">
-
-        <p>
-            &copy; 2026 FRATAM JUNIOR SCHOOL.
-            All rights reserved.
-        </p>
-
-    </div>
-
-</footer>
-	</footer>
+        // Close menu when clicking a link on mobile
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
